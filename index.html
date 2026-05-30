@@ -325,11 +325,232 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 .tli-info{flex:1;min-width:0;}
 .tli-name{font-size:13px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .tli-meta{font-size:11px;color:var(--muted);margin-top:1px;}
-@media(max-width:768px){.sidebar{width:60px;}.sb-top,.ni span,.nav-sec,.sb-bot{display:none;}.main{margin-left:60px;}.ni{justify-content:center;padding:12px;}.page{padding:18px 14px;}}
+/* ═══ CATEGORY BARS (Dashboard) ═══ */
+.cat-bars{display:flex;flex-direction:column;gap:8px;width:100%;}
+.cat-bar-item{display:flex;flex-direction:column;gap:4px;}
+.cat-bar-header{display:flex;align-items:center;gap:6px;}
+.cat-bar-emoji{font-size:13px;}
+.cat-bar-name{font-size:11px;font-weight:500;color:var(--text);flex:1;}
+.cat-bar-lvl{font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:.05em;}
+.cat-bar-xp{font-family:var(--fm);font-size:9px;color:var(--faint);}
+.cat-bar-track{height:5px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;}
+.cat-bar-fill{height:100%;border-radius:99px;transition:width .5s;}
+
+/* ═══ MOBILE ═══ */
+/* Hamburger button — desktop hidden */
+.mob-ham{display:none;position:fixed;top:14px;right:14px;z-index:1000;width:40px;height:40px;border-radius:10px;background:var(--s1);border:.5px solid var(--border2);color:var(--text);font-size:20px;align-items:center;justify-content:center;cursor:pointer;}
+/* Overlay when sidebar open on mobile */
+.mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:90;backdrop-filter:blur(2px);}
+.mob-overlay.open{display:block;}
+/* Bottom nav for mobile */
+.mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--s1);border-top:.5px solid var(--border2);padding:6px 0 env(safe-area-inset-bottom,6px);gap:0;}
+.mob-nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 2px;color:var(--muted);cursor:pointer;font-size:9px;font-family:var(--fm);letter-spacing:.04em;text-transform:uppercase;border-top:2px solid transparent;transition:all .12s;}
+.mob-nav-item.active{color:var(--purple);border-top-color:var(--purple);}
+.mob-nav-item i{font-size:20px;}
+
+@media(max-width:768px){
+  :root{--nav-w:240px;}
+  /* Sidebar: hidden off-screen by default, slide in as drawer */
+  .sidebar{transform:translateX(-100%);transition:transform .22s cubic-bezier(.4,0,.2,1);box-shadow:none;}
+  .sidebar.mob-open{transform:translateX(0);box-shadow:4px 0 30px rgba(0,0,0,.5);}
+  .sb-top,.ni span,.nav-sec,.sb-bot{display:flex !important;}
+  .nav-sec{display:block !important;}
+  /* Main content full width */
+  .main{margin-left:0;padding-bottom:72px;}
+  .page{padding:16px 14px 20px;}
+  .page-title{font-size:36px;}
+  /* Hamburger & bottom nav visible */
+  .mob-ham{display:flex;}
+  .mob-nav{display:flex;}
+  /* Grids — single column on very small, 2-col on medium mobile */
+  .grid2{grid-template-columns:1fr;}
+  .grid4{grid-template-columns:repeat(2,1fr);}
+  /* Hero card stacks */
+  .hero-card{padding:16px;gap:14px;}
+  .hero-avatar{width:60px;height:60px;font-size:28px;}
+  .hero-name{font-size:28px;}
+  /* Quests: day tabs scroll horizontally */
+  .day-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;}
+  .day-tabs::-webkit-scrollbar{height:2px;}
+  .dtab{min-width:52px;flex-shrink:0;}
+  /* Quest cards stack cleanly */
+  .qcard{flex-direction:column;}
+  .qcard-art{width:100%;height:80px;}
+  /* Skill grid */
+  .st-grid{grid-template-columns:repeat(2,1fr);}
+  .skill-photo-card .skill-cover-wrap{height:120px;}
+  /* Habit grid */
+  .habit-grid{grid-template-columns:1fr;}
+  /* Calendar horizontal scroll */
+  .cal-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  /* Week grid min width so it scrolls */
+  .week-grid{min-width:560px;}
+  /* Achievement tree */
+  .node-chain{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:8px;}
+  /* Stats */
+  .substats{grid-template-columns:repeat(2,1fr);}
+  /* Edit panel full width */
+  .edit-panel{width:100%;max-width:100%;border-radius:var(--r) var(--r) 0 0;bottom:0;top:auto;max-height:90vh;}
+  /* Metrics row wraps */
+  .quest-metrics-row,.habit-metrics-row{flex-wrap:wrap;}
+  /* Tree tabs scroll */
+  .tree-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tree-tab{white-space:nowrap;flex-shrink:0;}
+  /* Toast above bottom nav */
+  .toast{bottom:84px;}
+}
+@media(max-width:400px){
+  .st-grid{grid-template-columns:1fr;}
+  .grid4{grid-template-columns:1fr;}
+  .page-title{font-size:30px;}
+}
+
+/* ═══ MEDIA EDITOR ═══ */
+.med-btn{position:fixed;bottom:90px;right:16px;z-index:800;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,rgba(168,85,247,.9),rgba(236,72,153,.8));border:none;color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(168,85,247,.5);transition:transform .14s;}
+.med-btn:hover{transform:scale(1.1);}
+@media(min-width:769px){.med-btn{bottom:24px;right:24px;}}
+.med-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:900;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);padding:16px;}
+.med-overlay.open{display:flex;}
+.med-panel{background:var(--s1);border:.5px solid var(--border2);border-radius:18px;width:100%;max-width:560px;max-height:88vh;display:flex;flex-direction:column;overflow:hidden;}
+.med-hdr{padding:18px 20px 12px;border-bottom:.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.med-title{font-family:var(--fd);font-size:24px;color:var(--text);}
+.med-close{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);border:.5px solid var(--border);color:var(--muted);font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.med-tabs{display:flex;gap:2px;padding:10px 12px 0;border-bottom:.5px solid var(--border);flex-shrink:0;}
+.med-tab{padding:8px 14px;font-size:12px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-.5px;transition:all .12s;white-space:nowrap;}
+.med-tab.active{color:var(--text);border-bottom-color:var(--purple);}
+.med-body{flex:1;overflow-y:auto;padding:18px 20px;}
+.med-section{margin-bottom:20px;}
+.med-sec-label{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+.med-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;background:var(--s2);border:.5px solid var(--border);border-radius:10px;padding:10px 12px;}
+.med-preview{width:52px;height:52px;border-radius:10px;object-fit:cover;background:var(--s2);border:.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden;}
+.med-preview img{width:100%;height:100%;object-fit:cover;}
+.med-preview.circle{border-radius:50%;}
+.med-info{flex:1;min-width:0;}
+.med-name{font-size:12px;font-weight:500;color:var(--text);margin-bottom:5px;}
+.med-input{width:100%;background:var(--bg);border:.5px solid var(--border2);border-radius:7px;padding:7px 10px;color:var(--text);font-size:11px;outline:none;transition:border-color .14s;font-family:var(--fm);}
+.med-input:focus{border-color:var(--purple);}
+.med-input::placeholder{color:var(--faint);}
+.med-apply{margin-top:5px;padding:4px 10px;background:rgba(168,85,247,.15);border:.5px solid var(--border2);border-radius:6px;color:var(--purple);font-size:10px;font-family:var(--fm);cursor:pointer;transition:all .14s;}
+.med-apply:hover{background:rgba(168,85,247,.28);}
+.med-text-row{margin-bottom:8px;}
+.med-text-label{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.med-save-bar{padding:12px 20px;border-top:.5px solid var(--border);flex-shrink:0;display:flex;gap:8px;}
+.med-art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin-top:8px;}
+.med-art-thumb{position:relative;cursor:pointer;border-radius:8px;overflow:hidden;aspect-ratio:1;border:.5px solid var(--border);}
+.med-art-thumb svg{width:100%;height:100%;}
+.med-art-thumb:hover{border-color:var(--border2);}
+.med-art-label{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-size:8px;font-family:var(--fm);color:rgba(255,255,255,.5);}
+
+/* ═══ SKILL DETAIL MODAL ═══ */
+.sd-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);padding:20px;}
+.sd-overlay.open{display:flex;}
+.sd-panel{background:var(--s1);border:.5px solid var(--border2);border-radius:20px;width:100%;max-width:780px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.8);}
+/* Hero */
+.sd-hero{position:relative;height:200px;flex-shrink:0;overflow:hidden;}
+.sd-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.sd-hero-overlay{position:absolute;inset:0;}
+.sd-hero-content{position:absolute;bottom:0;left:0;right:0;padding:20px 22px 16px;}
+.sd-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.5);border:.5px solid rgba(255,255,255,.15);color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .14s;}
+.sd-close:hover{background:rgba(255,255,255,.15);}
+.sd-hero-tag{font-family:var(--fm);font-size:8px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:4px;opacity:.7;}
+.sd-hero-name{font-family:var(--fd);font-size:34px;line-height:1;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.5);margin-bottom:6px;}
+.sd-hero-meta{font-family:var(--fm);font-size:10px;color:rgba(255,255,255,.6);margin-bottom:8px;}
+.sd-xp-track{height:4px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;}
+.sd-xp-fill{height:100%;border-radius:99px;transition:width .5s;}
+.sd-xp-label{font-family:var(--fm);font-size:9px;color:rgba(255,255,255,.5);margin-top:3px;}
+/* Tabs */
+.sd-tabs{display:flex;border-bottom:.5px solid var(--border);background:var(--s1);flex-shrink:0;overflow-x:auto;}
+.sd-tabs::-webkit-scrollbar{height:0;}
+.sd-tab{display:flex;align-items:center;gap:5px;padding:11px 16px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .12s;flex-shrink:0;}
+.sd-tab i{font-size:14px;}
+.sd-tab:hover{color:var(--text);}
+.sd-tab.active{color:var(--text);border-bottom-color:var(--purple);}
+/* Body */
+.sd-body{flex:1;overflow-y:auto;padding:22px;}
+/* ── Session ── */
+.session-intro{background:var(--s2);border:.5px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:18px;}
+.session-intro-title{font-family:var(--fd);font-size:20px;margin-bottom:4px;}
+.session-intro-sub{font-size:12px;color:var(--muted);}
+.session-progress{display:flex;align-items:center;gap:10px;margin-top:10px;}
+.session-pct{font-family:var(--fm);font-size:11px;font-weight:700;}
+.step-list{display:flex;flex-direction:column;gap:8px;}
+.step-item{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--s2);border:.5px solid var(--border);border-radius:12px;cursor:pointer;transition:all .14s;}
+.step-item:hover{border-color:var(--border2);}
+.step-item.done{opacity:.5;}
+.step-item.done .step-name{text-decoration:line-through;}
+.step-num{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:10px;flex-shrink:0;transition:all .14s;}
+.step-item.done .step-num{background:var(--green);border-color:var(--green);color:#fff;}
+.step-icon{font-size:20px;flex-shrink:0;}
+.step-info{flex:1;}
+.step-name{font-size:13px;font-weight:600;margin-bottom:2px;}
+.step-dur{font-family:var(--fm);font-size:9px;color:var(--purple);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
+.step-desc{font-size:11px;color:var(--muted);line-height:1.5;}
+.step-tip{font-size:10px;color:var(--amber);margin-top:4px;font-style:italic;}
+/* ── Notes ── */
+.notes-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.note-card{background:var(--s2);border:.5px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px;transition:border-color .14s;cursor:pointer;}
+.note-card:hover{border-color:var(--border2);}
+.note-card.pinned{border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.04);}
+.note-card-header{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.note-title{font-size:14px;font-weight:600;flex:1;}
+.note-date{font-family:var(--fm);font-size:9px;color:var(--faint);}
+.note-preview{font-size:12px;color:var(--muted);line-height:1.55;white-space:pre-wrap;max-height:72px;overflow:hidden;}
+.note-foot{display:flex;gap:6px;margin-top:8px;}
+/* Note editor */
+.note-editor{background:var(--s2);border:.5px solid var(--border2);border-radius:12px;padding:16px;margin-bottom:14px;}
+.note-editor-title{width:100%;background:transparent;border:none;outline:none;font-size:16px;font-weight:600;color:var(--text);font-family:var(--fb);margin-bottom:8px;}
+.note-editor-body{width:100%;min-height:140px;background:transparent;border:none;outline:none;font-size:13px;color:var(--muted);line-height:1.6;font-family:var(--fb);resize:none;}
+.note-editor-foot{display:flex;gap:8px;justify-content:flex-end;border-top:.5px solid var(--border);padding-top:10px;margin-top:8px;}
+/* ── Quests (in detail) ── */
+.sdq-card{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--s2);border:.5px solid var(--border);border-radius:11px;margin-bottom:8px;transition:border-color .14s;}
+.sdq-card:hover{border-color:var(--border2);}
+.sdq-emoji{font-size:20px;flex-shrink:0;}
+.sdq-info{flex:1;min-width:0;}
+.sdq-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sdq-meta{font-size:11px;color:var(--muted);margin-top:1px;}
+.sdq-check{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .14s;}
+.sdq-check.on{background:var(--green);border-color:var(--green);}
+/* ── Achievements (in detail) ── */
+.sk-ach{display:flex;align-items:center;gap:12px;padding:13px 15px;background:var(--s2);border:.5px solid var(--border);border-radius:11px;margin-bottom:8px;}
+.sk-ach.unlocked{border-color:rgba(74,222,128,.25);background:rgba(74,222,128,.04);}
+.sk-ach.locked{opacity:.45;}
+.sk-ach-icon{font-size:26px;flex-shrink:0;}
+.sk-ach-info{flex:1;}
+.sk-ach-name{font-size:13px;font-weight:600;margin-bottom:2px;}
+.sk-ach-desc{font-size:11px;color:var(--muted);}
+.sk-ach-prog{margin-top:5px;}
+/* Overview */
+.sd-overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;}
+.sd-stat-box{background:var(--s2);border:.5px solid var(--border);border-radius:10px;padding:12px 14px;text-align:center;}
+.sd-stat-val{font-family:var(--fd);font-size:26px;color:var(--text);}
+.sd-stat-lbl{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
+.sd-section{margin-bottom:18px;}
+.sd-section-label{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+/* Mobile */
+@media(max-width:768px){
+  .sd-overlay{padding:0;align-items:flex-end;}
+  .sd-panel{max-height:95vh;border-radius:20px 20px 0 0;max-width:100%;}
+  .sd-hero{height:160px;}
+  .sd-hero-name{font-size:26px;}
+  .sd-overview-grid{grid-template-columns:repeat(3,1fr);}
+}
 </style>
 </head>
 <body>
 <div class="layout">
+
+<!-- Mobile hamburger -->
+<button class="mob-ham" id="mob-ham" onclick="toggleSidebar()"><i class="ti ti-menu-2"></i></button>
+<!-- Mobile overlay -->
+<div class="mob-overlay" id="mob-overlay" onclick="closeSidebar()"></div>
+<!-- Mobile bottom nav -->
+<nav class="mob-nav" id="mob-nav">
+  <div class="mob-nav-item active" id="mni-dashboard" onclick="nav('dashboard')"><i class="ti ti-layout-dashboard"></i>Home</div>
+  <div class="mob-nav-item" id="mni-quests" onclick="nav('quests')"><i class="ti ti-sword"></i>Quests</div>
+  <div class="mob-nav-item" id="mni-habits" onclick="nav('habits')"><i class="ti ti-flame"></i>Habits</div>
+  <div class="mob-nav-item" id="mni-skilltrees" onclick="nav('skilltrees')"><i class="ti ti-tree"></i>Skills</div>
+  <div class="mob-nav-item" id="mni-more" onclick="toggleMobMore()"><i class="ti ti-dots"></i>More</div>
+</nav>
 
 <!-- ══ SIDEBAR ══ -->
 <nav class="sidebar">
@@ -506,6 +727,57 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 
 <div class="toast" id="toast"></div>
 
+<!-- ══ MEDIA / TEXT EDITOR ══ -->
+<button class="med-btn" onclick="openMedEditor()" title="Edit Images & Text">🖼️</button>
+
+<div class="med-overlay" id="med-overlay" onclick="if(event.target===this)closeMedEditor()">
+<div class="med-panel">
+  <div class="med-hdr">
+    <div class="med-title">Edit Images & Text</div>
+    <div class="med-close" onclick="closeMedEditor()"><i class="ti ti-x"></i></div>
+  </div>
+  <div class="med-tabs">
+    <div class="med-tab active" onclick="medTab('avatar')">Avatar</div>
+    <div class="med-tab" onclick="medTab('skills')">Skill Cards</div>
+    <div class="med-tab" onclick="medTab('tasks')">Task Art</div>
+    <div class="med-tab" onclick="medTab('text')">Text</div>
+  </div>
+  <div class="med-body" id="med-body"></div>
+  <div class="med-save-bar">
+    <button class="btn btn-primary" style="flex:1" onclick="medSaveAll()"><i class="ti ti-device-floppy"></i>Save All Changes</button>
+    <button class="btn btn-ghost" onclick="closeMedEditor()">Cancel</button>
+  </div>
+</div>
+</div>
+
+<!-- ══ SKILL DETAIL MODAL ══ -->
+<div class="sd-overlay" id="sd-overlay" onclick="maybeCloseSD(event)">
+  <div class="sd-panel" id="sd-panel">
+    <div class="sd-hero" id="sd-hero">
+      <img class="sd-hero-img" id="sd-hero-img" src="" alt="">
+      <div class="sd-hero-overlay" id="sd-hero-overlay"></div>
+      <div class="sd-hero-content">
+        <div class="sd-hero-tag" id="sd-hero-tag"></div>
+        <div class="sd-hero-name" id="sd-hero-name"></div>
+        <div class="sd-hero-meta" id="sd-hero-meta"></div>
+        <div class="sd-xp-bar-wrap">
+          <div class="sd-xp-track"><div class="sd-xp-fill" id="sd-xp-fill"></div></div>
+          <div class="sd-xp-label" id="sd-xp-label"></div>
+        </div>
+      </div>
+      <button class="sd-close" onclick="closeSkillDetail()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="sd-tabs">
+      <div class="sd-tab active" id="sdt-overview" onclick="sdTab('overview')"><i class="ti ti-layout-dashboard"></i>Overview</div>
+      <div class="sd-tab" id="sdt-session" onclick="sdTab('session')"><i class="ti ti-player-play"></i>Session</div>
+      <div class="sd-tab" id="sdt-notes" onclick="sdTab('notes')"><i class="ti ti-notes"></i>Notes</div>
+      <div class="sd-tab" id="sdt-quests" onclick="sdTab('quests')"><i class="ti ti-sword"></i>Quests</div>
+      <div class="sd-tab" id="sdt-achieve" onclick="sdTab('achieve')"><i class="ti ti-trophy"></i>Achievements</div>
+    </div>
+    <div class="sd-body" id="sd-body"></div>
+  </div>
+</div>
+
 <script>
 // ═══════════════════════════════════════════════════════════════
 //  ★  APP DATA  ★
@@ -518,22 +790,47 @@ const GYM_SPLIT={1:{name:'PUSH',muscles:'chest · shoulders · tris',color:'#ef4
 // ── Skill Trees (daily XP trackers) ──
 // cover: Unsplash URL | neonColor: CSS color for cyberpunk overlay
 const DEFAULT_SKILLS=[
-  {id:'gym',     name:'gym',              mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:500,  color:'#ef4444',
+  // ── PHYSICAL ──
+  {id:'gym',          name:'Gym',              mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:500,  color:'#ef4444',
    cover:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80', neonColor:'rgba(239,68,68,.5)'},
-  {id:'tennis',  name:'tennis',           mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:400,  color:'#22c55e',
+  {id:'tennis',       name:'Tennis',           mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:400,  color:'#22c55e',
    cover:'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=600&q=80',   neonColor:'rgba(34,197,94,.5)'},
-  {id:'capital', name:'capital',          mainTree:'CAPITAL',     tag:'CAPITAL',      totalXP:0,target:1000, color:'#22c55e',
-   cover:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80', neonColor:'rgba(34,197,94,.5)'},
-  {id:'appear',  name:'appearance',       mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:300,  color:'#ec4899',
+  {id:'calisthenics', name:'Calisthenics',     mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:400,  color:'#f97316',
+   cover:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80', neonColor:'rgba(249,115,22,.5)'},
+  {id:'rockclimb',    name:'Rock Climbing',    mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:400,  color:'#fb923c',
+   cover:'https://images.unsplash.com/photo-1522163182402-834f871fd851?w=600&q=80', neonColor:'rgba(251,146,60,.5)'},
+  {id:'skateboard',   name:'Skateboarding',    mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:300,  color:'#38bdf8',
+   cover:'https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?w=600&q=80', neonColor:'rgba(56,189,248,.5)'},
+  {id:'snowboard',    name:'Snowboarding',     mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:300,  color:'#67e8f9',
+   cover:'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&q=80', neonColor:'rgba(103,232,249,.5)'},
+  {id:'pingpong',     name:'Ping Pong',        mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:200,  color:'#4ade80',
+   cover:'https://images.unsplash.com/photo-1611251126180-7e9ddddeafcf?w=600&q=80', neonColor:'rgba(74,222,128,.5)'},
+  {id:'appear',       name:'Appearance',       mainTree:'PHYSICAL',    tag:'PHYSICAL',     totalXP:0,target:300,  color:'#ec4899',
    cover:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80', neonColor:'rgba(236,72,153,.5)'},
-  {id:'drums',   name:'drums',            mainTree:'CREATIVE',    tag:'CREATIVE',     totalXP:0,target:400,  color:'#a855f7',
-   cover:'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=600&q=80', neonColor:'rgba(168,85,247,.5)'},
-  {id:'read',    name:'read',             mainTree:'INTELLIGENCE',tag:'INTELLIGENCE', totalXP:0,target:400,  color:'#3b82f6',
+  // ── CAPITAL ──
+  {id:'capital',      name:'Day Trading',      mainTree:'CAPITAL',     tag:'CAPITAL',      totalXP:0,target:1000, color:'#22c55e',
+   cover:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80', neonColor:'rgba(34,197,94,.5)'},
+  {id:'cars',         name:'Cars',             mainTree:'CAPITAL',     tag:'CAPITAL',      totalXP:0,target:300,  color:'#a3e635',
+   cover:'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80', neonColor:'rgba(163,230,53,.5)'},
+  // ── INTELLIGENCE ──
+  {id:'read',         name:'Reading',          mainTree:'INTELLIGENCE',tag:'INTELLIGENCE', totalXP:0,target:400,  color:'#3b82f6',
    cover:'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&q=80', neonColor:'rgba(59,130,246,.5)'},
-  {id:'content', name:'content creation', mainTree:'CREATIVE',    tag:'CREATIVE',     totalXP:0,target:500,  color:'#f59e0b',
-   cover:'https://images.unsplash.com/photo-1492551557933-34265f7af79e?w=600&q=80', neonColor:'rgba(245,158,11,.5)'},
-  {id:'research',name:'research',         mainTree:'INTELLIGENCE',tag:'INTELLIGENCE', totalXP:0,target:400,  color:'#6366f1',
+  {id:'research',     name:'Research',         mainTree:'INTELLIGENCE',tag:'INTELLIGENCE', totalXP:0,target:400,  color:'#6366f1',
    cover:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80', neonColor:'rgba(99,102,241,.5)'},
+  // ── SOCIAL ──
+  {id:'social',       name:'Social Skills',    mainTree:'SOCIAL',      tag:'SOCIAL',       totalXP:0,target:300,  color:'#a855f7',
+   cover:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80', neonColor:'rgba(168,85,247,.5)'},
+  {id:'travel',       name:'Travel',           mainTree:'SOCIAL',      tag:'SOCIAL',       totalXP:0,target:500,  color:'#c084fc',
+   cover:'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80', neonColor:'rgba(192,132,252,.5)'},
+  // ── CREATIVE ──
+  {id:'drums',        name:'Drums',            mainTree:'CREATIVE',    tag:'CREATIVE',     totalXP:0,target:400,  color:'#a855f7',
+   cover:'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=600&q=80', neonColor:'rgba(168,85,247,.5)'},
+  {id:'guitar',       name:'Guitar',           mainTree:'CREATIVE',    tag:'CREATIVE',     totalXP:0,target:400,  color:'#f43f5e',
+   cover:'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=600&q=80', neonColor:'rgba(244,63,94,.5)'},
+  {id:'cooking',      name:'Cooking',          mainTree:'CREATIVE',    tag:'CREATIVE',     totalXP:0,target:300,  color:'#fb923c',
+   cover:'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600&q=80', neonColor:'rgba(251,146,60,.5)'},
+  {id:'content',      name:'Content Creation', mainTree:'CREATIVE',    tag:'CREATIVE',     totalXP:0,target:500,  color:'#f59e0b',
+   cover:'https://images.unsplash.com/photo-1492551557933-34265f7af79e?w=600&q=80', neonColor:'rgba(245,158,11,.5)'},
 ];
 
 // ── Achievement Trees (Skill Paths) ──
@@ -742,8 +1039,8 @@ const DEFAULT_CHAR={name:'Spider-Variant',hp:{current:85,max:100,color:'#ef4444'
 // ═══════════════════════════════════════════════════════════════
 function load(){
   const s=localStorage.getItem('sv_v3');
-  if(s){try{const d=JSON.parse(s);return{tasks:d.tasks||[...DEFAULT_TASKS],skills:d.skills||[...DEFAULT_SKILLS],habits:d.habits||[...DEFAULT_HABITS],arcs:d.arcs||[...DEFAULT_ARCS],achievements:d.achievements||[...DEFAULT_ACHIEVEMENTS],char:d.char||{...DEFAULT_CHAR},done:d.done||{},hdone:d.hdone||{},nodesDone:d.nodesDone||{}};}catch(e){}}
-  return{tasks:JSON.parse(JSON.stringify(DEFAULT_TASKS)),skills:JSON.parse(JSON.stringify(DEFAULT_SKILLS)),habits:JSON.parse(JSON.stringify(DEFAULT_HABITS)),arcs:JSON.parse(JSON.stringify(DEFAULT_ARCS)),achievements:JSON.parse(JSON.stringify(DEFAULT_ACHIEVEMENTS)),char:JSON.parse(JSON.stringify(DEFAULT_CHAR)),done:{},hdone:{},nodesDone:{}};
+  if(s){try{const d=JSON.parse(s);return{tasks:d.tasks||[...DEFAULT_TASKS],skills:d.skills||[...DEFAULT_SKILLS],habits:d.habits||[...DEFAULT_HABITS],arcs:d.arcs||[...DEFAULT_ARCS],achievements:d.achievements||[...DEFAULT_ACHIEVEMENTS],char:d.char||{...DEFAULT_CHAR},done:d.done||{},hdone:d.hdone||{},nodesDone:d.nodesDone||{},skillNotes:d.skillNotes||{}};}catch(e){}}
+  return{tasks:JSON.parse(JSON.stringify(DEFAULT_TASKS)),skills:JSON.parse(JSON.stringify(DEFAULT_SKILLS)),habits:JSON.parse(JSON.stringify(DEFAULT_HABITS)),arcs:JSON.parse(JSON.stringify(DEFAULT_ARCS)),achievements:JSON.parse(JSON.stringify(DEFAULT_ACHIEVEMENTS)),char:JSON.parse(JSON.stringify(DEFAULT_CHAR)),done:{},hdone:{},nodesDone:{},skillNotes:{}};
 }
 function save(){localStorage.setItem('sv_v3',JSON.stringify(D));}
 
@@ -801,15 +1098,39 @@ function updateNav(){
 }
 
 // ─── Dashboard ───
+function getCategoryStats(){
+  const cats=[
+    {id:'PHYSICAL',   label:'Physical',     emoji:'💪', color:'#ef4444'},
+    {id:'CAPITAL',    label:'Capital',      emoji:'💰', color:'#22c55e'},
+    {id:'INTELLIGENCE',label:'Intelligence',emoji:'🧠', color:'#3b82f6'},
+    {id:'SOCIAL',     label:'Social',       emoji:'🌐', color:'#a855f7'},
+    {id:'CREATIVE',   label:'Creative',     emoji:'🎨', color:'#f59e0b'},
+  ];
+  return cats.map(cat=>{
+    const skills=D.skills.filter(s=>s.tag===cat.id);
+    const totalXP=skills.reduce((a,s)=>a+s.totalXP,0);
+    const totalTarget=skills.reduce((a,s)=>a+s.target,0)||1;
+    const pct=Math.min(100,Math.round(totalXP/totalTarget*100));
+    const lvl=Math.floor(totalXP/100)+1;
+    return{...cat,totalXP,totalTarget,pct,lvl};
+  });
+}
+
 function renderDashboard(){
   const c=D.char;
   $('hero-name').textContent=c.name||'Spider-Variant';
-  $('hero-stats').innerHTML=[
-    {n:'HP',v:c.hp.current,m:c.hp.max,col:c.hp.color},
-    {n:'Temperament',v:c.temperament.current,m:c.temperament.max,col:c.temperament.color},
-    {n:'Discipline',v:c.discipline.current,m:c.discipline.max,col:c.discipline.color},
-    {n:'Motivation',v:c.motivation.current,m:c.motivation.max,col:c.motivation.color}
-  ].map(s=>`<div class="hero-stat"><div class="hs-name">${s.n}</div><div class="hs-track"><div class="hs-fill" style="width:${Math.round(s.v/s.m*100)}%;background:${s.col}"></div></div><div class="hs-val">${s.v}/${s.m}</div></div>`).join('');
+  // Category XP bars replacing old HP/stats
+  const cats=getCategoryStats();
+  $('hero-stats').innerHTML=cats.map(cat=>`
+    <div class="cat-bar-item">
+      <div class="cat-bar-header">
+        <span class="cat-bar-emoji">${cat.emoji}</span>
+        <span class="cat-bar-name">${cat.label}</span>
+        <span class="cat-bar-lvl" style="color:${cat.color}">LVL ${cat.lvl}</span>
+        <span class="cat-bar-xp">${cat.totalXP} XP</span>
+      </div>
+      <div class="cat-bar-track"><div class="cat-bar-fill" style="width:${cat.pct}%;background:${cat.color};box-shadow:0 0 8px ${cat.color}60"></div></div>
+    </div>`).join('');
   const xp=getTotalXP(),lvl=Math.floor(xp/100)+1;
   const tq=getDayTasks(TODAY.getDay()).filter(t=>t.xp>0),dq=tq.filter(t=>isDone(t.id,TODAY.getDay()));
   const th=D.habits,dh=th.filter(h=>isHDone(h.id));
@@ -975,13 +1296,14 @@ function renderSkillTrees(){
     const pct=s.target?Math.min(100,Math.round(s.totalXP/s.target*100)):0;
     const lvl=Math.floor(s.totalXP/50)+1;
     const linked=D.tasks.filter(t=>t.skill===s.id);
-    return`<div class="skill-photo-card">
+    return`<div class="skill-photo-card" onclick="openSkillDetail('${s.id}')" style="cursor:pointer">
       <div class="skill-cover-wrap">
         <img class="skill-cover-img" src="${s.cover}" alt="${s.name}" loading="lazy" onerror="this.style.display='none'">
         <div class="skill-cover-overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(4,2,14,.8) 100%)"></div>
         ${makeCyberpunkSVG(s.id,s.color,s.neonColor)}
         <div class="skill-cover-lvl" style="color:${s.color};text-shadow:0 0 18px ${s.color}">${lvl}</div>
         <div class="skill-cover-tag"><span class="pill pill-${s.tag}">${s.tag}</span></div>
+        <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.5);border:.5px solid rgba(255,255,255,.15);border-radius:7px;padding:3px 8px;font-family:var(--fm);font-size:8px;color:rgba(255,255,255,.7)">VIEW →</div>
       </div>
       <div class="skill-card-body">
         <div class="skill-card-name">${s.name}</div>
@@ -1257,6 +1579,836 @@ function importData(){
     };reader.readAsText(file);
   };input.click();
 }
+
+// ─── Skill Detail: Session Routines ───
+const SKILL_SESSIONS={
+  capital:{name:'Day Trading Study Session',totalMin:120,steps:[
+    {id:'premkt',icon:'📰',name:'Pre-Market Prep',dur:'15 min',desc:'Check futures, scan overnight news, identify key economic events. Build your watchlist — max 5 tickers. Mark yesterday\'s key levels.',tip:'Focus on the WHY: why is this stock moving?'},
+    {id:'open',icon:'📈',name:'Market Open Watch',dur:'30 min',desc:'Do NOT trade. Watch price action only. Note gaps, which direction the market opens, where buyers and sellers show up.',tip:'The first 30min is the most manipulated. Watch, don\'t act.'},
+    {id:'study',icon:'📚',name:'Deep Concept Study',dur:'45 min',desc:'Pick ONE concept: a chart pattern, indicator, risk management rule, or trading psychology topic. Go deep — not wide. Take notes.',tip:'Consistency > novelty. Re-study the same concepts until they\'re automatic.'},
+    {id:'backtest',icon:'🔍',name:'Backtesting',dur:'20 min',desc:'Find 10+ historical examples of today\'s concept on a chart. Note entry, stop loss, target. Calculate win rate and risk/reward.',tip:'Paper systems first. Real money only when your edge is proven.'},
+    {id:'journal',icon:'📓',name:'Trading Journal',dur:'10 min',desc:'Log: what you studied, key insights, any paper trades taken, emotional state during the session, one thing to improve tomorrow.',tip:'The journal is your edge. Most traders skip it — don\'t be most traders.'},
+  ]},
+  gym:{name:'Gym Session',totalMin:90,steps:[
+    {id:'warmup',icon:'🔥',name:'Dynamic Warm-Up',dur:'10 min',desc:'Shoulder circles, hip openers, leg swings, PVC pass-throughs. Get blood moving. No static stretching pre-lift.',tip:'Your warm-up sets the tone. Never skip it.'},
+    {id:'main',icon:'💪',name:'Main Compound Lifts',dur:'45 min',desc:'PPL split: Push (chest/shoulders/tris), Pull (back/bis), or Legs. 3–4 sets of 6–10 reps per movement. Progressive overload every session.',tip:'If you can do 10 reps, add weight next session. Simple.'},
+    {id:'acc',icon:'🎯',name:'Accessory Work',dur:'20 min',desc:'2–3 isolation exercises. Target weak points. Cables, machines — higher reps (12–15), controlled eccentric.',tip:'Accessories build the details. Don\'t skip them for the aesthetic.'},
+    {id:'core',icon:'⚡',name:'Core Finisher',dur:'10 min',desc:'Hollow holds, ab wheel, hanging leg raises. 3 sets. Train abs like any other muscle — weighted when you can.',tip:'Core strength = better lifts across everything.'},
+    {id:'log',icon:'📊',name:'Log the Session',dur:'5 min',desc:'Write down every exercise, weight, sets, reps. Rate energy level 1–10. Note what felt heavy or light.',tip:'Data is progress. Without logs you\'re guessing.'},
+  ]},
+  calisthenics:{name:'Calisthenics Session (PPL/C)',totalMin:75,steps:[
+    {id:'joints',icon:'🔄',name:'Joint Warm-Up',dur:'10 min',desc:'Wrist circles, shoulder rotations, hip CARs, spine waves. Calisthenics is brutal on joints — respect the warm-up.',tip:'Healthy joints = longevity. Never rush this.'},
+    {id:'skill',icon:'🤸',name:'Skill Work — Target Move',dur:'20 min',desc:'One skill: muscle-up, handstand, planche, front lever, or L-sit. Work progressions. 5×5 or 5×max reps. Full rest between sets.',tip:'Skill work FIRST while CNS is fresh. Never save it for the end.'},
+    {id:'strength',icon:'💪',name:'Strength Sets',dur:'30 min',desc:'Push: pseudo-planche pushups, dips, pike pushups. Pull: pullups, chinups, rows. Leg/Core: pistol squats, hanging leg raises. 3×6–8.',tip:'Bodyweight doesn\'t mean easy. Own every rep.'},
+    {id:'flex',icon:'🧘',name:'Flexibility & Mobility',dur:'15 min',desc:'PNF stretching for shoulders, hamstrings, hip flexors. Hold 30–60 seconds. Active flexibility = better skill work.',tip:'Flexibility gaps will block your skill progress. Address them directly.'},
+  ]},
+  tennis:{name:'Tennis Practice Session',totalMin:100,steps:[
+    {id:'warmup',icon:'🎾',name:'Groundstroke Warm-Up',dur:'15 min',desc:'Start mid-court, easy cross-court rallies. Build pace gradually. Both forehands and backhands. Get the feel for the ball today.',tip:'Never miss the first 5 warm-up shots trying to hit hard.'},
+    {id:'serve',icon:'🏹',name:'Serve Practice',dur:'20 min',desc:'20 first serves: target corners. 20 second serves: kick or slice for consistency. Film yourself — check toss position and leg drive.',tip:'The serve is the one shot you control completely. Own it.'},
+    {id:'drill',icon:'🎯',name:'Skill Focus Drill',dur:'35 min',desc:'Pick ONE stroke to drill this session: inside-out forehand, backhand slice, approach shot, net volley. Ball machine or partner drills.',tip:'Drilling one stroke deeply beats drilling everything shallow.'},
+    {id:'play',icon:'⚔️',name:'Match Play Practice',dur:'25 min',desc:'Play points — tiebreakers, games, or full sets. Apply today\'s drilled skill in competitive context. Track your UEs vs winners.',tip:'Pressure reveals gaps that drills can\'t.'},
+    {id:'review',icon:'📱',name:'Video Review',dur:'5 min',desc:'Watch 2–3 clips of your session. Note one technical thing to fix. Compare to a pro hitting the same stroke.',tip:'Self-coaching is a superpower most players never develop.'},
+  ]},
+  rockclimb:{name:'Rock Climbing Session',totalMin:90,steps:[
+    {id:'warmup',icon:'🧗',name:'Easy Route Warm-Up',dur:'15 min',desc:'3–4 routes at 2–3 grades below your project level. Focus on smooth movement, foot placement, reading the wall. No pumping out.',tip:'Warm up your fingers like a musician — never cold.'},
+    {id:'project',icon:'🎯',name:'Project Climbing',dur:'40 min',desc:'Work your project route or problem. Break it into sections. Rehearse each move until it\'s automatic. Take rest between attempts.',tip:'Falling is progress. If you\'re not falling you\'re not projecting.'},
+    {id:'technique',icon:'🔍',name:'Technique Focus',dur:'20 min',desc:'One technical element: hip turnout, silent feet, body positioning, reading holds. Do deliberate practice on moderate routes.',tip:'Technique built on easy routes transfers to hard routes. Footwork is everything.'},
+    {id:'strength',icon:'💪',name:'Supplemental Training',dur:'15 min',desc:'Fingerboard: max hangs or repeaters on appropriate holds. Antagonist work: pushups, wrist curls. Core: hollow body holds.',tip:'Finger strength separates plateaued climbers from advancing ones.'},
+  ]},
+  skateboard:{name:'Skate Session',totalMin:75,steps:[
+    {id:'cruise',icon:'🛹',name:'Cruise & Warm-Up',dur:'10 min',desc:'Skate the spot freely. Get comfortable. Ollie every crack and bump. Get into the physical feeling before trying anything technical.',tip:'Cold muscles + skateboarding = twisted ankles. Get warm first.'},
+    {id:'flatground',icon:'🎯',name:'Flat Ground Foundation',dur:'20 min',desc:'Solid 10 reps of: ollie, pop shove-it, kickflip (or your current base tricks). Build muscle memory through volume.',tip:'Skateboarding is 90% muscle memory. Reps > intensity.'},
+    {id:'newtrick',icon:'⚡',name:'New Trick Focus',dur:'30 min',desc:'Work on one trick you\'re learning. Break it down: foot position → pop → board feel → land. Film every attempt.',tip:'Commit to the trick. Hesitation is how ankles get tweaked.'},
+    {id:'lines',icon:'🎬',name:'Lines & Flow',dur:'15 min',desc:'String 3–4 tricks together in a line. Think: approach, trick 1, speed check, trick 2, out. Practice until it feels smooth.',tip:'Lines separate skaters from people who do tricks.'},
+  ]},
+  snowboard:{name:'Snowboarding Session',totalMin:120,steps:[
+    {id:'stretch',icon:'🏔️',name:'Pre-Ride Stretch',dur:'10 min',desc:'Hip flexors, hamstrings, lower back, ankles. Cold weather tightens everything. Dynamic warm-up before first run.',tip:'Injuries happen when cold. Never skip this on the mountain.'},
+    {id:'carving',icon:'🎿',name:'Edge Control Runs',dur:'30 min',desc:'Mellow groomer runs. Practice toe-side and heel-side carves. Drill: carve the full length of each turn, no skidding.',tip:'Carving is the foundation of everything. Including park.'},
+    {id:'feature',icon:'🏂',name:'Feature / Park Work',dur:'50 min',desc:'One feature at a time: box, rail, jump, or pipe. Learn it small first. Build speed and amplitude as you nail the technique.',tip:'Start small, build confidence, then go big. Pride gets people hurt.'},
+    {id:'fullruns',icon:'💨',name:'Full Mountain Runs',dur:'30 min',desc:'Fast, committed runs top to bottom. Focus on rhythm, linking turns, adapting to terrain. Flow state.',tip:'Speed is earned through technique, not fearlessness.'},
+  ]},
+  pingpong:{name:'Ping Pong Training Session',totalMin:60,steps:[
+    {id:'multiball',icon:'🏓',name:'Multi-Ball Warm-Up',dur:'10 min',desc:'Forehand loop, backhand drive, footwork side-to-side. 100 balls minimum. Build consistency before adding spin.',tip:'Consistency first. Speed comes naturally from a consistent stroke.'},
+    {id:'serve',icon:'🌀',name:'Serve Practice',dur:'15 min',desc:'10 backspin serves, 10 topspin serves, 10 sidespin serves. Focus on disguising spin with the same motion.',tip:'A deceptive serve wins you free points at every level.'},
+    {id:'footwork',icon:'👟',name:'Footwork Drills',dur:'15 min',desc:'2-step footwork: wide ball to wide ball. Triangle drill. Shadow footwork. Get low and move early.',tip:'World-class footwork is invisible. You\'re always already there.'},
+    {id:'match',icon:'⚔️',name:'Match Play',dur:'20 min',desc:'Play sets. Focus on playing your game, not just winning. Track which serves get you free points, which patterns you dominate.',tip:'Pressure is where improvement actually lives.'},
+  ]},
+  appear:{name:'Appearance & Grooming Routine',totalMin:35,steps:[
+    {id:'amcare',icon:'🌅',name:'Morning Skincare',dur:'8 min',desc:'Cleanser → Vitamin C serum → Moisturizer → SPF (non-negotiable). Apply to damp skin for better absorption.',tip:'SPF is the single most impactful anti-aging step. Every. Single. Day.'},
+    {id:'groom',icon:'✂️',name:'Grooming Check',dur:'10 min',desc:'Hair styled, beard/face maintained, nails clean, eyebrows clean. Check hairline and ear/nose hair weekly.',tip:'Grooming is 80% of looking put-together. Clothes are the other 20%.'},
+    {id:'outfit',icon:'👕',name:'Outfit & Style',dur:'7 min',desc:'Plan your look intentionally. Color coordination, fit check, shoe choice. Dress for the version of yourself you\'re becoming.',tip:'Fit > brand. A cheap outfit that fits well beats an expensive one that doesn\'t.'},
+    {id:'pmcare',icon:'🌙',name:'Evening Skincare',dur:'10 min',desc:'Double cleanse → retinol or treatment → hyaluronic acid → moisturizer. Night is when your skin repairs.',tip:'Consistency over 90 days is when you\'ll notice the difference.'},
+  ]},
+  cars:{name:'Car Knowledge Session',totalMin:70,steps:[
+    {id:'concept',icon:'🔧',name:'Mechanical Deep Dive',dur:'30 min',desc:'One system today: engine, transmission, suspension, brakes, or electrical. Learn how it works, why it fails, how to diagnose.',tip:'Understand principles, not just procedures. Makes you a better mechanic and buyer.'},
+    {id:'practical',icon:'🛠️',name:'Hands-On Practice',dur:'20 min',desc:'DIY something: oil change, air filter, brake inspection, bulb replacement. If no car available — simulate with YouTube teardown.',tip:'Learning by doing is 10x faster than watching.'},
+    {id:'culture',icon:'🏁',name:'Car Culture Deep Dive',dur:'15 min',desc:'Watch a build video, read about a manufacturer\'s history, explore a car community forum. Understand the culture, not just the mechanics.',tip:'Passion + knowledge = unbeatable expertise.'},
+    {id:'log',icon:'📓',name:'Log & Document',dur:'5 min',desc:'Note what you learned, any car maintenance done, ideas for your own build. Create a knowledge base over time.',tip:'Your car journal becomes your playbook.'},
+  ]},
+  read:{name:'Deep Reading Session',totalMin:70,steps:[
+    {id:'setup',icon:'🧘',name:'Focus Setup',dur:'5 min',desc:'Phone on airplane mode, notifications off. Dedicated chair or desk. One glass of water. Create the ritual — your brain will learn to shift into reading mode.',tip:'Environment design is underrated. Make reading the path of least resistance.'},
+    {id:'reading',icon:'📖',name:'Active Reading',dur:'40 min',desc:'Read with a pen. Underline, question, and annotate in the margins. Ask: What does this mean? Why? How does this apply to me?',tip:'Passive reading is entertainment. Active reading builds knowledge.'},
+    {id:'notes',icon:'📝',name:'Chapter Notes',dur:'15 min',desc:'Close the book. Write a summary in your own words. Key ideas, quotes, and how you\'d apply this. Teach it to yourself.',tip:'If you can\'t explain it simply, you don\'t understand it yet.'},
+    {id:'connect',icon:'🔗',name:'Connect & Apply',dur:'10 min',desc:'How does this chapter connect to what you already know? What will you do differently because of this? Write 2 action items.',tip:'Information without application is just trivia.'},
+  ]},
+  research:{name:'Research Deep Session',totalMin:95,steps:[
+    {id:'question',icon:'❓',name:'Define Your Question',dur:'5 min',desc:'Write one specific question: "Why does X happen?" or "What is the best approach to Y?" A clear question = a useful answer.',tip:'Vague research produces vague understanding.'},
+    {id:'sources',icon:'🔍',name:'Source Gathering',dur:'15 min',desc:'Find 4–5 high-quality sources: academic papers, expert blogs, primary sources, books. Avoid taking news articles as primary data.',tip:'The quality of your sources determines the quality of your thinking.'},
+    {id:'deepread',icon:'📚',name:'Deep Read & Extract',dur:'50 min',desc:'Go through each source. Highlight key claims, pull quotes, note author credibility. Don\'t just skim — understand the argument.',tip:'Slow reading of a few good sources beats fast reading of many.'},
+    {id:'synthesis',icon:'🧠',name:'Synthesis & Writing',dur:'20 min',desc:'In your own words, write a summary of what you found. What\'s the answer to your original question? Where do sources agree or disagree?',tip:'Writing your synthesis is the research. The notes are just material.'},
+    {id:'apply',icon:'⚡',name:'Apply or Share',dur:'5 min',desc:'Who needs to know this? What will you do with it? Share with someone, apply to a project, or add to your knowledge base.',tip:'Knowledge hoarded is knowledge wasted.'},
+  ]},
+  social:{name:'Social Skills Practice Session',totalMin:55,steps:[
+    {id:'intent',icon:'🎯',name:'Set Your Social Intention',dur:'5 min',desc:'Pick one skill to focus on today: active listening, storytelling, eye contact, asking questions, holding frame, charisma. One at a time.',tip:'Trying to improve everything at once improves nothing.'},
+    {id:'study',icon:'📖',name:'Study the Skill',dur:'15 min',desc:'Watch a video or read a chapter on today\'s social skill. Take notes on specific techniques. Learn what good looks like.',tip:'Social skills are learnable. They\'re not personality — they\'re habits.'},
+    {id:'practice',icon:'🎭',name:'Real-World Practice',dur:'25 min',desc:'Go practice. Talk to someone: barista, classmate, anyone. Deliberately apply today\'s technique. Aim for 3–5 real interactions.',tip:'Discomfort is the signal that you\'re growing.'},
+    {id:'debrief',icon:'🪞',name:'Debrief & Reflect',dur:'10 min',desc:'What went well? What was awkward? What will you do differently next time? Rate your execution of the specific skill 1–10.',tip:'Reflection is what turns experience into growth.'},
+  ]},
+  travel:{name:'Travel & Culture Session',totalMin:85,steps:[
+    {id:'research',icon:'🌍',name:'Destination Deep Dive',dur:'30 min',desc:'Pick one destination: history, geography, culture, local customs, must-see spots vs tourist traps. Think like an explorer, not a tourist.',tip:'The more you know before you go, the richer your experience will be.'},
+    {id:'language',icon:'🗣️',name:'Language Learning',dur:'20 min',desc:'Duolingo, Pimsleur, or phrase learning. Focus on: greetings, ordering food, asking directions, basic numbers. Learn the culture through the language.',tip:'Even 20 words in the local language shows enormous respect.'},
+    {id:'plan',icon:'📅',name:'Trip Planning',dur:'20 min',desc:'Budget, accommodation, transport, activities. Build a framework, not an itinerary. Leave room for spontaneity.',tip:'Over-planned trips feel like checklists. Under-planned trips feel like freedom.'},
+    {id:'immerse',icon:'🎭',name:'Culture Immersion',dur:'15 min',desc:'Watch a documentary, cook a dish from that country, listen to local music, read a book by an author from there.',tip:'Travel the world before you go. Go deeper when you arrive.'},
+  ]},
+  drums:{name:'Drums Practice Session',totalMin:80,steps:[
+    {id:'rudiments',icon:'🥁',name:'Rudiment Warm-Up',dur:'10 min',desc:'Single stroke roll, double stroke roll, paradiddle — 4 min each. Start slow with a metronome, build up 10 BPM at a time.',tip:'Rudiments are to drums what scales are to guitar. Non-negotiable.'},
+    {id:'independence',icon:'🔀',name:'Limb Independence Drill',dur:'15 min',desc:'Hands playing groove while feet do something different. Or kick/snare combos while hands hold a pattern. Pick one combo and repeat.',tip:'Independence is built in tiny increments. 5 minutes a day on one pattern.'},
+    {id:'pattern',icon:'🎯',name:'Pattern / Groove Focus',dur:'20 min',desc:'One groove or fill to drill today. Play it at 60% tempo until it\'s automatic, then bring up to full tempo. Record yourself.',tip:'Perfect reps at slow tempo > sloppy reps at fast tempo.'},
+    {id:'song',icon:'🎵',name:'Song Play-Along',dur:'25 min',desc:'Full song playthrough with a recording. Lock in with the hi-hat and bass guitar. Feel the groove, don\'t just execute the notes.',tip:'Playing with recordings develops your internal clock and feel.'},
+    {id:'review',icon:'📱',name:'Record & Review',dur:'10 min',desc:'Listen to your recording. Note one rhythmic thing that was off and one thing that locked in well. Small wins compound.',tip:'Your ears are your most important drumming tool.'},
+  ]},
+  guitar:{name:'Guitar Practice Session',totalMin:70,steps:[
+    {id:'scales',icon:'🎸',name:'Scale Warm-Up',dur:'10 min',desc:'One scale all positions on the neck. Start at 60 BPM with a metronome. Every note clean and even. No sloppy fingers.',tip:'Scales are technique training. Play them musically, not mechanically.'},
+    {id:'theory',icon:'🧠',name:'Theory Concept',dur:'15 min',desc:'One concept: chord construction, intervals, modes, CAGED system, ear training. Learn it, play it, understand it on the fretboard.',tip:'Theory isn\'t the enemy of feel — it\'s the GPS of your creativity.'},
+    {id:'chords',icon:'🎯',name:'Chord Transitions',dur:'15 min',desc:'Two problem chords. 1 minute of transitions each — go slow, lift fingers cleanly, land together. Repeat until it\'s muscle memory.',tip:'The space between chords is where most beginners live. Shrink it.'},
+    {id:'song',icon:'🎵',name:'Song Practice',dur:'20 min',desc:'Work through a song section by section. Don\'t run it start to finish — isolate the hard parts and drill them until smooth.',tip:'Playing a song perfectly slow is harder and more useful than playing it fast and sloppy.'},
+    {id:'improv',icon:'🌊',name:'Free Play & Improv',dur:'10 min',desc:'Put on a backing track. Play freely. Use today\'s scale, don\'t overthink it. This is your soul time.',tip:'Improv is where technique becomes music. Let go.'},
+  ]},
+  cooking:{name:'Cooking Practice Session',totalMin:85,steps:[
+    {id:'recipe',icon:'📖',name:'Recipe Study',dur:'10 min',desc:'Read through the entire recipe before touching anything. Understand each step and why it exists. Note any techniques you don\'t know.',tip:'Professional chefs read recipes 3 times before cooking. It shows.'},
+    {id:'mise',icon:'🔪',name:'Mise en Place',dur:'15 min',desc:'Prep everything before you cook: chop, measure, separate, preheat. Everything in its place. Cook should feel calm, not chaotic.',tip:'Mise en place isn\'t just French — it\'s a philosophy. Preparation is the skill.'},
+    {id:'cook',icon:'🍳',name:'Cook the Recipe',dur:'40 min',desc:'Execute. Focus on: heat control, timing, seasoning throughout (not just at the end), texture. Trust the process.',tip:'Taste constantly. Your palate is more reliable than any timer.'},
+    {id:'taste',icon:'🧂',name:'Taste, Adjust & Plate',dur:'10 min',desc:'Season to balance: salt, acid, fat, heat. Plate intentionally — you eat with your eyes first. Take a photo before eating.',tip:'The difference between a home cook and a chef is: chefs adjust. Always adjust.'},
+    {id:'document',icon:'📷',name:'Document & Improve',dur:'10 min',desc:'Note what worked, what didn\'t, what you\'d change next time. Great recipes are built through iteration, not perfection.',tip:'The best cooks have failed the same dish 20 times. That\'s the process.'},
+  ]},
+  content:{name:'Content Creation Session',totalMin:90,steps:[
+    {id:'ideas',icon:'💡',name:'Idea Generation',dur:'10 min',desc:'Brainstorm 5 content ideas: trending topics, unique takes, stories from your own life and skills. Pick the one with the most energy.',tip:'Good content starts from genuine curiosity or real experience.'},
+    {id:'research',icon:'🔍',name:'Research & Scripting',dur:'20 min',desc:'Research your chosen topic. Write a hook (first 3 seconds), outline the middle, and nail the ending. Keep it focused on ONE idea.',tip:'One strong idea per piece. Stop trying to say everything.'},
+    {id:'create',icon:'🎬',name:'Create the Content',dur:'40 min',desc:'Film, write, or design. First take is rough — that\'s normal. Get it out. Don\'t stop to edit while creating. Separate creation from editing.',tip:'Done is better than perfect. Publish consistently, improve over time.'},
+    {id:'edit',icon:'✂️',name:'Edit & Refine',dur:'15 min',desc:'Cut anything that doesn\'t serve the main idea. Tighten pacing. Add b-roll, transitions, or visuals. Keep it as short as it can be.',tip:'Great editing is invisible. Bad editing breaks immersion.'},
+    {id:'publish',icon:'🚀',name:'Publish & Analyze',dur:'5 min',desc:'Post at your optimal time. Write a strong caption or description. Note the analytics 24h later — retention, reach, engagement.',tip:'You don\'t find your audience. Your consistency finds them.'},
+  ]},
+};
+
+// ─── Skill Detail: Per-Skill Achievements ───
+const SKILL_ACHIEVEMENTS={
+  capital:[
+    {id:'ca1',emoji:'📊',name:'First Session',desc:'Complete your first Day Trading study session.',req:1,type:'sessions'},
+    {id:'ca2',emoji:'📓',name:'Journal Habit',desc:'Complete 10 journal entries.',req:10,type:'notes'},
+    {id:'ca3',emoji:'📈',name:'30 Study Sessions',desc:'Complete 30 Day Trading sessions.',req:30,type:'sessions'},
+    {id:'ca4',emoji:'🎯',name:'Pattern Recognizer',desc:'Log 5 chart pattern notes.',req:5,type:'notes'},
+    {id:'ca5',emoji:'💰',name:'100 Sessions',desc:'100 Day Trading study sessions complete.',req:100,type:'sessions'},
+    {id:'ca6',emoji:'👑',name:'Market Scholar',desc:'Complete 200 sessions.',req:200,type:'sessions'},
+  ],
+  gym:[
+    {id:'gy1',emoji:'🏋️',name:'First Rep',desc:'Complete your first gym session.',req:1,type:'sessions'},
+    {id:'gy2',emoji:'🔥',name:'10 Sessions',desc:'10 gym sessions completed.',req:10,type:'sessions'},
+    {id:'gy3',emoji:'💪',name:'Month Warrior',desc:'30 gym sessions completed.',req:30,type:'sessions'},
+    {id:'gy4',emoji:'📈',name:'Progressive Overloader',desc:'Log 5 PRs in your notes.',req:5,type:'notes'},
+    {id:'gy5',emoji:'🏆',name:'100 Sessions',desc:'100 gym sessions — you\'re forged.',req:100,type:'sessions'},
+    {id:'gy6',emoji:'⚡',name:'Iron Monk',desc:'200 gym sessions. Elite status.',req:200,type:'sessions'},
+  ],
+  calisthenics:[
+    {id:'ca1',emoji:'🤸',name:'First Movement',desc:'Complete your first calisthenics session.',req:1,type:'sessions'},
+    {id:'ca2',emoji:'💪',name:'Foundation',desc:'10 calisthenics sessions.',req:10,type:'sessions'},
+    {id:'ca3',emoji:'🎯',name:'Skill Seeker',desc:'30 sessions — progressions are forming.',req:30,type:'sessions'},
+    {id:'ca4',emoji:'🌟',name:'Skill Unlocked',desc:'Log a new skill achieved in notes.',req:1,type:'notes'},
+    {id:'ca5',emoji:'🏆',name:'100 Sessions',desc:'100 calisthenics sessions complete.',req:100,type:'sessions'},
+  ],
+  tennis:[
+    {id:'te1',emoji:'🎾',name:'First Match',desc:'Complete your first tennis session.',req:1,type:'sessions'},
+    {id:'te2',emoji:'🎯',name:'10 Sessions',desc:'10 sessions on the court.',req:10,type:'sessions'},
+    {id:'te3',emoji:'🏅',name:'30 Sessions',desc:'30 tennis sessions — strokes are ingraining.',req:30,type:'sessions'},
+    {id:'te4',emoji:'📊',name:'Analyst',desc:'Log 5 video review notes.',req:5,type:'notes'},
+    {id:'te5',emoji:'🏆',name:'100 Sessions',desc:'100 tennis sessions. You\'re a real player.',req:100,type:'sessions'},
+  ],
+  rockclimb:[
+    {id:'rc1',emoji:'🧗',name:'First Climb',desc:'Complete your first climbing session.',req:1,type:'sessions'},
+    {id:'rc2',emoji:'💪',name:'10 Sessions',desc:'10 climbing sessions completed.',req:10,type:'sessions'},
+    {id:'rc3',emoji:'🎯',name:'Project Sender',desc:'Log a completed project in notes.',req:1,type:'notes'},
+    {id:'rc4',emoji:'🔥',name:'30 Sessions',desc:'30 sessions — your fingers are adapting.',req:30,type:'sessions'},
+    {id:'rc5',emoji:'🏆',name:'100 Sessions',desc:'100 sessions. You\'re a real climber.',req:100,type:'sessions'},
+  ],
+  skateboard:[
+    {id:'sk1',emoji:'🛹',name:'First Push',desc:'Complete your first skate session.',req:1,type:'sessions'},
+    {id:'sk2',emoji:'🎯',name:'10 Sessions',desc:'10 skate sessions.',req:10,type:'sessions'},
+    {id:'sk3',emoji:'⚡',name:'Trick Logged',desc:'Log a new trick landed in notes.',req:1,type:'notes'},
+    {id:'sk4',emoji:'🔥',name:'30 Sessions',desc:'30 sessions — you\'re starting to flow.',req:30,type:'sessions'},
+    {id:'sk5',emoji:'🏆',name:'100 Sessions',desc:'100 sessions. You\'re a skater.',req:100,type:'sessions'},
+  ],
+  snowboard:[
+    {id:'sn1',emoji:'🏂',name:'First Run',desc:'Complete your first snowboard session.',req:1,type:'sessions'},
+    {id:'sn2',emoji:'🎿',name:'10 Sessions',desc:'10 sessions on the mountain.',req:10,type:'sessions'},
+    {id:'sn3',emoji:'🌟',name:'Feature Logged',desc:'Log a new feature conquered in notes.',req:1,type:'notes'},
+    {id:'sn4',emoji:'🏔️',name:'30 Sessions',desc:'30 sessions. You\'re charging.',req:30,type:'sessions'},
+  ],
+  pingpong:[
+    {id:'pp1',emoji:'🏓',name:'First Rally',desc:'Complete your first ping pong session.',req:1,type:'sessions'},
+    {id:'pp2',emoji:'🎯',name:'10 Sessions',desc:'10 sessions of training.',req:10,type:'sessions'},
+    {id:'pp3',emoji:'💥',name:'30 Sessions',desc:'30 sessions — your spin is developing.',req:30,type:'sessions'},
+    {id:'pp4',emoji:'🏆',name:'100 Sessions',desc:'100 sessions. Table master.',req:100,type:'sessions'},
+  ],
+  appear:[
+    {id:'ap1',emoji:'✨',name:'Morning Ritual',desc:'Complete your first appearance session.',req:1,type:'sessions'},
+    {id:'ap2',emoji:'💧',name:'Skincare Streak',desc:'10 appearance sessions.',req:10,type:'sessions'},
+    {id:'ap3',emoji:'🪞',name:'30 Days Consistent',desc:'30 appearance sessions.',req:30,type:'sessions'},
+    {id:'ap4',emoji:'👑',name:'100 Days',desc:'100 sessions. Glow-up is complete.',req:100,type:'sessions'},
+  ],
+  cars:[
+    {id:'cr1',emoji:'🔧',name:'First Wrench Turn',desc:'Complete your first cars session.',req:1,type:'sessions'},
+    {id:'cr2',emoji:'🛠️',name:'10 Sessions',desc:'10 sessions of mechanical learning.',req:10,type:'sessions'},
+    {id:'cr3',emoji:'📓',name:'Knowledge Base',desc:'Write 5 technical notes.',req:5,type:'notes'},
+    {id:'cr4',emoji:'🏁',name:'30 Sessions',desc:'30 sessions — you know your way around an engine.',req:30,type:'sessions'},
+    {id:'cr5',emoji:'🚗',name:'100 Sessions',desc:'100 sessions. Real car knowledge.',req:100,type:'sessions'},
+  ],
+  read:[
+    {id:'rd1',emoji:'📖',name:'First Page',desc:'Complete your first reading session.',req:1,type:'sessions'},
+    {id:'rd2',emoji:'📚',name:'10 Sessions',desc:'10 reading sessions.',req:10,type:'sessions'},
+    {id:'rd3',emoji:'🧠',name:'30 Sessions',desc:'30 sessions — knowledge is accumulating.',req:30,type:'sessions'},
+    {id:'rd4',emoji:'📝',name:'Active Reader',desc:'Write 10 reading notes.',req:10,type:'notes'},
+    {id:'rd5',emoji:'🏆',name:'100 Sessions',desc:'100 sessions. You\'re a reader.',req:100,type:'sessions'},
+  ],
+  research:[
+    {id:'re1',emoji:'🔍',name:'First Query',desc:'Complete your first research session.',req:1,type:'sessions'},
+    {id:'re2',emoji:'📊',name:'10 Sessions',desc:'10 research sessions.',req:10,type:'sessions'},
+    {id:'re3',emoji:'🧠',name:'Knowledge Synthesizer',desc:'Write 10 synthesis notes.',req:10,type:'notes'},
+    {id:'re4',emoji:'🏆',name:'100 Sessions',desc:'100 sessions. Researcher status.',req:100,type:'sessions'},
+  ],
+  social:[
+    {id:'so1',emoji:'🤝',name:'First Contact',desc:'Complete your first social skills session.',req:1,type:'sessions'},
+    {id:'so2',emoji:'💬',name:'10 Sessions',desc:'10 social practice sessions.',req:10,type:'sessions'},
+    {id:'so3',emoji:'🌟',name:'30 Sessions',desc:'30 sessions — you\'re getting comfortable.',req:30,type:'sessions'},
+    {id:'so4',emoji:'🦋',name:'100 Sessions',desc:'100 sessions. Social confidence is yours.',req:100,type:'sessions'},
+  ],
+  travel:[
+    {id:'tr1',emoji:'🌍',name:'First Departure',desc:'Complete your first travel session.',req:1,type:'sessions'},
+    {id:'tr2',emoji:'✈️',name:'10 Sessions',desc:'10 travel planning sessions.',req:10,type:'sessions'},
+    {id:'tr3',emoji:'📍',name:'Destinations Logged',desc:'Write notes on 5 destinations.',req:5,type:'notes'},
+    {id:'tr4',emoji:'🌐',name:'30 Sessions',desc:'30 sessions. The world is becoming familiar.',req:30,type:'sessions'},
+  ],
+  drums:[
+    {id:'dr1',emoji:'🥁',name:'First Beat',desc:'Complete your first drums session.',req:1,type:'sessions'},
+    {id:'dr2',emoji:'🎵',name:'10 Sessions',desc:'10 drum sessions.',req:10,type:'sessions'},
+    {id:'dr3',emoji:'🔥',name:'30 Sessions',desc:'30 sessions — grooves are forming.',req:30,type:'sessions'},
+    {id:'dr4',emoji:'📱',name:'Recorder',desc:'Log 5 recording review notes.',req:5,type:'notes'},
+    {id:'dr5',emoji:'🏆',name:'100 Sessions',desc:'100 sessions. You\'re a drummer.',req:100,type:'sessions'},
+    {id:'dr6',emoji:'⚡',name:'200 Sessions',desc:'200 sessions. Legend.',req:200,type:'sessions'},
+  ],
+  guitar:[
+    {id:'gu1',emoji:'🎸',name:'First Chord',desc:'Complete your first guitar session.',req:1,type:'sessions'},
+    {id:'gu2',emoji:'🎵',name:'10 Sessions',desc:'10 guitar sessions.',req:10,type:'sessions'},
+    {id:'gu3',emoji:'🔥',name:'30 Sessions',desc:'30 sessions — calluses are building.',req:30,type:'sessions'},
+    {id:'gu4',emoji:'🌊',name:'Improv Logged',desc:'Write a note about an improv breakthrough.',req:1,type:'notes'},
+    {id:'gu5',emoji:'🏆',name:'100 Sessions',desc:'100 sessions. You\'re a guitarist.',req:100,type:'sessions'},
+  ],
+  cooking:[
+    {id:'ck1',emoji:'🍳',name:'First Cook',desc:'Complete your first cooking session.',req:1,type:'sessions'},
+    {id:'ck2',emoji:'🔪',name:'10 Sessions',desc:'10 cooking sessions.',req:10,type:'sessions'},
+    {id:'ck3',emoji:'📖',name:'Recipe Vault',desc:'Log 10 recipe notes.',req:10,type:'notes'},
+    {id:'ck4',emoji:'🔥',name:'30 Sessions',desc:'30 sessions — your palate is developing.',req:30,type:'sessions'},
+    {id:'ck5',emoji:'👨‍🍳',name:'100 Sessions',desc:'100 sessions. You\'re a cook.',req:100,type:'sessions'},
+  ],
+  content:[
+    {id:'co1',emoji:'📸',name:'First Post',desc:'Complete your first content creation session.',req:1,type:'sessions'},
+    {id:'co2',emoji:'🎬',name:'10 Sessions',desc:'10 content creation sessions.',req:10,type:'sessions'},
+    {id:'co3',emoji:'🔥',name:'30 Sessions',desc:'30 sessions — your style is forming.',req:30,type:'sessions'},
+    {id:'co4',emoji:'🚀',name:'100 Sessions',desc:'100 sessions. Real creator status.',req:100,type:'sessions'},
+  ],
+};
+
+// ─── Skill Detail State ───
+let curSDSkill=null;
+let curSDTab='overview';
+let editingNoteId=null;
+
+function getSkillSessionCount(skillId){
+  return Object.keys(D.done).filter(k=>k.startsWith(`sdstep_${skillId}_`)).length;
+}
+function getStepKey(skillId,stepId){return`sdstep_${skillId}_${TODAY_STR}_${stepId}`;}
+function isStepDone(skillId,stepId){return!!D.done[getStepKey(skillId,stepId)];}
+function getSessionsDoneCount(skillId){
+  // Count unique dates where at least one step was completed
+  const prefix=`sdstep_${skillId}_`;
+  const dates=new Set(Object.keys(D.done).filter(k=>k.startsWith(prefix)&&D.done[k]).map(k=>k.split('_')[2]));
+  return dates.size;
+}
+
+function openSkillDetail(skillId){
+  curSDSkill=skillId;curSDTab='overview';
+  $('sd-overlay').classList.add('open');
+  renderSkillDetailHeader();
+  renderSkillDetailBody();
+  document.body.style.overflow='hidden';
+}
+function closeSkillDetail(){
+  $('sd-overlay').classList.remove('open');
+  curSDSkill=null;document.body.style.overflow='';
+}
+function maybeCloseSD(e){if(e.target===$('sd-overlay'))closeSkillDetail();}
+function sdTab(tab){
+  curSDTab=tab;
+  document.querySelectorAll('.sd-tab').forEach(t=>t.classList.remove('active'));
+  $(`sdt-${tab}`)?.classList.add('active');
+  renderSkillDetailBody();
+}
+function renderSkillDetailHeader(){
+  const s=D.skills.find(x=>x.id===curSDSkill);if(!s)return;
+  const pct=s.target?Math.min(100,Math.round(s.totalXP/s.target*100)):0;
+  const lvl=Math.floor(s.totalXP/50)+1;
+  const sessCount=getSessionsDoneCount(s.id);
+  $('sd-hero-img').src=s.cover||'';
+  $('sd-hero-overlay').style.background=`linear-gradient(to bottom, rgba(0,0,0,.1) 0%, ${s.color}cc 100%)`;
+  $('sd-hero-tag').innerHTML=`<span class="pill pill-${s.tag}" style="font-size:9px">${s.tag}</span>`;
+  $('sd-hero-name').textContent=s.name;
+  $('sd-hero-meta').textContent=`LVL ${lvl} · ${s.totalXP} XP · ${sessCount} sessions complete`;
+  $('sd-xp-fill').style.width=pct+'%';
+  $('sd-xp-fill').style.background=s.color;
+  $('sd-xp-fill').style.boxShadow=`0 0 10px ${s.color}80`;
+  $('sd-xp-label').textContent=`${s.totalXP} / ${s.target} XP · ${pct}% to goal`;
+  $('sd-hero-tag').style.color=s.color;
+  // Update tab active color to match skill
+  document.querySelectorAll('.sd-tab.active').forEach(t=>t.style.borderBottomColor=s.color);
+}
+function renderSkillDetailBody(){
+  const s=D.skills.find(x=>x.id===curSDSkill);if(!s)return;
+  const tabs={overview:renderSDOverview,session:renderSDSession,notes:renderSDNotes,quests:renderSDQuests,achieve:renderSDAchieve};
+  $('sd-body').innerHTML=(tabs[curSDTab]||renderSDOverview)(s);
+  // Bind note events after render
+  if(curSDTab==='notes')bindNoteEvents(s);
+}
+
+function renderSDOverview(s){
+  const pct=s.target?Math.min(100,Math.round(s.totalXP/s.target*100)):0;
+  const lvl=Math.floor(s.totalXP/50)+1;
+  const sessCount=getSessionsDoneCount(s.id);
+  const tasks=D.tasks.filter(t=>t.skill===s.id);
+  const habits=D.habits.filter(h=>h.skill===s.id);
+  const notes=(D.skillNotes||{})[s.id]||[];
+  const sess=SKILL_SESSIONS[s.id];
+  const sessToday=sess?sess.steps.filter(st=>isStepDone(s.id,st.id)).length:0;
+  const sessTotalToday=sess?sess.steps.length:0;
+  return`
+    <div class="sd-overview-grid">
+      <div class="sd-stat-box"><div class="sd-stat-val" style="color:${s.color}">${lvl}</div><div class="sd-stat-lbl">Level</div></div>
+      <div class="sd-stat-box"><div class="sd-stat-val">${sessCount}</div><div class="sd-stat-lbl">Sessions</div></div>
+      <div class="sd-stat-box"><div class="sd-stat-val">${pct}%</div><div class="sd-stat-lbl">To Goal</div></div>
+    </div>
+    ${sess?`<div class="sd-section"><div class="sd-section-label">Today's Session</div><div style="background:var(--s2);border:.5px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer" onclick="sdTab('session')">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><span style="font-size:13px;font-weight:600">${sess.name}</span><span style="font-family:var(--fm);font-size:11px;color:${s.color}">${sessToday}/${sessTotalToday} steps</span></div>
+      <div style="height:4px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden"><div style="height:100%;width:${sessTotalToday?Math.round(sessToday/sessTotalToday*100):0}%;background:${s.color};border-radius:99px;transition:width .5s"></div></div>
+      <div style="font-size:11px;color:var(--muted);margin-top:8px">~${sess.totalMin} minutes total · <span style="color:${s.color}">Open session →</span></div>
+    </div></div>`:''}
+    <div class="sd-section"><div class="sd-section-label">Linked Quests (${tasks.length})</div>${tasks.slice(0,4).map(t=>`<div class="sdq-card"><div class="sdq-emoji">${t.emoji||'📌'}</div><div class="sdq-info"><div class="sdq-name">${t.name}</div><div class="sdq-meta">${t.time||'—'} · ${t.days.map(d=>DAYS_S[d]).join(', ')}</div></div><span class="pill pill-xp">+${t.xp}xp</span></div>`).join('')||`<div style="color:var(--faint);font-size:12px">No quests linked yet. Add tasks with this skill in the Edit tab.</div>`}</div>
+    ${notes.length?`<div class="sd-section"><div class="sd-section-label">Recent Notes (${notes.length})</div>${notes.slice(0,2).map(n=>`<div class="note-card" onclick="sdTab('notes')"><div class="note-card-header"><div class="note-title">${n.title||'Untitled'}</div><div class="note-date">${n.created||''}</div></div><div class="note-preview">${(n.content||'').slice(0,120)}${n.content&&n.content.length>120?'…':''}</div></div>`).join('')}</div>`:''}
+    ${habits.length?`<div class="sd-section"><div class="sd-section-label">Linked Habits (${habits.length})</div>${habits.map(h=>`<div class="sdq-card"><div class="sdq-emoji">${h.emoji||'⭐'}</div><div class="sdq-info"><div class="sdq-name">${h.name}</div><div class="sdq-meta">${h.category} · ${h.streak||0} day streak</div></div><span class="pill pill-xp">+${h.xp}xp</span></div>`).join('')}</div>`:''}
+  `;
+}
+
+function renderSDSession(s){
+  const sess=SKILL_SESSIONS[s.id];
+  if(!sess)return`<div style="color:var(--faint);padding:20px 0;text-align:center"><i class="ti ti-clock" style="font-size:32px;display:block;margin-bottom:8px"></i>No session routine built yet for ${s.name}.</div>`;
+  const doneCount=sess.steps.filter(st=>isStepDone(s.id,st.id)).length;
+  const pct=Math.round(doneCount/sess.steps.length*100);
+  const totalSessions=getSessionsDoneCount(s.id);
+  return`
+    <div class="session-intro">
+      <div class="session-intro-title">${sess.name}</div>
+      <div class="session-intro-sub">~${sess.totalMin} min total · ${totalSessions} sessions completed lifetime</div>
+      <div class="session-progress">
+        <div style="flex:1;height:5px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${s.color};border-radius:99px;transition:width .4s"></div></div>
+        <span class="session-pct" style="color:${s.color}">${doneCount}/${sess.steps.length} today</span>
+      </div>
+      ${doneCount===sess.steps.length?`<div style="margin-top:10px;font-family:var(--fm);font-size:10px;color:#4ade80">⚡ SESSION COMPLETE — ${sess.totalMin} min of quality work done!</div>`:''}
+    </div>
+    <div class="step-list">
+      ${sess.steps.map((step,i)=>{
+        const done=isStepDone(s.id,step.id);
+        return`<div class="step-item${done?' done':''}" onclick="toggleStep('${s.id}','${step.id}')">
+          <div class="step-num">${done?'<i class="ti ti-check" style="font-size:11px"></i>':i+1}</div>
+          <div class="step-icon">${step.icon}</div>
+          <div class="step-info">
+            <div class="step-name">${step.name}</div>
+            <div class="step-dur">⏱ ${step.dur}</div>
+            <div class="step-desc">${step.desc}</div>
+            ${step.tip?`<div class="step-tip">💡 ${step.tip}</div>`:''}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`;
+}
+function toggleStep(skillId,stepId){
+  const k=getStepKey(skillId,stepId);
+  D.done[k]=!D.done[k];
+  // Award XP on first completion of each step
+  const s=getSkill(skillId);
+  if(D.done[k]&&s)s.totalXP+=(1);
+  save();
+  renderSkillDetailHeader();
+  renderSkillDetailBody();
+  updateNav();
+  toast(D.done[k]?'Step complete! +1 XP ⚡':'Step reset.');
+}
+
+function renderSDNotes(s){
+  const notes=(D.skillNotes||{})[s.id]||[];
+  const pinned=notes.filter(n=>n.pinned);
+  const rest=notes.filter(n=>!n.pinned);
+  const sorted=[...pinned,...rest];
+  return`
+    <div class="notes-header">
+      <div style="font-family:var(--fm);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">${notes.length} Notes</div>
+      <button class="btn btn-primary btn-sm" onclick="startNewNote('${s.id}')"><i class="ti ti-plus"></i> New Note</button>
+    </div>
+    <div id="note-editor-container"></div>
+    <div id="notes-list">
+      ${sorted.length?sorted.map(n=>renderNoteCard(s.id,n)).join(''):`<div style="color:var(--faint);font-size:13px;text-align:center;padding:30px 0"><i class="ti ti-notes" style="font-size:32px;display:block;margin-bottom:8px;opacity:.3"></i>No notes yet.<br><span style="font-size:11px">Click "New Note" to start building your knowledge base.</span></div>`}
+    </div>`;
+}
+function renderNoteCard(skillId,n){
+  const colMap={yellow:'rgba(245,158,11,.12)',green:'rgba(34,197,94,.1)',blue:'rgba(59,130,246,.1)',purple:'rgba(168,85,247,.1)',red:'rgba(239,68,68,.1)'};
+  const bg=colMap[n.color]||'';
+  return`<div class="note-card${n.pinned?' pinned':''}" id="ncard-${n.id}" style="${bg?`background:${bg}`:''}" >
+    <div class="note-card-header">
+      ${n.pinned?`<i class="ti ti-pin" style="font-size:12px;color:var(--amber);flex-shrink:0"></i>`:''}
+      <div class="note-title">${n.title||'Untitled'}</div>
+      <div class="note-date">${n.created||''}</div>
+    </div>
+    <div class="note-preview">${(n.content||'').slice(0,200)}${n.content&&n.content.length>200?'…':''}</div>
+    <div class="note-foot">
+      <button class="btn btn-ghost btn-sm" onclick="editNote('${skillId}','${n.id}');event.stopPropagation()"><i class="ti ti-edit"></i> Edit</button>
+      <button class="btn btn-ghost btn-sm" onclick="togglePin('${skillId}','${n.id}');event.stopPropagation()">${n.pinned?'<i class="ti ti-pin-off"></i> Unpin':'<i class="ti ti-pin"></i> Pin'}</button>
+      <button class="btn btn-danger btn-sm" onclick="deleteNote('${skillId}','${n.id}');event.stopPropagation()"><i class="ti ti-trash"></i></button>
+    </div>
+  </div>`;
+}
+function bindNoteEvents(){}
+function startNewNote(skillId){
+  editingNoteId=null;
+  $('note-editor-container').innerHTML=`
+    <div class="note-editor">
+      <input class="note-editor-title" id="ne-title" placeholder="Note title..." maxlength="100">
+      <textarea class="note-editor-body" id="ne-body" placeholder="Write anything — insights, techniques, patterns, resources, observations...&#10;&#10;Use this like a Notion page: write freely, bullet points, anything you need to remember."></textarea>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:8px">
+        <span style="font-size:11px;color:var(--muted)">Color:</span>
+        ${['yellow','green','blue','purple','red'].map(c=>`<div onclick="document.getElementById('ne-color').value='${c}';document.querySelectorAll('.nc-dot').forEach(d=>d.style.opacity='.4');this.style.opacity='1'" class="nc-dot" style="width:14px;height:14px;border-radius:50%;background:${c==='yellow'?'#f59e0b':c==='green'?'#22c55e':c==='blue'?'#3b82f6':c==='purple'?'#a855f7':'#ef4444'};cursor:pointer;opacity:.4;transition:.14s"></div>`).join('')}
+        <input type="hidden" id="ne-color" value="">
+      </div>
+      <div class="note-editor-foot">
+        <button class="btn btn-ghost btn-sm" onclick="cancelNote()">Cancel</button>
+        <button class="btn btn-primary btn-sm" onclick="saveNote('${skillId}')">Save Note</button>
+      </div>
+    </div>`;
+  document.getElementById('ne-title')?.focus();
+}
+function editNote(skillId,noteId){
+  const notes=(D.skillNotes||{})[skillId]||[];
+  const n=notes.find(x=>x.id===noteId);if(!n)return;
+  editingNoteId=noteId;
+  $('note-editor-container').innerHTML=`
+    <div class="note-editor">
+      <input class="note-editor-title" id="ne-title" value="${(n.title||'').replace(/"/g,'&quot;')}" placeholder="Note title..." maxlength="100">
+      <textarea class="note-editor-body" id="ne-body" placeholder="Write anything...">${n.content||''}</textarea>
+      <div style="display:flex;gap:6px;align-items:center;margin-bottom:8px">
+        <span style="font-size:11px;color:var(--muted)">Color:</span>
+        ${['yellow','green','blue','purple','red'].map(c=>`<div onclick="document.getElementById('ne-color').value='${c}';document.querySelectorAll('.nc-dot').forEach(d=>d.style.opacity='.4');this.style.opacity='1'" class="nc-dot" style="width:14px;height:14px;border-radius:50%;background:${c==='yellow'?'#f59e0b':c==='green'?'#22c55e':c==='blue'?'#3b82f6':c==='purple'?'#a855f7':'#ef4444'};cursor:pointer;opacity:${n.color===c?'1':'.4'};transition:.14s"></div>`).join('')}
+        <input type="hidden" id="ne-color" value="${n.color||''}">
+      </div>
+      <div class="note-editor-foot">
+        <button class="btn btn-ghost btn-sm" onclick="cancelNote()">Cancel</button>
+        <button class="btn btn-primary btn-sm" onclick="saveNote('${skillId}')">Update Note</button>
+      </div>
+    </div>`;
+  document.getElementById('ne-title')?.focus();
+}
+function cancelNote(){$('note-editor-container').innerHTML='';editingNoteId=null;}
+function saveNote(skillId){
+  const title=document.getElementById('ne-title')?.value.trim()||'Untitled';
+  const content=document.getElementById('ne-body')?.value||'';
+  const color=document.getElementById('ne-color')?.value||'';
+  if(!D.skillNotes)D.skillNotes={};
+  if(!D.skillNotes[skillId])D.skillNotes[skillId]=[];
+  if(editingNoteId){
+    const n=D.skillNotes[skillId].find(x=>x.id===editingNoteId);
+    if(n){n.title=title;n.content=content;n.color=color;n.updated=TODAY_STR;}
+  } else {
+    D.skillNotes[skillId].unshift({id:'note_'+Date.now(),title,content,color,created:TODAY_STR,pinned:false});
+  }
+  editingNoteId=null;save();renderSkillDetailBody();toast('Note saved ⚡');
+}
+function deleteNote(skillId,noteId){
+  if(!confirm('Delete this note?'))return;
+  if(D.skillNotes?.[skillId])D.skillNotes[skillId]=D.skillNotes[skillId].filter(n=>n.id!==noteId);
+  save();renderSkillDetailBody();toast('Note deleted.');
+}
+function togglePin(skillId,noteId){
+  const n=D.skillNotes?.[skillId]?.find(x=>x.id===noteId);
+  if(n){n.pinned=!n.pinned;save();renderSkillDetailBody();}
+}
+
+function renderSDQuests(s){
+  const tasks=D.tasks.filter(t=>t.skill===s.id);
+  const habits=D.habits.filter(h=>h.skill===s.id);
+  if(!tasks.length&&!habits.length)return`<div style="color:var(--faint);text-align:center;padding:30px 0"><i class="ti ti-sword" style="font-size:32px;display:block;margin-bottom:8px;opacity:.3"></i>No quests linked to this skill.<br><span style="font-size:11px">Go to Edit → Tasks and set the skill to "${s.name}".</span></div>`;
+  const dayTasks=getDayTasks(TODAY.getDay()).filter(t=>t.skill===s.id);
+  return`
+    ${dayTasks.length?`<div class="sd-section"><div class="sd-section-label">Today's Quests</div>${dayTasks.map(t=>{const done=isDone(t.id,TODAY.getDay());return`<div class="sdq-card" style="${done?'opacity:.5':''}"><div class="sdq-emoji">${t.emoji||'📌'}</div><div class="sdq-info"><div class="sdq-name">${t.name}</div><div class="sdq-meta">${t.time||'—'} · +${t.xp}xp${done?' · ✓ Done':''}</div></div><div class="sdq-check${done?' on':''}" onclick="toggleTask('${t.id}',${TODAY.getDay()});renderSkillDetailHeader();renderSkillDetailBody()"><i class="ti ti-check" style="font-size:11px;color:#fff;opacity:${done?1:0}"></i></div></div>`}).join('')}</div>`:''}
+    <div class="sd-section"><div class="sd-section-label">All Linked Tasks (${tasks.length})</div>${tasks.map(t=>`<div class="sdq-card"><div class="sdq-emoji">${t.emoji||'📌'}</div><div class="sdq-info"><div class="sdq-name">${t.name}</div><div class="sdq-meta">${t.time||'—'} · ${t.days.map(d=>DAYS_S[d]).join(', ')} · +${t.xp}xp</div></div></div>`).join('')}</div>
+    ${habits.length?`<div class="sd-section"><div class="sd-section-label">Linked Habits (${habits.length})</div>${habits.map(h=>`<div class="sdq-card"><div class="sdq-emoji">${h.emoji||'⭐'}</div><div class="sdq-info"><div class="sdq-name">${h.name}</div><div class="sdq-meta">${h.category} · ${h.streak||0} day streak · +${h.xp}xp</div></div></div>`).join('')}</div>`:''}
+  `;
+}
+
+function renderSDAchieve(s){
+  const achs=SKILL_ACHIEVEMENTS[s.id]||[];
+  const sessCount=getSessionsDoneCount(s.id);
+  const noteCount=(D.skillNotes?.[s.id]||[]).length;
+  if(!achs.length)return`<div style="color:var(--faint);text-align:center;padding:30px 0"><i class="ti ti-trophy" style="font-size:32px;display:block;margin-bottom:8px;opacity:.3"></i>No achievements defined for this skill yet.</div>`;
+  return`<div class="sd-section"><div class="sd-section-label">Skill Achievements</div>${
+    achs.map(a=>{
+      const count=a.type==='notes'?noteCount:sessCount;
+      const unlocked=count>=a.req;
+      const pct=Math.min(100,Math.round(count/a.req*100));
+      return`<div class="sk-ach${unlocked?' unlocked':' locked'}">
+        <div class="sk-ach-icon">${a.emoji}</div>
+        <div class="sk-ach-info">
+          <div class="sk-ach-name">${a.name}${unlocked?' <span style="color:#4ade80;font-size:10px;font-family:var(--fm)">UNLOCKED</span>':''}</div>
+          <div class="sk-ach-desc">${a.desc}</div>
+          <div class="sk-ach-prog">
+            <div style="height:3px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;margin-top:5px"><div style="height:100%;width:${pct}%;background:${unlocked?'#4ade80':s.color};border-radius:99px;transition:width .5s"></div></div>
+            <div style="font-family:var(--fm);font-size:9px;color:var(--faint);margin-top:2px">${count}/${a.req} ${a.type==='notes'?'notes':'sessions'}</div>
+          </div>
+        </div>
+      </div>`;
+    }).join('')
+  }</div>`;
+}
+
+// ─── Mobile ───
+function toggleSidebar(){
+  document.querySelector('.sidebar').classList.toggle('mob-open');
+  document.getElementById('mob-overlay').classList.toggle('open');
+}
+function closeSidebar(){
+  document.querySelector('.sidebar').classList.remove('mob-open');
+  document.getElementById('mob-overlay').classList.remove('open');
+}
+const _origNav=nav;
+nav=function(page){
+  _origNav(page);
+  closeSidebar();
+  const map={dashboard:'mni-dashboard',quests:'mni-quests',habits:'mni-habits',skilltrees:'mni-skilltrees'};
+  document.querySelectorAll('.mob-nav-item').forEach(e=>e.classList.remove('active'));
+  if(map[page])document.getElementById(map[page])?.classList.add('active');
+  else document.getElementById('mni-more')?.classList.add('active');
+};
+function toggleMobMore(){
+  const existing=document.getElementById('mob-more-popup');
+  if(existing){existing.remove();return;}
+  const pages=['skillpaths','stats','story','achievements','edit'];
+  const labels={skillpaths:'Skill Paths',stats:'Stats',story:'Story',achievements:'Achievements',edit:'Edit'};
+  const icons={skillpaths:'ti-tournament',stats:'ti-chart-bar',story:'ti-book',achievements:'ti-trophy',edit:'ti-settings'};
+  const popup=document.createElement('div');
+  popup.id='mob-more-popup';
+  popup.style.cssText='position:fixed;bottom:72px;right:10px;background:var(--s1);border:.5px solid var(--border2);border-radius:14px;padding:8px;z-index:300;display:flex;flex-direction:column;gap:4px;min-width:160px;box-shadow:0 8px 32px rgba(0,0,0,.6)';
+  popup.innerHTML=pages.map(p=>`<div onclick="nav('${p}');document.getElementById('mob-more-popup')?.remove()" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:9px;cursor:pointer;font-size:13px;color:var(--text)" onmouseover="this.style.background='rgba(168,85,247,.12)'" onmouseout="this.style.background=''"><i class="ti ${icons[p]}" style="font-size:16px;color:var(--purple)"></i>${labels[p]}</div>`).join('');
+  document.body.appendChild(popup);
+  setTimeout(()=>{
+    function outsideClick(e){if(!popup.contains(e.target)){popup.remove();document.removeEventListener('click',outsideClick);}}
+    document.addEventListener('click',outsideClick);
+  },100);
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  ★  MEDIA / TEXT EDITOR  ★
+// ═══════════════════════════════════════════════════════════════
+
+// Pending changes held here until "Save All"
+let MED={avatar:null, avatarIsEmoji:null, skills:{}, tasks:{}, text:{}};
+let curMedTab='avatar';
+
+// Load saved overrides from storage
+function loadMedOverrides(){
+  try{
+    const raw=localStorage.getItem('sv_media');
+    if(raw){
+      const m=JSON.parse(raw);
+      // Apply avatar
+      if(m.avatar){applyAvatar(m.avatar,m.avatarIsEmoji);}
+      // Apply skill covers
+      if(m.skills){Object.entries(m.skills).forEach(([id,url])=>{const s=D.skills.find(x=>x.id===id);if(s)s.cover=url;});}
+      // Apply task art images (store as custom img src keyed by task art type)
+      if(m.tasks){window.TASK_ART_CUSTOM=m.tasks;}
+      // Apply text overrides
+      if(m.text){
+        if(m.text.charName){D.char.name=m.text.charName;}
+        if(m.text.pageTitle) document.querySelectorAll('.page-eyebrow').forEach(e=>{if(e.textContent.includes('Spider'))e.textContent=m.text.pageTitle;});
+      }
+      return m;
+    }
+  }catch(e){}
+  return {};
+}
+
+function saveMedOverrides(m){
+  localStorage.setItem('sv_media',JSON.stringify(m));
+}
+
+function applyAvatar(src, isEmoji){
+  const avatarEls=document.querySelectorAll('.avatar,.hero-avatar');
+  avatarEls.forEach(el=>{
+    if(isEmoji){
+      el.textContent=src;
+      el.style.fontSize='';
+    } else {
+      el.innerHTML=`<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+    }
+  });
+}
+
+function openMedEditor(){
+  MED={avatar:null,avatarIsEmoji:null,skills:{},tasks:{},text:{}};
+  curMedTab='avatar';
+  document.getElementById('med-overlay').classList.add('open');
+  renderMedTab('avatar');
+}
+function closeMedEditor(){
+  document.getElementById('med-overlay').classList.remove('open');
+}
+function medTab(t){
+  curMedTab=t;
+  document.querySelectorAll('.med-tab').forEach(el=>{
+    el.classList.toggle('active',el.getAttribute('onclick')===`medTab('${t}')`);
+  });
+  renderMedTab(t);
+}
+
+function renderMedTab(t){
+  const body=document.getElementById('med-body');
+  if(t==='avatar') body.innerHTML=renderMedAvatar();
+  else if(t==='skills') body.innerHTML=renderMedSkills();
+  else if(t==='tasks') body.innerHTML=renderMedTasks();
+  else if(t==='text') body.innerHTML=renderMedText();
+}
+
+function renderMedAvatar(){
+  const currentEmoji=document.querySelector('.avatar')?.textContent?.trim()||'🕷️';
+  const hasImg=document.querySelector('.avatar img');
+  return`
+  <div class="med-section">
+    <div class="med-sec-label">Profile Picture (Avatar)</div>
+    <p style="font-size:11px;color:var(--faint);margin-bottom:12px;line-height:1.6">Set a custom image URL or emoji for both the sidebar avatar and the dashboard hero avatar. Paste any image URL (Unsplash, imgur, etc) or use an emoji.</p>
+    <div class="med-row">
+      <div class="med-preview circle" id="med-av-prev">${hasImg?`<img src="${document.querySelector('.avatar img')?.src||''}">`:currentEmoji}</div>
+      <div class="med-info">
+        <div class="med-name">Avatar Image</div>
+        <input class="med-input" id="med-av-url" placeholder="https://... image URL or paste emoji" value="${hasImg?document.querySelector('.avatar img')?.src||'':currentEmoji}">
+        <button class="med-apply" onclick="previewAvatar()">Preview</button>
+      </div>
+    </div>
+    <p style="font-size:10px;color:var(--faint);margin-top:8px;line-height:1.6">💡 Tip: If you type an emoji (like 🦸), it stays as an emoji. If you paste a URL starting with http, it becomes a photo.</p>
+  </div>`;
+}
+
+function previewAvatar(){
+  const val=document.getElementById('med-av-url')?.value?.trim();
+  if(!val)return;
+  const isEmoji=!val.startsWith('http');
+  MED.avatar=val;
+  MED.avatarIsEmoji=isEmoji;
+  applyAvatar(val,isEmoji);
+  const prev=document.getElementById('med-av-prev');
+  if(prev){
+    if(isEmoji) prev.textContent=val;
+    else prev.innerHTML=`<img src="${val}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+  }
+  toast('Avatar previewed! Hit Save to keep it.');
+}
+
+function renderMedSkills(){
+  return`
+  <div class="med-section">
+    <div class="med-sec-label">Skill Card Cover Images</div>
+    <p style="font-size:11px;color:var(--faint);margin-bottom:12px;line-height:1.6">Paste a URL for any skill card's cover photo. Works with Unsplash, imgur, or any direct image link.</p>
+    ${D.skills.map(s=>`
+    <div class="med-row">
+      <div class="med-preview" style="border-radius:8px"><img id="med-sk-prev-${s.id}" src="${s.cover}" onerror="this.src=''" style="width:100%;height:100%;object-fit:cover;border-radius:8px"></div>
+      <div class="med-info">
+        <div class="med-name">${s.name} <span style="font-size:9px;color:var(--muted)">(${s.tag})</span></div>
+        <input class="med-input" id="med-sk-${s.id}" placeholder="Image URL..." value="${s.cover||''}">
+        <button class="med-apply" onclick="previewSkillImg('${s.id}')">Preview</button>
+      </div>
+    </div>`).join('')}
+  </div>`;
+}
+
+function previewSkillImg(id){
+  const url=document.getElementById(`med-sk-${id}`)?.value?.trim();
+  if(!url)return;
+  MED.skills[id]=url;
+  const prev=document.getElementById(`med-sk-prev-${id}`);
+  if(prev) prev.src=url;
+  toast('Skill image previewed!');
+}
+
+function renderMedTasks(){
+  const artTypes=['wake','trading','drums','tennis','gym','shower','winddown','free'];
+  const artLabels={wake:'☀️ Morning / Rise',trading:'📈 Trading / Capital',drums:'🥁 Drums / Rhythm',tennis:'🎾 Tennis / Court',gym:'💪 Gym / Power',shower:'🍳 Food / Shower / Reset',winddown:'🌙 Wind Down / Rest',free:'⭐ Free / Default'};
+  const custom=window.TASK_ART_CUSTOM||{};
+  return`
+  <div class="med-section">
+    <div class="med-sec-label">Task Card Art</div>
+    <p style="font-size:11px;color:var(--faint);margin-bottom:14px;line-height:1.6">Each task has an "Art" type. You can replace the default SVG art with a custom image URL for each type. The image will fill the left panel of the quest card.</p>
+    ${artTypes.map(type=>`
+    <div class="med-row">
+      <div class="med-preview" style="border-radius:8px;background:#04020e;overflow:hidden">
+        ${custom[type]
+          ?`<img id="med-art-prev-${type}" src="${custom[type]}" style="width:100%;height:100%;object-fit:cover">`
+          :`<div id="med-art-prev-${type}" style="width:100%;height:100%">${makeArt(type,'#a855f7')}</div>`
+        }
+      </div>
+      <div class="med-info">
+        <div class="med-name">${artLabels[type]||type}</div>
+        <input class="med-input" id="med-art-${type}" placeholder="Image URL or leave blank for SVG art" value="${custom[type]||''}">
+        <button class="med-apply" onclick="previewTaskArt('${type}')">Preview</button>
+      </div>
+    </div>`).join('')}
+  </div>`;
+}
+
+function previewTaskArt(type){
+  const url=document.getElementById(`med-art-${type}`)?.value?.trim();
+  MED.tasks[type]=url||'';
+  const prev=document.getElementById(`med-art-prev-${type}`);
+  if(prev){
+    if(url) prev.innerHTML=`<img src="${url}" style="width:100%;height:100%;object-fit:cover">`;
+    else prev.innerHTML=makeArt(type,'#a855f7');
+  }
+  toast('Art previewed!');
+}
+
+function renderMedText(){
+  return`
+  <div class="med-section">
+    <div class="med-sec-label">Character & Page Text</div>
+    <p style="font-size:11px;color:var(--faint);margin-bottom:14px;line-height:1.6">Edit key labels and names shown across the app.</p>
+
+    <div class="med-text-row">
+      <div class="med-text-label">Character Name (shown in sidebar & dashboard)</div>
+      <input class="med-input" id="med-txt-name" placeholder="Spider-Variant" value="${D.char.name||'Spider-Variant'}">
+    </div>
+
+    <div class="med-text-row">
+      <div class="med-text-label">Page Eyebrow Label (e.g. "⬡ Spider-Variant")</div>
+      <input class="med-input" id="med-txt-eyebrow" placeholder="⬡ Spider-Variant" value="${document.querySelector('.page-eyebrow')?.textContent||'⬡ Spider-Variant'}">
+    </div>
+
+    <div class="med-text-row">
+      <div class="med-text-label">Hero Card Sub-label (below name on dashboard)</div>
+      <input class="med-input" id="med-txt-hero-eyebrow" placeholder="⬡ Spider-Variant · Life OS" value="${document.querySelector('.hero-eyebrow')?.textContent||'⬡ Spider-Variant · Life OS'}">
+    </div>
+
+    <div class="med-text-row">
+      <div class="med-text-label">Level Titles (comma-separated, in order)</div>
+      <input class="med-input" id="med-txt-lvls" placeholder="Friendly Neighbourhood,Friendly Hero,..." value="${LVL_T.join(',')}">
+    </div>
+
+    <div class="med-section" style="margin-top:18px">
+      <div class="med-sec-label">Skill Names</div>
+      <p style="font-size:11px;color:var(--faint);margin-bottom:12px;line-height:1.6">Rename any skill tree.</p>
+      ${D.skills.map(s=>`
+      <div class="med-text-row">
+        <div class="med-text-label">${s.id}</div>
+        <input class="med-input" id="med-skill-name-${s.id}" value="${s.name}" placeholder="${s.name}">
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function medSaveAll(){
+  // 1. Avatar
+  if(MED.avatar!==null){
+    applyAvatar(MED.avatar,MED.avatarIsEmoji);
+  }
+  // 2. Skill covers
+  Object.entries(MED.skills).forEach(([id,url])=>{
+    const s=D.skills.find(x=>x.id===id);
+    if(s)s.cover=url;
+  });
+  // 3. Task art
+  if(!window.TASK_ART_CUSTOM) window.TASK_ART_CUSTOM={};
+  Object.entries(MED.tasks).forEach(([type,url])=>{
+    window.TASK_ART_CUSTOM[type]=url;
+  });
+  // 4. Text
+  const nameEl=document.getElementById('med-txt-name');
+  if(nameEl&&nameEl.value.trim()){
+    D.char.name=nameEl.value.trim();
+    MED.text.charName=D.char.name;
+  }
+  const eyebrowVal=document.getElementById('med-txt-eyebrow')?.value?.trim();
+  if(eyebrowVal){
+    document.querySelectorAll('.page-eyebrow').forEach(el=>el.textContent=eyebrowVal);
+    MED.text.pageTitle=eyebrowVal;
+  }
+  const heroEyebrowVal=document.getElementById('med-txt-hero-eyebrow')?.value?.trim();
+  if(heroEyebrowVal){
+    const heroEye=document.querySelector('.hero-eyebrow');
+    if(heroEye)heroEye.textContent=heroEyebrowVal;
+    MED.text.heroEyebrow=heroEyebrowVal;
+  }
+  const lvlsVal=document.getElementById('med-txt-lvls')?.value?.trim();
+  if(lvlsVal){
+    const arr=lvlsVal.split(',').map(x=>x.trim()).filter(Boolean);
+    if(arr.length>0){LVL_T.splice(0,LVL_T.length,...arr);MED.text.lvlTitles=arr;}
+  }
+  // Skill name overrides
+  D.skills.forEach(s=>{
+    const inp=document.getElementById(`med-skill-name-${s.id}`);
+    if(inp&&inp.value.trim()&&inp.value.trim()!==s.name){
+      s.name=inp.value.trim();
+    }
+  });
+
+  // Persist to localStorage
+  const stored={
+    avatar:MED.avatar||null,
+    avatarIsEmoji:MED.avatarIsEmoji,
+    skills:{...Object.fromEntries(D.skills.map(s=>[s.id,s.cover]))},
+    tasks:{...window.TASK_ART_CUSTOM},
+    text:{...MED.text}
+  };
+  // Get existing stored data and merge
+  try{const ex=JSON.parse(localStorage.getItem('sv_media')||'{}');Object.assign(stored,ex,stored);}catch(e){}
+  saveMedOverrides(stored);
+  save(); // also save D (skill names etc)
+  closeMedEditor();
+  renderPage(curPage);
+  updateNav();
+  toast('Changes saved! ✨');
+}
+
+// Patch makeArt to support custom images
+const _origMakeArt=makeArt;
+makeArt=function(type,col){
+  const custom=window.TASK_ART_CUSTOM||{};
+  if(custom[type]){
+    return`<img src="${custom[type]}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'">`;
+  }
+  return _origMakeArt(type,col);
+};
+
+window.TASK_ART_CUSTOM={};
+// Load overrides on boot
+loadMedOverrides();
 
 // ─── Boot ───
 // Inject export/import buttons into sidebar bottom

@@ -109,7 +109,7 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 .log-textarea ul,.log-textarea ol{padding-left:1.5em;margin:.4em 0;}
 .log-textarea blockquote{border-left:3px solid rgba(168,85,247,.4);margin:.5em 0;padding:.3em 0 .3em 1em;color:rgba(230,225,255,.75);}
 .log-textarea h2{font-family:var(--fd);font-size:1.3em;margin:.5em 0 .3em;}
-.log-tb-btn{width:30px;height:30px;border-radius:7px;background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.1);color:rgba(230,225,255,.7);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;flex-shrink:0;}
+.log-tb-btn{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.1);color:rgba(230,225,255,.7);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;flex-shrink:0;}
 .log-tb-btn:hover{background:rgba(168,85,247,.18);border-color:rgba(168,85,247,.4);color:#e9d5ff;}
 .log-tb-btn:active{background:rgba(168,85,247,.3);}
 .log-tb-sep{width:1px;background:rgba(255,255,255,.12);margin:4px 2px;}
@@ -125,7 +125,7 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
   .log-title{font-size:21px;}
   .log-hint{font-size:11px;margin:3px 0 10px;}
   .log-textarea{font-size:18px;line-height:1.85;height:calc(100vh - 300px);padding:2px;}
-  .log-tb-btn{width:27px;height:27px;font-size:13px;}
+  .log-tb-btn{width:42px;height:42px;font-size:17px;border-radius:9px;}
 }
 .page-eyebrow{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin-bottom:4px;}
 .page-title{font-family:var(--fd);font-size:50px;line-height:.9;background:linear-gradient(135deg,#e9d5ff,var(--pink) 45%,var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:24px;}
@@ -771,9 +771,9 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 #sdt-session{order:1;}
 #sdt-exercises{order:2;}
 #sdt-curriculum{order:3;}
-#sdt-notes{order:4;}
-#sdt-quests{order:5;}
-#sdt-achieve{order:6;}
+#sdt-achieve{order:4;}
+#sdt-notes{order:5;}
+#sdt-quests{order:6;}
 #sdt-lifts{order:7;}
 #sdt-skills{order:7;}
 #sdt-routines{order:8;}
@@ -887,19 +887,21 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 .hud-avatar-svg{position:absolute;inset:0;width:100%;height:100%;animation:spin-slow 14s linear infinite;}
 .hud-avatar-inner{position:absolute;inset:11px;border-radius:50%;background:var(--s2);border:2.5px solid rgba(168,85,247,.6);display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden;box-shadow:0 0 24px rgba(168,85,247,.4),inset 0 0 20px rgba(168,85,247,.1);}
 .hud-char-name{font-family:var(--fd);font-size:26px;color:#f0e6ff;text-align:center;line-height:1;text-shadow:0 0 24px rgba(168,85,247,.5);}
-.hud-char-rank{font-family:var(--fm);font-size:8px;color:#c084fc;letter-spacing:.16em;text-transform:uppercase;text-align:center;margin-top:-4px;}
+.hud-char-rank{font-family:var(--fm);font-size:11px;color:#c084fc;letter-spacing:.16em;text-transform:uppercase;text-align:center;margin-top:-2px;font-weight:700;text-shadow:0 0 10px rgba(192,132,252,.6);}
 .hud-lvl-display{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;border-top:.5px solid rgba(168,85,247,.15);border-bottom:.5px solid rgba(168,85,247,.15);width:100%;}
-.hud-lvl-num{font-family:var(--fd);font-size:64px;line-height:1;background:linear-gradient(135deg,#e9d5ff 0%,#ec4899 40%,#a855f7 70%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 16px rgba(168,85,247,.6));}
+.hud-lvl-num{font-family:var(--fd);font-size:80px;line-height:1;background:linear-gradient(135deg,#e9d5ff 0%,#ec4899 40%,#a855f7 70%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 16px rgba(168,85,247,.6));animation:hudLvlPulse 3s ease-in-out infinite;}
+@keyframes hudLvlPulse{0%,100%{filter:drop-shadow(0 0 16px rgba(168,85,247,.6));transform:scale(1);}50%{filter:drop-shadow(0 0 26px rgba(168,85,247,.85));transform:scale(1.035);}}
 .hud-lvl-lbl{font-family:var(--fm);font-size:8px;color:rgba(200,160,255,.45);text-transform:uppercase;letter-spacing:.14em;}
 .hud-xp-block{width:100%;}
 .hud-xp-label{display:flex;justify-content:space-between;font-family:var(--fm);font-size:7.5px;color:rgba(200,160,255,.5);margin-bottom:5px;}
 .hud-xp-bar{height:6px;background:rgba(255,255,255,.05);border-radius:99px;overflow:hidden;}
 .hud-xp-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#7c3aed,#a855f7,#ec4899);box-shadow:0 0 12px rgba(168,85,247,.8);transition:width .6s cubic-bezier(.34,1.56,.64,1);}
 .hud-stat-bars{width:100%;display:flex;flex-direction:column;gap:6px;padding-top:10px;border-top:.5px solid rgba(168,85,247,.12);}
-.hud-stat-row{display:flex;align-items:center;gap:7px;}
+.hud-stat-row{display:flex;align-items:center;gap:9px;}
 .hud-stat-lbl{font-family:var(--fm);font-size:7.5px;color:rgba(200,160,255,.4);width:44px;text-transform:uppercase;letter-spacing:.05em;flex-shrink:0;}
-.hud-stat-track{flex:1;height:4px;background:rgba(255,255,255,.05);border-radius:99px;overflow:hidden;}
-.hud-stat-fill{height:100%;border-radius:99px;transition:width .5s;}
+.hud-stat-track{flex:1;height:8px;background:rgba(255,255,255,.05);border-radius:99px;overflow:hidden;}
+.hud-stat-fill{height:100%;border-radius:99px;transition:width .5s;animation:hudStatGlow 2.4s ease-in-out infinite;}
+@keyframes hudStatGlow{0%,100%{filter:brightness(1);}50%{filter:brightness(1.35);}}
 .hud-stat-val{font-family:var(--fm);font-size:7.5px;color:rgba(200,160,255,.5);width:22px;text-align:right;flex-shrink:0;}
 .hud-quote-bar{font-family:var(--fm);font-size:10px;color:rgba(200,160,255,.5);font-style:italic;letter-spacing:.04em;line-height:1.55;padding:10px 14px;background:rgba(168,85,247,.05);border-left:2px solid rgba(168,85,247,.35);border-radius:0 7px 7px 0;margin-bottom:14px;}
 .hud-ring-row{display:flex;gap:0;border-bottom:.5px solid rgba(168,85,247,.15);padding-bottom:14px;margin-bottom:14px;}
@@ -1548,6 +1550,22 @@ body.pg-inventory .main{background:radial-gradient(ellipse 140% 80% at 50% -5%,#
 
 /* ══ SOCIAL CALENDAR ══ */
 .social-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:4px;}
+/* ── Master Grid — deliberately larger than the old Social calendar ── */
+.mg-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:4px;}
+.mg-cal-header{text-align:center;font-family:var(--fm);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:6px 0;}
+.mg-cal-day{min-height:96px;border-radius:12px;padding:8px 9px;background:var(--s1);border:.5px solid var(--border);cursor:pointer;transition:all .14s;position:relative;}
+.mg-cal-day:hover{border-color:rgba(168,85,247,.4);}
+.mg-cal-day.other-month{opacity:.3;}
+.mg-cal-day.today{border-color:#a855f7;box-shadow:0 0 0 1px #a855f7 inset;}
+.mg-cal-daynum{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:5px;}
+.mg-cal-day.today .mg-cal-daynum{color:#c084fc;}
+.mg-cal-event-dot{font-size:10px;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:2px 6px;border-radius:5px;margin-bottom:3px;font-weight:600;}
+.mg-week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;}
+.mg-week-day{min-height:220px;border-radius:14px;padding:12px 10px;background:var(--s1);border:.5px solid var(--border);cursor:pointer;}
+.mg-week-day.today{border-color:#a855f7;box-shadow:0 0 0 1px #a855f7 inset;}
+.mg-week-daylabel{font-family:var(--fm);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;}
+.mg-week-daynum{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px;}
+.mg-event-card{display:flex;gap:12px;align-items:center;padding:13px 15px;background:var(--s2);border:.5px solid var(--border);border-radius:12px;margin-bottom:8px;cursor:pointer;}
 .social-cal-header{text-align:center;font-family:var(--fm);font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;padding:4px 0;}
 .social-cal-day{min-height:52px;border-radius:8px;padding:4px 5px;background:var(--s1);border:.5px solid var(--border);cursor:pointer;transition:all .14s;position:relative;}
 .social-cal-day:hover{border-color:var(--border2);background:var(--s2);}
@@ -1889,20 +1907,19 @@ body.theme-mono .sidebar{background:linear-gradient(180deg,rgba(22,28,38,.97),rg
     </div>
   </div>
   <div class="nav">
-    <div class="nav-sec">Daily</div>
-    <div class="ni active" onclick="nav('dashboard')"><i class="ti ti-layout-dashboard"></i><span>Dashboard</span></div>
-    <div class="ni" onclick="nav('log')"><i class="ti ti-notebook"></i><span>Log</span></div>
+    <div class="nav-sec">Core</div>
     <div class="ni" onclick="nav('quests')"><i class="ti ti-sword"></i><span>Quests</span><span class="bdg" id="quest-bdg">0</span></div>
-    <div class="ni" onclick="nav('missions')"><i class="ti ti-target"></i><span>Missions</span></div>
-    <div class="nav-sec">Progression</div>
+    <div class="ni" onclick="nav('log')"><i class="ti ti-notebook"></i><span>Log</span></div>
     <div class="ni" onclick="nav('skilltrees')"><i class="ti ti-plant-2"></i><span>Skill Trees</span></div>
-    <div class="ni" onclick="nav('skillpaths')"><i class="ti ti-planet"></i><span>Map</span></div>
-    <div class="ni" onclick="nav('rules')"><i class="ti ti-shield-bolt"></i><span>Rules</span></div>
     <div class="nav-sec">World</div>
+    <div class="ni active" onclick="nav('dashboard')"><i class="ti ti-layout-dashboard"></i><span>Dashboard</span></div>
     <div class="ni" onclick="nav('world')"><i class="ti ti-photo"></i><span>World</span></div>
-    <div class="ni" onclick="nav('social')"><i class="ti ti-calendar-event"></i><span>Social</span></div>
+    <div class="ni" onclick="nav('shop')"><i class="ti ti-basket"></i><span>Shop</span></div>
+    <div class="ni" onclick="nav('mastergrid')"><i class="ti ti-calendar-event"></i><span>Master Grid</span></div>
+    <div class="nav-sec">Reference</div>
+    <div class="ni" onclick="nav('rules')"><i class="ti ti-shield-bolt"></i><span>Rules</span></div>
+    <div class="ni" onclick="nav('skillpaths')"><i class="ti ti-planet"></i><span>Map</span></div>
     <div class="ni" onclick="nav('arcs')"><i class="ti ti-clock-bolt"></i><span>Timeframe</span></div>
-    <div class="ni" onclick="nav('achievements')"><i class="ti ti-trophy"></i><span>Achievements</span></div>
     <div class="nav-sec">Tools</div>
     <div class="ni" onclick="nav('edit')"><i class="ti ti-edit"></i><span>Edit Tasks</span></div>
   </div>
@@ -2061,6 +2078,26 @@ body.theme-mono .sidebar{background:linear-gradient(180deg,rgba(22,28,38,.97),rg
 
 
 <!-- SESSION SKILL PICKER -->
+<div class="sync-overlay" id="structured-modal-overlay" onclick="if(event.target===this)closeStructuredModal()">
+  <div class="sync-panel" style="max-width:560px;max-height:85vh;display:flex;flex-direction:column">
+    <div class="sync-hdr" style="flex-shrink:0">
+      <div>
+        <div style="font-family:var(--fd);font-size:20px;color:var(--text)">📋 Structured Routine</div>
+        <div style="font-family:var(--fm);font-size:9px;color:var(--muted);margin-top:2px">The same daily sequence, in order</div>
+      </div>
+      <button onclick="closeStructuredModal()" style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.07);border:.5px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer"><i class="ti ti-x"></i></button>
+    </div>
+    <div style="padding:16px;overflow-y:auto">
+      <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 16px">Habit stacking — the same sequence, every day, until it runs on autopilot. Checking an item here checks it off everywhere else too.</p>
+      <div style="display:flex;gap:8px;margin-bottom:20px">
+        <button id="routine-mode-regular" onclick="setRoutineMode('regular')" style="flex:1;padding:11px;border-radius:11px;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:1px solid rgba(168,85,247,.5);background:rgba(168,85,247,.18);color:#c084fc">☀️ REGULAR</button>
+        <button id="routine-mode-busy" onclick="setRoutineMode('busy')" style="flex:1;padding:11px;border-radius:11px;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--muted)">⚡ BUSY DAY</button>
+      </div>
+      <div id="routine-busy-note" style="display:none;font-size:11px;color:rgba(248,113,113,.7);line-height:1.5;margin-bottom:16px;padding:10px 12px;background:rgba(239,68,68,.06);border:.5px solid rgba(239,68,68,.2);border-radius:10px">⚡ Busy Day Mode — full morning routine stays, gym included. Daily and Evening are filtered to only what you've starred ⭐ as non-negotiable.</div>
+      <div id="routine-content"></div>
+    </div>
+  </div>
+</div>
 <div class="sync-overlay" id="curriculum-picker-overlay" onclick="if(event.target===this)closeCurriculumPicker()">
   <div class="sync-panel" style="max-width:440px;max-height:80vh;display:flex;flex-direction:column">
     <div class="sync-hdr" style="flex-shrink:0">
@@ -2152,25 +2189,23 @@ body.theme-mono .sidebar{background:linear-gradient(180deg,rgba(22,28,38,.97),rg
 <div id="page-quests" class="page">
   <div class="page-eyebrow">⬡ Variant-24</div>
   <div class="page-title">QUESTS</div>
-  <div style="display:flex;gap:8px;margin:12px 0 18px">
-    <button id="qhub-tab-structured" onclick="setQuestsSubTab('structured')" style="flex:1;padding:11px;border-radius:11px;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--muted)">📋 STRUCTURED</button>
-    <button id="qhub-tab-independent" onclick="setQuestsSubTab('independent')" style="flex:1;padding:11px;border-radius:11px;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:1px solid rgba(59,130,246,.5);background:rgba(59,130,246,.18);color:#60a5fa">⚡ INDEPENDENT</button>
-  </div>
-
-  <!-- STRUCTURED = the daily Routine sequence -->
-  <div id="qhub-structured" style="display:none">
-    <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 16px">Habit stacking — the same sequence, every day, until it runs on autopilot. Checking an item here checks it off everywhere else too.</p>
-    <div style="display:flex;gap:8px;margin-bottom:20px">
-      <button id="routine-mode-regular" onclick="setRoutineMode('regular')" style="flex:1;padding:11px;border-radius:11px;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:1px solid rgba(168,85,247,.5);background:rgba(168,85,247,.18);color:#c084fc">☀️ REGULAR</button>
-      <button id="routine-mode-busy" onclick="setRoutineMode('busy')" style="flex:1;padding:11px;border-radius:11px;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--muted)">⚡ BUSY DAY</button>
+  <div onclick="openStructuredModal()" style="display:flex;align-items:center;gap:10px;padding:11px 15px;background:rgba(168,85,247,.08);border:.5px solid rgba(168,85,247,.3);border-radius:12px;margin:12px 0;cursor:pointer">
+    <span style="font-size:16px">📋</span>
+    <div style="flex:1">
+      <div style="font-size:12.5px;color:#fff;font-weight:600">Structured Routine View</div>
+      <div style="font-size:10.5px;color:var(--muted)">The same daily sequence, in order — tap to open</div>
     </div>
-    <div id="routine-busy-note" style="display:none;font-size:11px;color:rgba(248,113,113,.7);line-height:1.5;margin-bottom:16px;padding:10px 12px;background:rgba(239,68,68,.06);border:.5px solid rgba(239,68,68,.2);border-radius:10px">⚡ Busy Day Mode — full morning routine stays, gym included. Daily and Evening are filtered to only what you've starred ⭐ as non-negotiable.</div>
-    <div id="routine-content"></div>
+    <i class="ti ti-chevron-right" style="color:rgba(255,255,255,.3)"></i>
+  </div>
+  <div style="display:flex;gap:6px;margin:12px 0 18px;flex-wrap:wrap">
+    <button id="qhub-tab-dailies" onclick="setQuestsSubTab('dailies')" style="flex:1;min-width:90px;padding:10px 8px;border-radius:11px;font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:.04em;cursor:pointer;border:1px solid rgba(59,130,246,.5);background:rgba(59,130,246,.18);color:#60a5fa">⚡ DAILIES</button>
+    <button id="qhub-tab-habits" onclick="setQuestsSubTab('habits')" style="flex:1;min-width:90px;padding:10px 8px;border-radius:11px;font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:.04em;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--muted)">🔁 HABITS</button>
+    <button id="qhub-tab-errands" onclick="setQuestsSubTab('errands')" style="flex:1;min-width:90px;padding:10px 8px;border-radius:11px;font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:.04em;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--muted)">✅ ERRANDS</button>
+    <button id="qhub-tab-quests" onclick="setQuestsSubTab('quests')" style="flex:1;min-width:90px;padding:10px 8px;border-radius:11px;font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:.04em;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--muted)">🎯 QUESTS</button>
   </div>
 
-  <!-- INDEPENDENT = Daily Quests + Habits, combined -->
-  <div id="qhub-independent">
-    <div style="font-family:var(--fd);font-size:20px;color:#fff;margin-bottom:10px">Daily Quests</div>
+  <!-- DAILIES = the daily quest list + calendar -->
+  <div id="qhub-dailies" style="display:none">
     <div class="week-nav" id="week-nav" style="margin-bottom:16px"></div>
     <div class="day-tabs" id="day-tabs"></div>
     <div id="quest-day-header"></div>
@@ -2183,10 +2218,10 @@ body.theme-mono .sidebar{background:linear-gradient(180deg,rgba(22,28,38,.97),rg
       </div>
       <button class="reorder-btn" id="reorder-btn" onclick="toggleReorderMode()"><i class="ti ti-arrows-sort"></i>Reorder</button>
     </div>
+  </div>
 
-    <div style="height:1px;background:rgba(255,255,255,.08);margin:28px 0"></div>
-
-    <div style="font-family:var(--fd);font-size:20px;color:#fff;margin-bottom:10px">Habits</div>
+  <!-- HABITS -->
+  <div id="qhub-habits" style="display:none">
     <div class="grid4" id="habit-metrics" style="margin-bottom:18px;"></div>
     <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px">
       <button id="habit-reorder-btn" class="btn btn-ghost btn-sm" onclick="toggleHabitReorder()" style="gap:5px"><i class="ti ti-arrows-sort"></i> Reorder</button>
@@ -2194,6 +2229,35 @@ body.theme-mono .sidebar{background:linear-gradient(180deg,rgba(22,28,38,.97),rg
     </div>
     <div id="habits-reorder-panel" style="display:none;margin-bottom:20px;background:rgba(12,0,28,.7);border:.5px solid rgba(168,85,247,.2);border-radius:14px;padding:14px"></div>
     <div id="habits-content"></div>
+  </div>
+
+  <!-- ERRANDS = a real to-do list, optional due dates -->
+  <div id="qhub-errands" style="display:none">
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 16px">Quick to-dos — add a due date if it matters, skip it if it doesn't.</p>
+    <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+      <input id="errand-input" class="form-input" style="flex:1;min-width:180px;padding:12px 14px;font-size:14px" placeholder="Add an errand..." onkeydown="if(event.key==='Enter')addErrand()">
+      <input id="errand-date-input" type="date" class="form-input" style="width:auto;padding:12px 10px;font-size:13px" title="Optional due date">
+      <button class="btn btn-primary" onclick="addErrand()"><i class="ti ti-plus"></i> Add</button>
+    </div>
+    <div id="errands-list"></div>
+  </div>
+
+  <!-- QUESTS = self-added objectives (formerly Missions > General) + Free Time -->
+  <div id="qhub-quests" style="display:none">
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px">Objectives you add yourself. No deadline required — just things you want to accomplish.</p>
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:22px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="openMissionModal()"><i class="ti ti-plus"></i> Add Mission</button>
+      <button class="btn btn-ghost mission-filter-btn active-filter" id="mf-all" onclick="setMissionFilter('all')">All</button>
+      <button class="btn btn-ghost mission-filter-btn" id="mf-active" onclick="setMissionFilter('active')">Active</button>
+      <button class="btn btn-ghost mission-filter-btn" id="mf-done" onclick="setMissionFilter('done')">Done</button>
+    </div>
+    <div id="general-missions-list"></div>
+
+    <div style="height:1px;background:rgba(255,255,255,.08);margin:28px 0"></div>
+    <div style="font-family:var(--fd);font-size:19px;color:#fff;margin-bottom:8px">🕐 Free Time</div>
+    <p style="font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:14px">Skills you're not actively training daily, but still want to keep progressing. No schedule, no streak pressure.</p>
+    <div id="freetime-cat-filters" style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px"></div>
+    <div id="freetime-list"></div>
   </div>
 </div>
 
@@ -2229,7 +2293,7 @@ body.theme-mono .sidebar{background:linear-gradient(180deg,rgba(22,28,38,.97),rg
       <div class="sd-tab" id="sdt-session" onclick="sdTab('session')"><i class="ti ti-player-play"></i>Session</div>
       <div class="sd-tab" id="sdt-notes" onclick="sdTab('notes')"><i class="ti ti-notes"></i>Notes</div>
       <div class="sd-tab" id="sdt-quests" onclick="sdTab('quests')"><i class="ti ti-sword"></i>Quests</div>
-      <div class="sd-tab" id="sdt-achieve" onclick="sdTab('achieve')"><i class="ti ti-trophy"></i>Achievements</div>
+      <div class="sd-tab" id="sdt-achieve" onclick="sdTab('achieve')"><i class="ti ti-trophy"></i>Skill Tree</div>
       <div class="sd-tab" id="sdt-curriculum" onclick="sdTab('curriculum')" style="white-space:nowrap"><i class="ti ti-school"></i>Curriculum</div>
       <div class="sd-tab" id="sdt-skills" onclick="sdTab('skills')" style="white-space:nowrap;display:none"><i class="ti ti-stairs-up"></i>Skills</div>
       <div class="sd-tab" id="sdt-routines" onclick="sdTab('routines')" style="white-space:nowrap;display:none"><i class="ti ti-calendar-bolt"></i>Routines</div>
@@ -2469,20 +2533,110 @@ body.theme-mono .sidebar{background:linear-gradient(180deg,rgba(22,28,38,.97),rg
 
 <!-- STORY -->
 <!-- SOCIAL CALENDAR -->
-<div id="page-social" class="page">
-  <div class="page-eyebrow">⬡ Social Skill Tree</div>
-  <div class="page-title">SOCIAL<br>CALENDAR</div>
-  <p style="font-size:13px;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:24px">Your social life, tracked. Parties, dinners, events, obligations — log everything here. Each event earns Social XP.</p>
-  <div style="display:flex;gap:10px;align-items:center;margin-bottom:20px;flex-wrap:wrap">
-    <button class="btn btn-primary" onclick="openSocialEventModal()"><i class="ti ti-plus"></i>Add Event</button>
-    <div style="display:flex;gap:8px;align-items:center;margin-left:auto">
-      <button class="btn btn-ghost btn-sm" onclick="socialCalPrev()"><i class="ti ti-chevron-left"></i></button>
-      <div id="social-month-label" style="font-family:var(--fd);font-size:18px;color:var(--text);min-width:140px;text-align:center"></div>
-      <button class="btn btn-ghost btn-sm" onclick="socialCalNext()"><i class="ti ti-chevron-right"></i></button>
+<div id="page-shop" class="page">
+  <div class="page-eyebrow">⬡ Variant-24</div>
+  <div class="page-title">SHOP</div>
+  <div style="background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(217,119,6,.05));border:1px solid rgba(251,191,36,.3);border-radius:16px;padding:20px 18px;margin:14px 0 22px;text-align:center">
+    <div style="font-family:var(--fm);font-size:9px;color:#fbbf24;letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px">Your Wallet</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px">
+      <span style="font-size:32px">🪙</span>
+      <span id="shop-coin-balance" style="font-family:var(--fd);font-size:44px;color:#fbbf24;text-shadow:0 0 24px rgba(251,191,36,.6)">0</span>
+    </div>
+    <div style="font-family:var(--fm);font-size:9px;color:rgba(255,255,255,.4);margin-top:4px">Earned from every quest, habit, node, and level-up</div>
+    <div style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:5px 12px;background:rgba(34,197,94,.1);border:.5px solid rgba(34,197,94,.3);border-radius:99px">
+      <i class="ti ti-trending-up" style="font-size:11px;color:#4ade80"></i>
+      <span style="font-family:var(--fm);font-size:9.5px;color:#4ade80">~<span id="shop-daily-rate-display">0</span> coins/day at your current pace</span>
     </div>
   </div>
-  <div class="social-cal-grid" id="social-cal-grid"></div>
-  <div id="social-upcoming" style="margin-top:24px"></div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+    <div style="font-family:var(--fd);font-size:19px;color:#fff">🎯 Saving Up For</div>
+    <button class="btn btn-primary btn-sm" onclick="openShopItemModal('specific')"><i class="ti ti-plus"></i> Add Goal</button>
+  </div>
+  <div id="shop-specific-list" style="margin-bottom:28px"></div>
+
+  <div style="font-family:var(--fd);font-size:19px;color:#fff;margin-bottom:6px">🛍️ Rewards</div>
+  <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px">Real things you actually do or buy for yourself — the coins just decide when you've earned it.</p>
+  <div id="shop-categories"></div>
+</div>
+
+<!-- SHOP ITEM MODAL -->
+<div class="sync-overlay" id="shop-item-modal" onclick="if(event.target===this)closeShopItemModal()">
+  <div class="sync-panel" style="max-width:380px">
+    <div class="sync-hdr">
+      <div id="shop-modal-title" style="font-family:var(--fd);font-size:19px;color:var(--text)">Add Reward</div>
+      <button onclick="closeShopItemModal()" style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.07);border:.5px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer"><i class="ti ti-x"></i></button>
+    </div>
+    <div style="padding:16px;max-height:80vh;overflow-y:auto">
+      <input id="shop-item-name" class="form-input" placeholder="What is it?" style="width:100%;margin-bottom:10px">
+      <div id="shop-item-cat-field" style="margin-bottom:10px">
+        <select id="shop-item-category" class="form-input" style="width:100%">
+          <option value="character">Character</option>
+          <option value="gear">Skill Tree Gear</option>
+          <option value="cosmetics">Cosmetics</option>
+          <option value="activities">Activities</option>
+        </select>
+      </div>
+      <div style="font-family:var(--fm);font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">How big a deal is this?</div>
+      <div id="shop-rarity-picker" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"></div>
+      <input id="shop-item-cost" type="number" min="1" class="form-input" placeholder="Cost in coins" style="width:100%;margin-bottom:4px" oninput="updateShopCostHint()">
+      <div id="shop-cost-hint" style="font-family:var(--fm);font-size:10px;color:var(--muted);margin-bottom:14px">Pick a tier above, or set your own — you earn about <span id="shop-daily-rate"></span> coins/day right now.</div>
+      <input id="shop-item-image" class="form-input" placeholder="Image URL (optional)" style="width:100%;margin-bottom:14px">
+      <button class="btn btn-primary" style="width:100%" onclick="saveShopItem()">Save</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- MASTER GRID — calendar with color-coded filters -->
+<div id="page-mastergrid" class="page">
+  <div class="page-eyebrow">⬡ Variant-24</div>
+  <div class="page-title">MASTER GRID</div>
+  <p style="font-size:13px;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:18px">Plans, bills, birthdays — everything that has a date. Tag it with a filter or mark it General, times and due dates are optional.</p>
+
+  <div style="display:flex;gap:8px;margin-bottom:16px">
+    <button id="mg-view-month" onclick="setMasterGridView('month')" style="flex:1;padding:10px;border-radius:11px;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:1px solid rgba(168,85,247,.5);background:rgba(168,85,247,.18);color:#c084fc">📅 MONTH</button>
+    <button id="mg-view-week" onclick="setMasterGridView('week')" style="flex:1;padding:10px;border-radius:11px;font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--muted)">📆 WEEK</button>
+  </div>
+
+  <div id="mg-filters-bar" style="margin-bottom:10px"></div>
+  <div id="mg-newfilter-panel" style="display:none;margin-bottom:16px"></div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:10px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:10px">
+      <button onclick="mgNavPrev()" style="width:36px;height:36px;border-radius:10px;background:rgba(168,85,247,.1);border:.5px solid rgba(168,85,247,.25);color:#c084fc;cursor:pointer;font-size:18px">‹</button>
+      <div id="mg-period-label" style="font-family:var(--fd);font-size:22px;color:#fff;min-width:170px;text-align:center"></div>
+      <button onclick="mgNavNext()" style="width:36px;height:36px;border-radius:10px;background:rgba(168,85,247,.1);border:.5px solid rgba(168,85,247,.25);color:#c084fc;cursor:pointer;font-size:18px">›</button>
+    </div>
+    <button class="btn btn-primary" onclick="openMgEventModal()"><i class="ti ti-plus"></i> Add Event</button>
+  </div>
+
+  <div id="mg-month-view"><div class="mg-cal-grid" id="mg-cal-grid"></div></div>
+  <div id="mg-week-view" style="display:none"><div class="mg-week-grid" id="mg-week-grid"></div></div>
+
+  <div id="mg-upcoming" style="margin-top:26px"></div>
+</div>
+
+<!-- MASTER GRID EVENT MODAL -->
+<div class="sync-overlay" id="mg-event-modal" onclick="if(event.target===this)closeMgEventModal()">
+  <div class="sync-panel" style="max-width:420px;max-height:85vh;display:flex;flex-direction:column">
+    <div class="sync-hdr" style="flex-shrink:0">
+      <div id="mg-modal-title" style="font-family:var(--fd);font-size:19px;color:var(--text)">Add Event</div>
+      <button onclick="closeMgEventModal()" style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.07);border:.5px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer"><i class="ti ti-x"></i></button>
+    </div>
+    <div style="padding:16px;overflow-y:auto">
+      <input type="hidden" id="mg-edit-id">
+      <input id="mg-event-title" class="form-input" placeholder="What's happening?" style="width:100%;margin-bottom:10px">
+      <div style="display:flex;gap:10px;margin-bottom:10px">
+        <input id="mg-event-date" type="date" class="form-input" style="flex:1">
+        <input id="mg-event-time" type="time" class="form-input" style="flex:1" title="Optional time">
+      </div>
+      <div style="font-family:var(--fm);font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Tag it — or mark General</div>
+      <div id="mg-event-filter-picker" style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px"></div>
+      <button class="btn btn-primary" style="width:100%;margin-bottom:8px" onclick="saveMgEvent()">Save</button>
+      <button id="mg-delete-btn" class="btn btn-ghost" style="width:100%;display:none;color:#f87171" onclick="deleteMgEvent()">Delete Event</button>
+    </div>
+  </div>
 </div>
 
 <!-- SOCIAL EVENT MODAL -->
@@ -2518,57 +2672,6 @@ body.theme-mono .sidebar{background:linear-gradient(180deg,rgba(22,28,38,.97),rg
         <button class="btn btn-primary" style="flex:1" onclick="saveSocialEvent()"><i class="ti ti-check"></i>Save Event</button>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- DAILY TO-DO & NOTES PAGE -->
-<div id="page-missions" class="page">
-  <div class="page-eyebrow">⬡ Variant-24</div>
-  <div class="page-title">MISSIONS</div>
-
-  <!-- Section tabs -->
-  <div style="display:flex;gap:6px;border-bottom:.5px solid rgba(168,85,247,.2);margin-bottom:24px">
-    <button id="ms-tab-daily"   onclick="setMissionsTab('daily')"   style="font-family:var(--fm);font-size:13px;font-weight:700;padding:12px 22px;border:none;border-bottom:3px solid #a855f7;background:transparent;color:#c084fc;cursor:pointer;text-transform:uppercase;letter-spacing:.1em">Daily</button>
-    <button id="ms-tab-general" onclick="setMissionsTab('general')" style="font-family:var(--fm);font-size:13px;font-weight:700;padding:12px 22px;border:none;border-bottom:3px solid transparent;background:transparent;color:var(--muted);cursor:pointer;text-transform:uppercase;letter-spacing:.1em">General</button>
-    <button id="ms-tab-freetime" onclick="setMissionsTab('freetime')" style="font-family:var(--fm);font-size:11px;padding:12px 18px;border:none;border-bottom:3px solid transparent;background:transparent;color:var(--muted);cursor:pointer;text-transform:uppercase;letter-spacing:.1em;white-space:nowrap">Free Time</button>
-  </div>
-
-  <!-- ── DAILY SECTION ── -->
-  <div id="ms-section-daily">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px">
-      <div onclick="todoNavDate(-1)" style="width:40px;height:40px;border-radius:11px;background:rgba(168,85,247,.1);border:.5px solid rgba(168,85,247,.25);color:#c084fc;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;flex-shrink:0">‹</div>
-      <div id="todo-date-label" style="font-family:var(--fd);font-size:28px;color:#fff;flex:1;text-align:center"></div>
-      <div id="todo-next-btn" onclick="todoNavDate(1)" style="width:40px;height:40px;border-radius:11px;background:rgba(168,85,247,.1);border:.5px solid rgba(168,85,247,.25);color:#c084fc;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;flex-shrink:0">›</div>
-    </div>
-    <div id="todo-stats" style="display:flex;gap:12px;margin-bottom:26px;flex-wrap:wrap"></div>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-      <div class="sec-label" style="font-size:13px">◈ TO-DO LIST</div>
-      <div id="todo-progress-label" style="font-family:var(--fm);font-size:12px;color:var(--muted)"></div>
-    </div>
-    <div id="todo-list" style="display:flex;flex-direction:column;gap:9px;margin-bottom:14px"></div>
-    <div style="display:flex;gap:10px;margin-bottom:28px">
-      <input id="todo-input" class="form-input" style="flex:1;padding:14px 16px;font-size:15px" placeholder="Add a task..." onkeydown="if(event.key==='Enter')addTodoItem()">
-      <button class="btn btn-primary" style="padding:14px 22px;font-size:14px" onclick="addTodoItem()"><i class="ti ti-plus"></i> Add</button>
-    </div>
-  </div>
-
-  <!-- ── GENERAL SECTION ── -->
-  <div id="ms-section-general" style="display:none">
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:18px">Objectives you add yourself. No deadline required — just things you want to accomplish.</p>
-    <div style="display:flex;gap:10px;align-items:center;margin-bottom:22px;flex-wrap:wrap">
-      <button class="btn btn-primary" style="padding:13px 22px;font-size:14px" onclick="openMissionModal()"><i class="ti ti-plus"></i> Add Mission</button>
-      <button class="btn btn-ghost mission-filter-btn active-filter" id="mf-all" style="padding:11px 18px;font-size:13px" onclick="setMissionFilter('all')">All</button>
-      <button class="btn btn-ghost mission-filter-btn" id="mf-active" style="padding:11px 18px;font-size:13px" onclick="setMissionFilter('active')">Active</button>
-      <button class="btn btn-ghost mission-filter-btn" id="mf-done" style="padding:11px 18px;font-size:13px" onclick="setMissionFilter('done')">Done</button>
-    </div>
-    <div id="general-missions-list"></div>
-  </div>
-
-  <!-- ── FREE TIME SECTION ── -->
-  <div id="ms-section-freetime" style="display:none">
-    <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px">Skills you're not actively training daily, but still want to keep progressing. No schedule, no streak pressure — pick something when you feel like it, log it, bank the XP.</p>
-    <div id="freetime-cat-filters" style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px"></div>
-    <div id="freetime-list"></div>
   </div>
 </div>
 
@@ -2944,7 +3047,7 @@ body.theme-mono .sidebar{background:linear-gradient(180deg,rgba(22,28,38,.97),rg
     <div class="sd-tab" id="sdt-session" onclick="sdTab('session')"><i class="ti ti-player-play"></i>Session</div>
     <div class="sd-tab" id="sdt-notes" onclick="sdTab('notes')"><i class="ti ti-notes"></i>Notes</div>
     <div class="sd-tab" id="sdt-quests" onclick="sdTab('quests')"><i class="ti ti-sword"></i>Quests</div>
-    <div class="sd-tab" id="sdt-achieve" onclick="sdTab('achieve')"><i class="ti ti-trophy"></i>Achievements</div>
+    <div class="sd-tab" id="sdt-achieve" onclick="sdTab('achieve')"><i class="ti ti-trophy"></i>Skill Tree</div>
     <div class="sd-tab" id="sdt-curriculum" onclick="sdTab('curriculum')" style="white-space:nowrap"><i class="ti ti-school"></i>Curriculum</div>
     <div class="sd-tab" id="sdt-skills" onclick="sdTab('skills')" style="white-space:nowrap;display:none"><i class="ti ti-stairs-up"></i>Skills</div>
     <div class="sd-tab" id="sdt-routines" onclick="sdTab('routines')" style="white-space:nowrap;display:none"><i class="ti ti-calendar-bolt"></i>Routines</div>
@@ -3063,6 +3166,34 @@ const DEFAULT_SKILLS=[
 // ── Achievement Trees (Skill Paths) ──
 // Each tree has an ultimate S-rank goal + sub-trees with progressive nodes
 // node.rank: D=entry, C=building, B=solid, A=elite, S=ultimate/legendary
+// Maps each achievement subtree to the SPECIFIC skill it belongs to — node XP must
+// go to the exact skill the node is about, not just "whichever skill happens to be
+// first in the list with a matching category tag" (which was the actual prior bug).
+const SUBTREE_TO_SKILL={
+  str:'gym', ten:'tennis', cal:'calisthenics', climb:'rockclimb', skate:'skateboard',
+  snow:'snowboard', ping:'pingpong', app:'appear', diet:'diet',
+  trade:'capital', save:'capitalNotes', biz:'content', cars:'cars',
+  books:'read', strat:'research', awareness:'rewire', visualization:'rewire',
+  travel:'travel', net:'social', charm:'social', listen:'social', kind:'social',
+};
+// Universal title ladder — level determines title, same ladder for every skill,
+// shown as "[Title] [Skill Name]" (e.g. "Adept Climber").
+const SKILL_TITLE_LADDER=[
+  {min:1, title:'Novice'},
+  {min:5, title:'Apprentice'},
+  {min:10,title:'Adept'},
+  {min:15,title:'Expert'},
+  {min:20,title:'Master'},
+  {min:25,title:'Grandmaster'},
+  {min:30,title:'Legend'},
+];
+function getSkillTitle(level){
+  let title='Novice';
+  for(let i=0;i<SKILL_TITLE_LADDER.length;i++){
+    if(level>=SKILL_TITLE_LADDER[i].min) title=SKILL_TITLE_LADDER[i].title;
+  }
+  return title;
+}
 const ACHIEVEMENT_TREES=[
   {
     id:'PHYSICAL',name:'Physical',emoji:'💪',color:'#ef4444',
@@ -3455,8 +3586,8 @@ const DEFAULT_CHAR={name:'Variant-24',avatar:'',hp:{current:85,max:100,color:'#e
 // ═══════════════════════════════════════════════════════════════
 function load(){
   const s=localStorage.getItem('sv_v4');
-  if(s){try{const d=JSON.parse(s);return{tasks:d.tasks||[...DEFAULT_TASKS],skills:d.skills||[...DEFAULT_SKILLS],habits:d.habits||[...DEFAULT_HABITS],arcs:d.arcs||[],chapters:d.chapters||[],inventory:d.inventory||[],achievements:d.achievements||[...DEFAULT_ACHIEVEMENTS],char:{...DEFAULT_CHAR,...(d.char||{})},done:d.done||{},hdone:d.hdone||{},nodesDone:d.nodesDone||{},skillNotes:d.skillNotes||{},curriculumProgress:d.curriculumProgress||{},sessionLogs:d.sessionLogs||{},socialEvents:d.socialEvents||[],missions:d.missions||[],reframeJournal:d.reframeJournal||{},questProgress:d.questProgress||{},questNotes:d.questNotes||{},challenges:d.challenges||[],weeklyIntentions:d.weeklyIntentions||{},dailyLogs:d.dailyLogs||{},worldPhotos:d.worldPhotos||[],worldBoards:d.worldBoards||[],mapPins:d.mapPins||[],mapLocations:d.mapLocations||null,rules:d.rules||{},dietData:d.dietData||null,_scheduleVersion:d._scheduleVersion||0,skillTreeDone:d.skillTreeDone||{},skillSessionLog:d.skillSessionLog||{},journal:d.journal!==undefined?d.journal:null,habitCore:d.habitCore||{},busyDayMode:d.busyDayMode||false,routineMode:d.routineMode||'regular',routineCore:d.routineCore||{},routineCustom:d.routineCustom||{morning:[],daily:[],evening:[]},journalTags:d.journalTags||[],journalFilters:d.journalFilters!==undefined?d.journalFilters:null,journalBookmarks:d.journalBookmarks||[],paycheckLog:d.paycheckLog||[],wardrobePhotos:d.wardrobePhotos||[],wardrobeBoards:d.wardrobeBoards||[],wardrobeNotes:d.wardrobeNotes!==undefined?d.wardrobeNotes:'',_journalIsHtml:d._journalIsHtml||false,_journalSpacingFixed:d._journalSpacingFixed||false};}catch(e){}}
-  return{tasks:JSON.parse(JSON.stringify(DEFAULT_TASKS)),skills:JSON.parse(JSON.stringify(DEFAULT_SKILLS)),habits:JSON.parse(JSON.stringify(DEFAULT_HABITS)),arcs:[],chapters:[],inventory:[],achievements:JSON.parse(JSON.stringify(DEFAULT_ACHIEVEMENTS)),char:JSON.parse(JSON.stringify(DEFAULT_CHAR)),done:{},hdone:{},nodesDone:{},skillNotes:{},curriculumProgress:{},sessionLogs:{},socialEvents:[],missions:[],reframeJournal:{},questProgress:{},questNotes:{},challenges:[],weeklyIntentions:{},dailyLogs:{},worldPhotos:[],worldBoards:[],mapPins:[],mapLocations:null,rules:{},dietData:null,_scheduleVersion:0,skillTreeDone:{},skillSessionLog:{},journal:null,habitCore:{},busyDayMode:false,routineMode:'regular',routineCore:{},routineCustom:{morning:[],daily:[],evening:[]},journalTags:[],journalFilters:null,journalBookmarks:[],paycheckLog:[],wardrobePhotos:[],wardrobeBoards:[],wardrobeNotes:'',_journalIsHtml:false,_journalSpacingFixed:false};
+  if(s){try{const d=JSON.parse(s);return{tasks:d.tasks||[...DEFAULT_TASKS],skills:d.skills||[...DEFAULT_SKILLS],habits:d.habits||[...DEFAULT_HABITS],arcs:d.arcs||[],chapters:d.chapters||[],inventory:d.inventory||[],achievements:d.achievements||[...DEFAULT_ACHIEVEMENTS],char:{...DEFAULT_CHAR,...(d.char||{})},done:d.done||{},hdone:d.hdone||{},nodesDone:d.nodesDone||{},skillNotes:d.skillNotes||{},curriculumProgress:d.curriculumProgress||{},sessionLogs:d.sessionLogs||{},socialEvents:d.socialEvents||[],missions:d.missions||[],reframeJournal:d.reframeJournal||{},questProgress:d.questProgress||{},questNotes:d.questNotes||{},challenges:d.challenges||[],weeklyIntentions:d.weeklyIntentions||{},dailyLogs:d.dailyLogs||{},worldPhotos:d.worldPhotos||[],worldBoards:d.worldBoards||[],mapPins:d.mapPins||[],mapLocations:d.mapLocations||null,rules:d.rules||{},dietData:d.dietData||null,_scheduleVersion:d._scheduleVersion||0,skillTreeDone:d.skillTreeDone||{},skillSessionLog:d.skillSessionLog||{},journal:d.journal!==undefined?d.journal:null,habitCore:d.habitCore||{},busyDayMode:d.busyDayMode||false,routineMode:d.routineMode||'regular',routineCore:d.routineCore||{},routineCustom:d.routineCustom||{morning:[],daily:[],evening:[]},journalTags:d.journalTags||[],journalFilters:d.journalFilters!==undefined?d.journalFilters:null,journalBookmarks:d.journalBookmarks||[],paycheckLog:d.paycheckLog||[],wardrobePhotos:d.wardrobePhotos||[],wardrobeBoards:d.wardrobeBoards||[],wardrobeNotes:d.wardrobeNotes!==undefined?d.wardrobeNotes:'',_journalIsHtml:d._journalIsHtml||false,_journalSpacingFixed:d._journalSpacingFixed||false,errands:d.errands||[],coins:d.coins!==undefined?d.coins:0,coinLog:d.coinLog||[],shopItems:d.shopItems||[],_coinsBackfilled:d._coinsBackfilled||false,calendarEvents:d.calendarEvents||[],calendarFilters:d.calendarFilters||[]};}catch(e){}}
+  return{tasks:JSON.parse(JSON.stringify(DEFAULT_TASKS)),skills:JSON.parse(JSON.stringify(DEFAULT_SKILLS)),habits:JSON.parse(JSON.stringify(DEFAULT_HABITS)),arcs:[],chapters:[],inventory:[],achievements:JSON.parse(JSON.stringify(DEFAULT_ACHIEVEMENTS)),char:JSON.parse(JSON.stringify(DEFAULT_CHAR)),done:{},hdone:{},nodesDone:{},skillNotes:{},curriculumProgress:{},sessionLogs:{},socialEvents:[],missions:[],reframeJournal:{},questProgress:{},questNotes:{},challenges:[],weeklyIntentions:{},dailyLogs:{},worldPhotos:[],worldBoards:[],mapPins:[],mapLocations:null,rules:{},dietData:null,_scheduleVersion:0,skillTreeDone:{},skillSessionLog:{},journal:null,habitCore:{},busyDayMode:false,routineMode:'regular',routineCore:{},routineCustom:{morning:[],daily:[],evening:[]},journalTags:[],journalFilters:null,journalBookmarks:[],paycheckLog:[],wardrobePhotos:[],wardrobeBoards:[],wardrobeNotes:'',_journalIsHtml:false,_journalSpacingFixed:false,errands:[],coins:0,coinLog:[],shopItems:[],_coinsBackfilled:true,calendarEvents:[],calendarFilters:[]};
 }
 function save(){
   try{
@@ -3584,6 +3715,19 @@ if(D.char.name==='Spider-Variant'){D.char.name='Variant-24';save();}
   // Add diet skill if missing
   if(!D.skills.find(function(x){return x.id==='diet';})){
     D.skills.push({id:'diet',name:'Diet',mainTree:'PHYSICAL',tag:'PHYSICAL',totalXP:0,target:300,color:'#84cc16',cover:'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80',neonColor:'rgba(132,204,22,.5)'});
+    changed=true;
+  }
+  // One-time backfill: award coins for progress already made before the coin system
+  // existed, using the exact same conversion (coins = XP) that new completions use —
+  // so someone already at level 4+ doesn't start the Shop at zero.
+  if(!D._coinsBackfilled){
+    const totalXPAllSkills=D.skills.reduce(function(a,s){return a+(s.totalXP||0);},0);
+    if(totalXPAllSkills>0){
+      D.coins=(D.coins||0)+totalXPAllSkills;
+      if(!D.coinLog) D.coinLog=[];
+      D.coinLog.unshift({amount:totalXPAllSkills,reason:'Backfill — credit for progress already made',at:Date.now()});
+    }
+    D._coinsBackfilled=true;
     changed=true;
   }
   // Wardrobe is no longer a skill tree — it moved to a tab under World. Clean up any
@@ -3874,7 +4018,8 @@ function renderPage(p){
   }
   if(p==='skillpaths')   renderSkillPaths();
   if(p==='world')        setWorldSubTab(window._worldSubTab||'gallery');
-  if(p==='social')       renderSocialCal();
+  if(p==='shop')          renderShop();
+  if(p==='mastergrid')    renderMasterGrid();
   if(p==='missions')     renderMissions();
   if(p==='arcs')         renderArcs();
   if(p==='inventory')    renderInventory();
@@ -3962,7 +4107,47 @@ function getCategoryStats(){
   });
 }
 
+function renderRuleOfDay(){
+  const el=$('rule-of-day-card'); if(!el) return;
+  if(!D.rules) D.rules={};
+  const allRules=[];
+  RULE_CATEGORIES.forEach(function(cat){
+    (D.rules[cat.id]||[]).forEach(function(r){ allRules.push({rule:r,cat:cat}); });
+  });
+  if(!allRules.length){
+    el.innerHTML=`<div onclick="nav('rules')" style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:rgba(56,189,248,.06);border:.5px solid rgba(56,189,248,.25);border-radius:12px;margin:14px 0;cursor:pointer">
+      <div style="font-size:18px;flex-shrink:0">🔱</div>
+      <div style="flex:1">
+        <div style="font-size:13px;color:#fff;font-weight:600">You haven't set any Rules yet</div>
+        <div style="font-size:11px;color:var(--muted)">Tap to define the non-negotiables for who you're becoming</div>
+      </div>
+      <i class="ti ti-chevron-right" style="color:rgba(255,255,255,.3)"></i>
+    </div>`;
+    return;
+  }
+  // Deterministic by day-of-year so it's stable all day, then rotates tomorrow
+  const dayOfYear=Math.floor((TODAY-new Date(TODAY.getFullYear(),0,0))/86400000);
+  const pick=allRules[dayOfYear%allRules.length];
+  el.innerHTML=`<div onclick="nav('rules')" style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:${pick.cat.color}0f;border:.5px solid ${pick.cat.color}40;border-radius:12px;margin:14px 0;cursor:pointer">
+    <div style="font-size:18px;flex-shrink:0">${pick.cat.emoji}</div>
+    <div style="flex:1;min-width:0">
+      <div style="font-family:var(--fm);font-size:8px;color:${pick.cat.color};letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px">Rule of the Day · ${pick.cat.name}</div>
+      <div style="font-size:13px;color:#fff;font-weight:600;line-height:1.4">${pick.rule.text}</div>
+    </div>
+    <i class="ti ti-chevron-right" style="color:rgba(255,255,255,.3);flex-shrink:0"></i>
+  </div>`;
+}
+function getCurrentArc(){
+  if(!D.arcs||!D.arcs.length) return null;
+  const active=D.arcs.filter(function(a){return !a.completed;});
+  if(!active.length) return null;
+  const inRange=active.find(function(a){
+    return a.startDate&&a.endDate&&TODAY_STR>=a.startDate&&TODAY_STR<=a.endDate;
+  });
+  return inRange||active[active.length-1];
+}
 function renderDashboard(){
+  renderRuleOfDay();
   const c=D.char;
   const xp=getTotalXP(), lvl=Math.floor(xp/100)+1, lxp=xp%100;
   const tq=getDayTasks(TODAY.getDay()).filter(t=>t.xp>0);
@@ -4018,11 +4203,11 @@ function renderDashboard(){
   $('hud-root').innerHTML=`
     <div class="hud-topbar">
       <div class="hud-system-id">SYS://VARIANT-24 · LIFE-OS</div>
-      <div onclick="openCurriculumPicker()" style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:99px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.5);color:#bbf7d0;font-family:var(--fm);font-size:10px;letter-spacing:.08em;cursor:pointer;box-shadow:0 0 14px rgba(34,197,94,.3);flex-shrink:0"><i class="ti ti-school" style="font-size:13px"></i>LEARN</div>
-      <div onclick="nav('log')" style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:99px;background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.5);color:#e9d5ff;font-family:var(--fm);font-size:10px;letter-spacing:.08em;cursor:pointer;box-shadow:0 0 14px rgba(168,85,247,.3);flex-shrink:0"><i class="ti ti-notebook" style="font-size:13px"></i>LOG</div>
+      <div style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:99px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.4);color:#fdba74;font-family:var(--fm);font-size:10px;letter-spacing:.08em;flex-shrink:0"><i class="ti ti-flame" style="font-size:13px"></i>${D.habits.reduce((a,h)=>Math.max(a,h.streak||0),0)} DAY STREAK</div>
       <div class="hud-clock" id="hud-clock"></div>
       <div class="hud-corner-tag">◈ HUD_ACTIVE</div>
     </div>
+    <div id="rule-of-day-card"></div>
     <div class="hud-main-row">
       <div class="hud-char-panel">
         <div class="hud-char-frame">
@@ -4056,16 +4241,48 @@ function renderDashboard(){
       <div class="hud-center">
         <div class="hud-ring-row">
           <div class="hud-ring-card">${ring(qpct,'#a855f7')}<div class="hud-ring-val">${dq.length}/${tq.length}</div><div class="hud-ring-lbl">Quests</div></div>
-          <div class="hud-ring-card">${ring(hpct,'#ec4899')}<div class="hud-ring-val">${dh.length}/${th.length}</div><div class="hud-ring-lbl">Habits</div></div>
           ${catStats.map(cat=>`<div class="hud-ring-card">${ring(cat.pct,cat.color,22)}<div class="hud-ring-val" style="color:${cat.color};text-shadow:0 0 8px ${cat.color}80">L${cat.lvl}</div><div class="hud-ring-lbl">${cat.label}</div></div>`).join('')}
         </div>
         <div>
-          <div class="hud-ops-header"><div class="hud-ops-title">▶ DAILY OPS</div><div class="hud-ops-count">${dq.length} / ${tq.length} COMPLETE</div></div>
-          <div class="hud-quest-list">${questHTML}</div>
-          <div class="hud-comp-bar-wrap">
-            <div class="hud-comp-bar-top"><div class="hud-comp-pct">${qpct}%</div><div class="hud-comp-label">daily completion</div></div>
-            <div class="hud-comp-track"><div class="hud-comp-fill" style="width:${qpct}%"></div></div>
+          <div class="hud-ops-header"><div class="hud-ops-title">▶ COMMAND</div></div>
+          <div style="display:flex;gap:10px;margin-bottom:12px">
+            <div onclick="nav('shop')" style="flex:1;background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(217,119,6,.04));border:1px solid rgba(251,191,36,.3);border-radius:14px;padding:14px 16px;cursor:pointer;text-align:center">
+              <div style="font-size:22px;margin-bottom:4px">🪙</div>
+              <div style="font-family:var(--fd);font-size:24px;color:#fbbf24;text-shadow:0 0 14px rgba(251,191,36,.5)">${(D.coins||0).toLocaleString()}</div>
+              <div style="font-family:var(--fm);font-size:8px;color:rgba(251,191,36,.6);letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Wallet</div>
+            </div>
+            <div onclick="nav('quests')" style="flex:1;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.35);border-radius:14px;padding:14px 16px;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <i class="ti ti-sword" style="font-size:22px;color:#60a5fa;margin-bottom:4px"></i>
+              <div style="font-family:var(--fm);font-size:11px;color:#60a5fa;font-weight:700;letter-spacing:.06em">QUESTS</div>
+            </div>
+            <div onclick="nav('log')" style="flex:1;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.35);border-radius:14px;padding:14px 16px;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <i class="ti ti-notebook" style="font-size:22px;color:#c084fc;margin-bottom:4px"></i>
+              <div style="font-family:var(--fm);font-size:11px;color:#c084fc;font-weight:700;letter-spacing:.06em">LOG</div>
+            </div>
+            <div onclick="openCurriculumPicker()" style="flex:1;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.35);border-radius:14px;padding:14px 16px;cursor:pointer;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <i class="ti ti-school" style="font-size:22px;color:#4ade80;margin-bottom:4px"></i>
+              <div style="font-family:var(--fm);font-size:11px;color:#4ade80;font-weight:700;letter-spacing:.06em">LEARN</div>
+            </div>
           </div>
+          ${(function(){
+            const arc=getCurrentArc();
+            if(!arc||!arc.skills||!arc.skills.length) return '';
+            const arcSkills=arc.skills.map(function(sid){return D.skills.find(function(s){return s.id===sid;});}).filter(Boolean);
+            if(!arcSkills.length) return '';
+            return `<div style="margin-bottom:4px">
+              <div style="font-family:var(--fm);font-size:8px;color:rgba(200,160,255,.4);text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px">◈ ${_escHtml(arc.name)} — QUICK ACCESS</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                ${arcSkills.map(function(s){
+                  const slvl=Math.floor(s.totalXP/50)+1;
+                  return `<div onclick="openSkillDetail('${s.id}')" style="display:flex;align-items:center;gap:7px;padding:8px 12px;border-radius:10px;background:${s.color}12;border:1px solid ${s.color}35;cursor:pointer">
+                    <span style="font-size:14px">${s.emoji||'⭐'}</span>
+                    <span style="font-size:11.5px;color:#fff;font-weight:600">${s.name}</span>
+                    <span style="font-family:var(--fm);font-size:9px;color:${s.color}">L${slvl}</span>
+                  </div>`;
+                }).join('')}
+              </div>
+            </div>`;
+          })()}
         </div>
       </div>
       <div class="hud-right-panel">
@@ -4370,27 +4587,36 @@ function _renderRoutineSection(title,emoji,color,items,filterBusy,sectionKey){
     </div>`}
   </div>`;
 }
-// ── Quests Hub — umbrella page combining Structured (Routine) and Independent (Daily Quests + Habits) ──
-if(typeof window._questsSubTab==='undefined') window._questsSubTab='independent';
+// ── Quests Hub — umbrella page: Structured, Dailies, Habits, Errands, Quests (formerly Missions) ──
+if(typeof window._questsSubTab==='undefined') window._questsSubTab='dailies';
+const QHUB_TABS=['dailies','habits','errands','quests'];
+const QHUB_COLORS={dailies:'#3b82f6',habits:'#22c55e',errands:'#f59e0b',quests:'#ec4899'};
 function setQuestsSubTab(tab){
   window._questsSubTab=tab;
-  const structBtn=$('qhub-tab-structured'), indepBtn=$('qhub-tab-independent');
-  const structDiv=$('qhub-structured'), indepDiv=$('qhub-independent');
-  if(structBtn&&indepBtn){
-    structBtn.style.background=tab==='structured'?'rgba(168,85,247,.18)':'rgba(255,255,255,.04)';
-    structBtn.style.borderColor=tab==='structured'?'rgba(168,85,247,.5)':'rgba(255,255,255,.1)';
-    structBtn.style.color=tab==='structured'?'#c084fc':'var(--muted)';
-    indepBtn.style.background=tab==='independent'?'rgba(59,130,246,.18)':'rgba(255,255,255,.04)';
-    indepBtn.style.borderColor=tab==='independent'?'rgba(59,130,246,.5)':'rgba(255,255,255,.1)';
-    indepBtn.style.color=tab==='independent'?'#60a5fa':'var(--muted)';
-  }
-  if(structDiv) structDiv.style.display=tab==='structured'?'':'none';
-  if(indepDiv) indepDiv.style.display=tab==='independent'?'':'none';
-  if(tab==='structured') renderRoutine();
-  if(tab==='independent'){ renderQuests(); renderHabits(); }
+  QHUB_TABS.forEach(function(t){
+    const btn=$('qhub-tab-'+t), div=$('qhub-'+t);
+    const col=QHUB_COLORS[t];
+    if(btn){
+      btn.style.background=t===tab?col+'25':'rgba(255,255,255,.04)';
+      btn.style.borderColor=t===tab?col+'80':'rgba(255,255,255,.1)';
+      btn.style.color=t===tab?col:'var(--muted)';
+    }
+    if(div) div.style.display=t===tab?'':'none';
+  });
+  if(tab==='dailies') renderQuests();
+  if(tab==='habits') renderHabits();
+  if(tab==='errands') renderErrands();
+  if(tab==='quests'){ renderMissionsGeneral(); renderMissionsFreetime(); }
 }
 function renderQuestsHub(){
-  setQuestsSubTab(window._questsSubTab);
+  setQuestsSubTab(window._questsSubTab||'dailies');
+}
+function openStructuredModal(){
+  $('structured-modal-overlay').classList.add('open');
+  renderRoutine();
+}
+function closeStructuredModal(){
+  $('structured-modal-overlay').classList.remove('open');
 }
 function renderRoutine(){
   const mode=D.routineMode||'regular';
@@ -4654,6 +4880,7 @@ function toggleTask(id,dow){
       const s=getSkill(t.skill);
       if(s){const old=s.totalXP;s.totalXP+=(t.xp||0);showXPFloat(t.xp||0,s.color);checkLevelUp(s,old,t.xp||0);}
     }
+    awardCoins(t?(t.xp||0):0,'Quest: '+(t?t.name:''));
   } else {
     const t=D.tasks.find(x=>x.id===id);
     if(t&&t.skill){const s=getSkill(t.skill);if(s)s.totalXP=Math.max(0,s.totalXP-(t.xp||0));}
@@ -4814,6 +5041,7 @@ function toggleHabitOn(id, ds){
           showXPFloat(gained, s.color); checkLevelUp(s, old, gained);
         }
       }
+      awardCoins(Math.round((h.xp||5)*0.5),'Habit: '+h.name);
       const bonus = {7:50,30:200,100:500};
       if(bonus[h.streak]){
         const s = h.skill ? getSkill(h.skill) : null;
@@ -6891,14 +7119,17 @@ function toggleNode(treeId,subtreeId,nodeId,idx){
   if(was){
     for(let i=idx+1;i<st.nodes.length;i++)D.nodesDone[getNodeKey(treeId,subtreeId,st.nodes[i].id)]=false;
   } else {
-    // Award XP to the matching skill
-    const matchSkill=D.skills.find(s=>s.mainTree===treeId||s.tag===treeId);
+    // Award XP to the SPECIFIC skill this subtree is about — not just the first skill
+    // that happens to share the top-level category tag (that was the actual bug here).
+    const mappedId=SUBTREE_TO_SKILL[subtreeId];
+    const matchSkill=(mappedId&&D.skills.find(s=>s.id===mappedId)) || D.skills.find(s=>s.mainTree===treeId||s.tag===treeId);
     if(matchSkill){
       const oldXP=matchSkill.totalXP;
       matchSkill.totalXP+=node.xp;
       showXPFloat(node.xp, tree.color||matchSkill.color);
       checkLevelUp(matchSkill, oldXP, node.xp);
     }
+    awardCoins(node.xp,'Node: '+node.name);
     // Mark node to animate after render
     _justUnlockedNode=nodeId;
     setTimeout(()=>{_justUnlockedNode=null;},1200);
@@ -8182,7 +8413,7 @@ function renderSkillDetailHeader(){
 function renderSkillDetailBody(){
   const s=D.skills.find(x=>x.id===curSDSkill);if(!s)return;
   const tabs={overview:renderSDOverview,session:renderSDSession,notes:renderSDNotes,quests:renderSDQuests,achieve:renderSDAchieve,curriculum:renderSDCurriculum,lifts:renderSDLifts,skills:renderSDSkillsLib,routines:renderSDRoutines,practice:renderSDPractice,exercises:renderClimbExercises};
-  const tabLabels={overview:'Overview',session:'Session',notes:'Notes',quests:'Quests',achieve:'Achievements',curriculum:'Curriculum',lifts:'Lift Log',skills:'Skills',routines:'Routines',practice:'Practice',exercises:'Exercises'};
+  const tabLabels={overview:'Overview',session:'Session',notes:'Notes',quests:'Quests',achieve:'Skill Tree',curriculum:'Curriculum',lifts:'Lift Log',skills:'Skills',routines:'Routines',practice:'Practice',exercises:'Exercises'};
   // Diet skill gets a fully custom Overview tab (macro tracker + food tier lists)
   if(s.id==='diet'&&curSDTab==='overview'){
     $('sd-body').innerHTML=renderDietOverview(s);
@@ -8383,7 +8614,8 @@ function renderSDOverview(s){
   return`
     <div style="background:radial-gradient(ellipse 130% 100% at 50% -10%,${s.color}22,${s.color}00 65%);border:1px solid ${s.color}35;border-radius:16px;padding:20px 18px;margin-bottom:16px;text-align:center">
       <div style="font-family:var(--fm);font-size:8px;color:${s.color};letter-spacing:.16em;text-transform:uppercase;margin-bottom:6px">Level</div>
-      <div style="font-family:var(--fd);font-size:52px;color:#fff;line-height:1;text-shadow:0 0 30px ${s.color}90;margin-bottom:10px">${lvl}</div>
+      <div style="font-family:var(--fd);font-size:52px;color:#fff;line-height:1;text-shadow:0 0 30px ${s.color}90">${lvl}</div>
+      <div style="font-family:var(--fm);font-size:11px;color:${s.color};letter-spacing:.08em;margin-top:4px;margin-bottom:10px">${getSkillTitle(lvl).toUpperCase()} ${s.name.toUpperCase()}</div>
       ${why?`<div style="font-size:12.5px;color:rgba(230,230,255,.7);line-height:1.55;font-style:italic;max-width:340px;margin:0 auto 14px">"${why}"</div>`:'<div style="margin-bottom:6px"></div>'}
       <div style="height:6px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-bottom:6px">
         <div style="height:100%;width:${xpIntoLevel*2}%;background:${s.color};border-radius:99px;box-shadow:0 0 10px ${s.color}90;transition:width .6s"></div>
@@ -12943,6 +13175,24 @@ save = function() {
   clearTimeout(_syncTimer);
   _syncTimer = setTimeout(function() { gistPush(); }, 1500);
 };
+// Mobile browsers can suspend a pending setTimeout the moment a tab is backgrounded
+// (switching apps, locking the phone) — exactly when someone finishes typing and walks
+// away. Force any pending sync through immediately in that moment instead of hoping
+// the debounce timer survives in the background.
+document.addEventListener('visibilitychange', function(){
+  if(document.visibilityState==='hidden' && _syncTimer){
+    clearTimeout(_syncTimer);
+    _syncTimer=null;
+    gistPush();
+  }
+});
+window.addEventListener('pagehide', function(){
+  if(_syncTimer){
+    clearTimeout(_syncTimer);
+    _syncTimer=null;
+    gistPush();
+  }
+});
 
 async function doInitialPull() {
   const cfg = getSyncCfg();
@@ -13530,6 +13780,268 @@ const MONTHS=['January','February','March','April','May','June','July','August',
 const DAYS_HDR=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 let socialCalYear=TODAY.getFullYear(),socialCalMonth=TODAY.getMonth();
 
+// ══════════════════════════════════════════════════
+//  MASTER GRID — calendar with color-coded filters, replaces the old Social calendar
+// ══════════════════════════════════════════════════
+if(typeof window._mgView==='undefined') window._mgView='month';
+if(typeof window._mgMonth==='undefined') window._mgMonth=TODAY.getMonth();
+if(typeof window._mgYear==='undefined') window._mgYear=TODAY.getFullYear();
+if(typeof window._mgWeekAnchor==='undefined') window._mgWeekAnchor=TODAY_STR;
+if(typeof window._mgActiveFilter==='undefined') window._mgActiveFilter=null;
+function _mgEnsureData(){
+  if(!D.calendarEvents) D.calendarEvents=[];
+  if(!D.calendarFilters) D.calendarFilters=[];
+}
+function setMasterGridView(view){
+  window._mgView=view;
+  const monthBtn=$('mg-view-month'), weekBtn=$('mg-view-week');
+  const monthDiv=$('mg-month-view'), weekDiv=$('mg-week-view');
+  if(monthBtn&&weekBtn){
+    monthBtn.style.background=view==='month'?'rgba(168,85,247,.18)':'rgba(255,255,255,.04)';
+    monthBtn.style.borderColor=view==='month'?'rgba(168,85,247,.5)':'rgba(255,255,255,.1)';
+    monthBtn.style.color=view==='month'?'#c084fc':'var(--muted)';
+    weekBtn.style.background=view==='week'?'rgba(168,85,247,.18)':'rgba(255,255,255,.04)';
+    weekBtn.style.borderColor=view==='week'?'rgba(168,85,247,.5)':'rgba(255,255,255,.1)';
+    weekBtn.style.color=view==='week'?'#c084fc':'var(--muted)';
+  }
+  if(monthDiv) monthDiv.style.display=view==='month'?'':'none';
+  if(weekDiv) weekDiv.style.display=view==='week'?'':'none';
+  renderMasterGrid();
+}
+function mgNavPrev(){
+  if(window._mgView==='month'){
+    window._mgMonth--; if(window._mgMonth<0){window._mgMonth=11;window._mgYear--;}
+  } else {
+    const d=new Date(window._mgWeekAnchor+'T12:00:00'); d.setDate(d.getDate()-7);
+    window._mgWeekAnchor=dateStr(d);
+  }
+  renderMasterGrid();
+}
+function mgNavNext(){
+  if(window._mgView==='month'){
+    window._mgMonth++; if(window._mgMonth>11){window._mgMonth=0;window._mgYear++;}
+  } else {
+    const d=new Date(window._mgWeekAnchor+'T12:00:00'); d.setDate(d.getDate()+7);
+    window._mgWeekAnchor=dateStr(d);
+  }
+  renderMasterGrid();
+}
+function renderMasterGrid(){
+  _mgEnsureData();
+  renderMgFilterBar();
+  if(window._mgView==='month') renderMgCalGrid(); else renderMgWeekGrid();
+  renderMgUpcoming();
+}
+function _mgEventsOnDate(ds){
+  let evs=D.calendarEvents.filter(function(e){return e.date===ds;});
+  if(window._mgActiveFilter!==null){
+    evs=evs.filter(function(e){return (e.filterId||null)===window._mgActiveFilter;});
+  }
+  return evs;
+}
+function _mgFilterFor(id){
+  if(!id) return {label:'General',color:'#94a3b8',emoji:'◈'};
+  return D.calendarFilters.find(function(f){return f.id===id;})||{label:'General',color:'#94a3b8',emoji:'◈'};
+}
+function renderMgCalGrid(){
+  const label=$('mg-period-label'); if(label) label.textContent=MONTHS[window._mgMonth]+' '+window._mgYear;
+  const grid=$('mg-cal-grid'); if(!grid) return;
+  const firstDay=new Date(window._mgYear,window._mgMonth,1).getDay();
+  const daysInMonth=new Date(window._mgYear,window._mgMonth+1,0).getDate();
+  let html=DAYS_HDR.map(function(d){return '<div class="mg-cal-header">'+d+'</div>';}).join('');
+  for(let i=0;i<firstDay;i++) html+='<div class="mg-cal-day other-month"></div>';
+  for(let d=1;d<=daysInMonth;d++){
+    const ds=window._mgYear+'-'+String(window._mgMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    const events=_mgEventsOnDate(ds);
+    const isToday=ds===TODAY_STR;
+    html+='<div class="mg-cal-day'+(isToday?' today':'')+'" onclick="mgDayClick(\''+ds+'\')">'
+      +'<div class="mg-cal-daynum">'+d+'</div>'
+      +events.slice(0,3).map(function(e){
+        const f=_mgFilterFor(e.filterId);
+        return '<div class="mg-cal-event-dot" style="background:'+f.color+'22;color:'+f.color+'" onclick="event.stopPropagation();openMgEventModal(\''+e.id+'\')">'+f.emoji+' '+_escHtml(e.title)+'</div>';
+      }).join('')
+      +(events.length>3?'<div class="mg-cal-event-dot" style="color:var(--muted);background:transparent">+'+(events.length-3)+' more</div>':'')
+      +'</div>';
+  }
+  grid.innerHTML=html;
+}
+function renderMgWeekGrid(){
+  const anchor=new Date(window._mgWeekAnchor+'T12:00:00');
+  const dow=anchor.getDay();
+  const weekStart=new Date(anchor); weekStart.setDate(anchor.getDate()-dow);
+  const label=$('mg-period-label');
+  const weekEnd=new Date(weekStart); weekEnd.setDate(weekStart.getDate()+6);
+  if(label) label.textContent=MONTHS[weekStart.getMonth()].slice(0,3)+' '+weekStart.getDate()+' – '+MONTHS[weekEnd.getMonth()].slice(0,3)+' '+weekEnd.getDate();
+  const grid=$('mg-week-grid'); if(!grid) return;
+  let html='';
+  for(let i=0;i<7;i++){
+    const d=new Date(weekStart); d.setDate(weekStart.getDate()+i);
+    const ds=dateStr(d);
+    const events=_mgEventsOnDate(ds);
+    const isToday=ds===TODAY_STR;
+    html+='<div class="mg-week-day'+(isToday?' today':'')+'" onclick="mgDayClick(\''+ds+'\')">'
+      +'<div class="mg-week-daylabel">'+DAYS_HDR[i]+'</div>'
+      +'<div class="mg-week-daynum">'+d.getDate()+'</div>'
+      +events.map(function(e){
+        const f=_mgFilterFor(e.filterId);
+        return '<div class="mg-cal-event-dot" style="background:'+f.color+'22;color:'+f.color+';margin-bottom:5px" onclick="event.stopPropagation();openMgEventModal(\''+e.id+'\')">'+f.emoji+' '+_escHtml(e.title)+(e.time?' · '+e.time:'')+'</div>';
+      }).join('')
+      +'</div>';
+  }
+  grid.innerHTML=html;
+}
+function renderMgFilterBar(){
+  const el=$('mg-filters-bar'); if(!el) return;
+  let html='<div style="display:flex;flex-wrap:wrap;gap:7px">';
+  html+='<button onclick="mgToggleActiveFilter(null)" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:99px;border:1px solid '+(window._mgActiveFilter===null?'#94a3b880':'rgba(255,255,255,.15)')+';background:'+(window._mgActiveFilter===null?'#94a3b825':'rgba(255,255,255,.04)')+';color:'+(window._mgActiveFilter===null?'#cbd5e1':'var(--muted)')+';font-family:var(--fm);font-size:10.5px;font-weight:600;cursor:pointer">◈ All</button>';
+  D.calendarFilters.forEach(function(f){
+    const active=window._mgActiveFilter===f.id;
+    html+='<div style="position:relative;display:flex;align-items:center">'
+      +'<button onclick="mgToggleActiveFilter(\''+f.id+'\')" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:99px;border:1px solid '+(active?f.color+'80':f.color+'40')+';background:'+(active?f.color+'25':f.color+'10')+';color:'+f.color+';font-family:var(--fm);font-size:10.5px;font-weight:600;cursor:pointer">'+f.emoji+' '+_escHtml(f.label)+'</button>'
+      +'<div onclick="deleteMgFilter(\''+f.id+'\')" title="Delete filter" style="position:absolute;top:-5px;right:-5px;width:16px;height:16px;border-radius:50%;background:rgba(0,0,0,.7);border:.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:9px"><i class="ti ti-x"></i></div>'
+      +'</div>';
+  });
+  html+='<button onclick="openMgNewFilter()" style="display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:99px;border:1px dashed rgba(255,255,255,.25);background:rgba(255,255,255,.03);color:rgba(255,255,255,.5);font-family:var(--fm);font-size:10.5px;cursor:pointer"><i class="ti ti-plus" style="font-size:12px"></i>New Filter</button>';
+  html+='</div>';
+  el.innerHTML=html;
+}
+function mgToggleActiveFilter(id){
+  window._mgActiveFilter=(window._mgActiveFilter===id)?null:id;
+  renderMasterGrid();
+}
+function openMgNewFilter(){
+  window._mgAddingFilter=!window._mgAddingFilter;
+  if(window._mgAddingFilter && !window._mgNewFilterColor) window._mgNewFilterColor=LOG_FILTER_COLORS[0];
+  renderMgNewFilterPanel();
+}
+function mgPickFilterColor(color){
+  window._mgNewFilterColor=color;
+  renderMgNewFilterPanel();
+}
+function renderMgNewFilterPanel(){
+  const el=$('mg-newfilter-panel'); if(!el) return;
+  if(!window._mgAddingFilter){ el.style.display='none'; el.innerHTML=''; return; }
+  const activeColor=window._mgNewFilterColor||LOG_FILTER_COLORS[0];
+  el.style.display='block';
+  el.innerHTML='<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px">'
+    +'<div style="font-family:var(--fm);font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.08em;margin-bottom:10px;text-transform:uppercase">New Filter</div>'
+    +'<input id="mgfilter-label" class="form-input" placeholder="Filter label (e.g. Bills, Birthdays, Plans)" style="width:100%;margin-bottom:10px">'
+    +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">'
+    +'<input id="mgfilter-emoji" class="form-input" placeholder="📌" maxlength="4" style="width:70px;text-align:center">'
+    +'<div style="display:flex;gap:6px;flex-wrap:wrap">'
+    +LOG_FILTER_COLORS.map(function(c){return '<div onclick="mgPickFilterColor(\''+c+'\')" style="width:24px;height:24px;border-radius:50%;background:'+c+';cursor:pointer;border:2px solid '+(activeColor===c?'#fff':'transparent')+'"></div>';}).join('')
+    +'</div></div>'
+    +'<div style="display:flex;gap:8px">'
+    +'<button class="btn btn-primary" style="flex:1" onclick="saveMgNewFilter()">Create Filter</button>'
+    +'<button class="btn btn-ghost" onclick="openMgNewFilter()">Cancel</button>'
+    +'</div></div>';
+}
+function saveMgNewFilter(){
+  const label=($('mgfilter-label').value||'').trim();
+  const emoji=($('mgfilter-emoji').value||'').trim()||'📌';
+  const color=window._mgNewFilterColor||LOG_FILTER_COLORS[0];
+  if(!label){ toast('Enter a label.'); return; }
+  D.calendarFilters.push({id:_uniqueId('mgf'),label:label,emoji:emoji,color:color});
+  window._mgAddingFilter=false;
+  save();
+  renderMgFilterBar();
+  renderMgNewFilterPanel();
+  toast(emoji+' '+label+' filter created');
+}
+function deleteMgFilter(id){
+  if(!confirm('Delete this filter? Events tagged with it become General instead.')) return;
+  D.calendarFilters=D.calendarFilters.filter(function(f){return f.id!==id;});
+  D.calendarEvents.forEach(function(e){ if(e.filterId===id) e.filterId=null; });
+  if(window._mgActiveFilter===id) window._mgActiveFilter=null;
+  save();
+  renderMasterGrid();
+}
+function mgDayClick(ds){ openMgEventModal(null,ds); }
+function openMgEventModal(id,prefillDate){
+  window._mgEditingId=id||null;
+  $('mg-modal-title').textContent=id?'Edit Event':'Add Event';
+  $('mg-delete-btn').style.display=id?'block':'none';
+  if(id){
+    const e=D.calendarEvents.find(function(x){return x.id===id;});
+    $('mg-event-title').value=e?e.title:'';
+    $('mg-event-date').value=e?e.date:'';
+    $('mg-event-time').value=e&&e.time?e.time:'';
+    window._mgPickedFilter=e?(e.filterId||null):null;
+  } else {
+    $('mg-event-title').value='';
+    $('mg-event-date').value=prefillDate||TODAY_STR;
+    $('mg-event-time').value='';
+    window._mgPickedFilter=null;
+  }
+  renderMgEventFilterPicker();
+  $('mg-event-modal').classList.add('open');
+}
+function closeMgEventModal(){
+  $('mg-event-modal').classList.remove('open');
+}
+function mgPickEventFilter(id){
+  window._mgPickedFilter=id;
+  renderMgEventFilterPicker();
+}
+function renderMgEventFilterPicker(){
+  const el=$('mg-event-filter-picker'); if(!el) return;
+  const picked=window._mgPickedFilter;
+  let html='<button onclick="mgPickEventFilter(null)" style="display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:99px;border:1px solid '+(picked===null?'#94a3b880':'rgba(255,255,255,.15)')+';background:'+(picked===null?'#94a3b825':'rgba(255,255,255,.04)')+';color:'+(picked===null?'#cbd5e1':'var(--muted)')+';font-family:var(--fm);font-size:10.5px;font-weight:600;cursor:pointer">◈ General</button>';
+  D.calendarFilters.forEach(function(f){
+    const active=picked===f.id;
+    html+='<button onclick="mgPickEventFilter(\''+f.id+'\')" style="display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:99px;border:1px solid '+(active?f.color+'80':f.color+'40')+';background:'+(active?f.color+'25':f.color+'10')+';color:'+f.color+';font-family:var(--fm);font-size:10.5px;font-weight:600;cursor:pointer">'+f.emoji+' '+_escHtml(f.label)+'</button>';
+  });
+  el.innerHTML=html;
+}
+function saveMgEvent(){
+  const title=($('mg-event-title').value||'').trim();
+  const date=$('mg-event-date').value;
+  const time=$('mg-event-time').value||null;
+  if(!title||!date){ toast('Give it a title and a date.'); return; }
+  const id=window._mgEditingId;
+  if(id){
+    const e=D.calendarEvents.find(function(x){return x.id===id;});
+    if(e){ e.title=title; e.date=date; e.time=time; e.filterId=window._mgPickedFilter; }
+  } else {
+    D.calendarEvents.push({id:_uniqueId('mgev'),title:title,date:date,time:time,filterId:window._mgPickedFilter,createdAt:Date.now()});
+  }
+  save();
+  closeMgEventModal();
+  renderMasterGrid();
+  toast(id?'Updated ✓':'Added ⚡');
+}
+function deleteMgEvent(){
+  const id=window._mgEditingId; if(!id) return;
+  D.calendarEvents=D.calendarEvents.filter(function(e){return e.id!==id;});
+  save();
+  closeMgEventModal();
+  renderMasterGrid();
+  toast('Deleted.');
+}
+function renderMgUpcoming(){
+  const el=$('mg-upcoming'); if(!el) return;
+  let future=D.calendarEvents.filter(function(e){return e.date>=TODAY_STR;});
+  if(window._mgActiveFilter!==null) future=future.filter(function(e){return (e.filterId||null)===window._mgActiveFilter;});
+  future=future.sort(function(a,b){return a.date.localeCompare(b.date)||(a.time||'').localeCompare(b.time||'');}).slice(0,12);
+  if(!future.length){
+    el.innerHTML='<div class="sec-label" style="margin-bottom:8px">UPCOMING</div><div style="color:var(--faint);font-size:13px;padding:16px 0">Nothing coming up — add something!</div>';
+    return;
+  }
+  el.innerHTML='<div class="sec-label" style="margin-bottom:10px">UPCOMING</div>'+future.map(function(e){
+    const f=_mgFilterFor(e.filterId);
+    const d=new Date(e.date+'T12:00:00');
+    return '<div class="mg-event-card" onclick="openMgEventModal(\''+e.id+'\')">'
+      +'<div style="text-align:center;flex-shrink:0;width:44px">'
+        +'<div style="font-size:20px;font-weight:700;color:#fff;line-height:1">'+d.getDate()+'</div>'
+        +'<div style="font-family:var(--fm);font-size:8px;color:var(--muted);text-transform:uppercase">'+MONTHS[d.getMonth()].slice(0,3)+'</div>'
+      +'</div>'
+      +'<div style="flex:1;min-width:0">'
+        +'<div style="font-size:14px;color:#fff;font-weight:600">'+f.emoji+' '+_escHtml(e.title)+'</div>'
+        +'<div style="font-family:var(--fm);font-size:9.5px;color:'+f.color+';margin-top:2px">'+_escHtml(f.label)+(e.time?' · '+e.time:'')+'</div>'
+      +'</div>'
+    +'</div>';
+  }).join('');
+}
 function renderSocialCal(){
   if(!D.socialEvents)D.socialEvents=[];
   const label=$('social-month-label');
@@ -14022,30 +14534,27 @@ function getDayLog(ds){
   return D.dailyLogs[ds];
 }
 
-let _missionsTab = 'daily';
+let _missionsTab = 'general';
 let missionFilter = 'all';
 
 function setMissionsTab(tab){
   _missionsTab = tab;
-  $('ms-section-daily').style.display   = tab==='daily'   ? '' : 'none';
   $('ms-section-freetime').style.display= tab==='freetime'? '' : 'none';
   $('ms-section-general').style.display = tab==='general' ? '' : 'none';
-  ['daily','general','freetime'].forEach(function(t){
+  ['general','freetime'].forEach(function(t){
     const btn=$('ms-tab-'+t);
     if(btn){
       btn.style.borderBottomColor = t===tab ? '#a855f7' : 'transparent';
       btn.style.color = t===tab ? '#c084fc' : 'var(--muted)';
     }
   });
-  if(tab==='daily')    renderMissionsDaily();
   if(tab==='freetime') renderMissionsFreetime();
   if(tab==='general')  renderMissionsGeneral();
 }
 
 function renderMissions(){
-  if(_missionsTab==='daily')   renderMissionsDaily();
-  else if(_missionsTab==='freetime') renderMissionsFreetime();
-  else if(_missionsTab==='general') renderMissionsGeneral();
+  if(_missionsTab==='freetime') renderMissionsFreetime();
+  else renderMissionsGeneral();
 }
 
 function renderMissionsDaily(){
@@ -14225,13 +14734,26 @@ function renderLog(){
     editor.onmouseup=onLogTextSelect;
     editor.onkeyup=onLogTextSelect;
     editor.ontouchend=onLogTextSelect;
+    editor.onkeydown=onLogEditorKeydown;
     // Open scrolled to the end — the last thing written — without forcing the keyboard open.
-    // Double rAF + a couple of delayed retries so this fires only after the freshly-set
-    // HTML has actually been laid out (a single short timeout was firing too early).
-    const scrollToEnd=function(){ editor.scrollTop=editor.scrollHeight; };
+    // iOS Safari in particular can be slow to settle layout after a big innerHTML swap, and
+    // scrollTop alone is sometimes unreliable there — so this also forces a reflow read and
+    // uses scrollIntoView on the last actual element as a second, more robust method, with
+    // retries spread out further than desktop needed.
+    const scrollToEnd=function(){
+      editor.scrollTop=editor.scrollHeight;
+      void editor.offsetHeight; // force a reflow so the browser's layout is current before the next read
+      const lastChild=editor.lastElementChild;
+      if(lastChild && lastChild.scrollIntoView){
+        lastChild.scrollIntoView({block:'end',behavior:'auto'});
+      }
+      editor.scrollTop=editor.scrollHeight;
+    };
     requestAnimationFrame(function(){ requestAnimationFrame(scrollToEnd); });
     setTimeout(scrollToEnd,150);
     setTimeout(scrollToEnd,400);
+    setTimeout(scrollToEnd,700);
+    setTimeout(scrollToEnd,1100);
   }
   renderLogFilterBar();
   renderLogTagSelectionBtn();
@@ -14242,6 +14764,34 @@ function onLogTextSelect(){
   const text=(sel&&sel.rangeCount&&sel.toString)?sel.toString().trim():'';
   window._logSelectedText=text;
   renderLogTagSelectionBtn();
+}
+// Tab indents/outdents like Notion or Google Docs (instead of jumping focus away),
+// and typing "- " at the start of a line auto-converts it into a bullet.
+function onLogEditorKeydown(e){
+  if(e.key==='Tab'){
+    e.preventDefault();
+    if(e.shiftKey) logOutdent(); else logIndent();
+    return;
+  }
+  if(e.key===' '){
+    const sel=window.getSelection();
+    if(!sel||!sel.rangeCount) return;
+    const range=sel.getRangeAt(0);
+    if(!range.collapsed) return;
+    const node=range.startContainer;
+    if(node.nodeType!==3) return; // must be a plain text node
+    const textBeforeCursor=node.textContent.substring(0,range.startOffset);
+    if(textBeforeCursor==='-'){
+      e.preventDefault();
+      const delRange=document.createRange();
+      delRange.setStart(node,0);
+      delRange.setEnd(node,range.startOffset);
+      delRange.deleteContents();
+      document.execCommand('insertUnorderedList');
+      const editor=$('log-editor');
+      if(editor){ D.journal=editor.innerHTML; save(); }
+    }
+  }
 }
 // ── Rich text toolbar actions ──
 function _focusLogEditor(){ const e=$('log-editor'); if(e) e.focus(); }
@@ -14384,12 +14934,9 @@ function renderLogFilterBar(){
   const filters=D.journalFilters||[];
   let html='<div style="display:flex;flex-wrap:wrap;gap:7px">';
   filters.forEach(function(f){
-    html+=`<div style="position:relative;display:flex;align-items:center">
-      <button onclick="jumpToLogFilter('${f.id}')" title="Tap to jump to a saved spot" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:99px;border:1px solid ${f.color}50;background:${f.color}10;color:${f.color};font-family:var(--fm);font-size:10.5px;font-weight:600;cursor:pointer">
-        <span>${f.emoji}</span><span>${_escHtml(f.label)}</span>
-      </button>
-      <div onclick="openLogFilterManage('${f.id}')" title="Manage saved spots" style="position:absolute;top:-5px;right:-5px;width:16px;height:16px;border-radius:50%;background:rgba(0,0,0,.7);border:.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:9px"><i class="ti ti-dots"></i></div>
-    </div>`;
+    html+=`<button onclick="openLogFilterManage('${f.id}')" title="Tap to see everything saved under this filter" style="display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:99px;border:1px solid ${f.color}50;background:${f.color}10;color:${f.color};font-family:var(--fm);font-size:10.5px;font-weight:600;cursor:pointer">
+      <span>${f.emoji}</span><span>${_escHtml(f.label)}</span>
+    </button>`;
   });
   html+='</div>';
   el.innerHTML=html;
@@ -14821,6 +15368,57 @@ function logFreetimeSession(key){
   if(typeof updateNav==='function') updateNav();
 }
 
+// ── Errands — a real to-do list with optional due dates ──
+function renderErrands(){
+  const el=$('errands-list'); if(!el) return;
+  const errands=(D.errands||[]).slice().sort(function(a,b){
+    if(a.done!==b.done) return a.done?1:-1;
+    if(a.dueDate&&b.dueDate) return a.dueDate.localeCompare(b.dueDate);
+    if(a.dueDate&&!b.dueDate) return -1;
+    if(!a.dueDate&&b.dueDate) return 1;
+    return (a.createdAt||0)-(b.createdAt||0);
+  });
+  if(!errands.length){
+    el.innerHTML='<div style="text-align:center;padding:28px 16px;color:var(--faint);font-size:13px">No errands yet — add one above.</div>';
+    return;
+  }
+  el.innerHTML=errands.map(function(e){
+    const overdue=e.dueDate && !e.done && e.dueDate<TODAY_STR;
+    const dueLabel=e.dueDate ? (e.dueDate===TODAY_STR?'Today':new Date(e.dueDate+'T00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'})) : null;
+    return `<div style="display:flex;align-items:center;gap:12px;padding:13px 15px;background:rgba(12,0,28,.6);border:.5px solid ${e.done?'rgba(74,222,128,.2)':(overdue?'rgba(239,68,68,.3)':'rgba(255,255,255,.07)')};border-radius:12px;margin-bottom:8px">
+      <div onclick="toggleErrand('${e.id}')" style="width:24px;height:24px;border-radius:7px;border:1.5px solid ${e.done?'#22c55e':'rgba(255,255,255,.2)'};background:${e.done?'#22c55e':'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer">${e.done?'<i class="ti ti-check" style="font-size:14px;color:#fff"></i>':''}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;color:${e.done?'rgba(74,222,128,.6)':'#fff'};text-decoration:${e.done?'line-through':'none'}">${_escHtml(e.text)}</div>
+        ${dueLabel?`<div style="font-family:var(--fm);font-size:9px;color:${overdue?'#f87171':'var(--muted)'};margin-top:3px">${overdue?'⚠ Overdue — ':'📅 '}${dueLabel}</div>`:''}
+      </div>
+      <div onclick="deleteErrand('${e.id}')" style="color:var(--faint);cursor:pointer;flex-shrink:0;padding:4px"><i class="ti ti-x"></i></div>
+    </div>`;
+  }).join('');
+}
+function addErrand(){
+  const input=$('errand-input'); if(!input) return;
+  const dateInput=$('errand-date-input');
+  const text=(input.value||'').trim();
+  if(!text){ toast('Type something first.'); return; }
+  if(!D.errands) D.errands=[];
+  D.errands.push({id:_uniqueId('errand'),text:text,done:false,dueDate:(dateInput&&dateInput.value)||null,createdAt:Date.now()});
+  input.value='';
+  if(dateInput) dateInput.value='';
+  save();
+  renderErrands();
+  updateNav();
+}
+function toggleErrand(id){
+  const e=(D.errands||[]).find(function(x){return x.id===id;}); if(!e) return;
+  e.done=!e.done;
+  save();
+  renderErrands();
+}
+function deleteErrand(id){
+  D.errands=(D.errands||[]).filter(function(x){return x.id!==id;});
+  save();
+  renderErrands();
+}
 function renderMissionsGeneral(){
   if(!D.missions) D.missions=[];
   const listEl=$('general-missions-list'); if(!listEl)return;
@@ -15098,7 +15696,10 @@ function checkLevelUp(skill, oldXP, xpGained){
   if(!skill||!xpGained) return;
   const oldLvl=Math.floor(oldXP/50)+1;
   const newLvl=Math.floor(skill.totalXP/50)+1;
-  if(newLvl>oldLvl) showLevelUp(skill, newLvl, xpGained);
+  if(newLvl>oldLvl){
+    awardCoins((newLvl-oldLvl)*25,'Level up: '+skill.name+' → Lv'+newLvl);
+    showLevelUp(skill, newLvl, xpGained);
+  }
 }
 
 function showLevelUp(skill, newLevel, xpGained){
@@ -15149,6 +15750,214 @@ function closeLevelUp(){
   if($('lu-label')) $('lu-label').classList.remove('animating');
 }
 
+// ── Coins — earned from the same completions that already award XP, scaled to the
+// same XP value so harder tasks naturally pay out more without a second difficulty system ──
+function awardCoins(amount,reason){
+  if(!amount) return;
+  if(D.coins===undefined) D.coins=0;
+  D.coins+=amount;
+  if(!D.coinLog) D.coinLog=[];
+  D.coinLog.unshift({amount:amount,reason:reason||'',at:Date.now()});
+  if(D.coinLog.length>200) D.coinLog=D.coinLog.slice(0,200);
+}
+// ── Shop ──
+// ── Pricing calibration — helps translate "how much effort is this worth" into a
+// real coin number, instead of guessing. Tiers scale off your actual current earn rate. ──
+const SHOP_RARITY_TIERS=[
+  {id:'common',   label:'Common',   emoji:'⚪',color:'#94a3b8',days:1},
+  {id:'uncommon', label:'Uncommon', emoji:'🟢',color:'#22c55e',days:3},
+  {id:'rare',     label:'Rare',     emoji:'🔵',color:'#3b82f6',days:7},
+  {id:'epic',     label:'Epic',     emoji:'🟣',color:'#a855f7',days:21},
+  {id:'legendary',label:'Legendary',emoji:'🟡',color:'#fbbf24',days:60},
+];
+function getAvgDailyCoins(){
+  const todayTasks=D.tasks.filter(function(t){return t.xp>0 && t.days && t.days.indexOf(TODAY.getDay())!==-1;});
+  const taskCoins=todayTasks.reduce(function(a,t){return a+(t.xp||0);},0);
+  const habitCoins=D.habits.reduce(function(a,h){return a+Math.round((h.xp||5)*0.5);},0);
+  return Math.max(1,taskCoins+habitCoins);
+}
+function shopRarityFor(id){ return SHOP_RARITY_TIERS.find(function(t){return t.id===id;})||SHOP_RARITY_TIERS[0]; }
+const SHOP_CATEGORIES=[
+  {id:'character',name:'Character',emoji:'🧍',color:'#a855f7'},
+  {id:'gear',name:'Skill Tree Gear',emoji:'⚙️',color:'#3b82f6'},
+  {id:'cosmetics',name:'Cosmetics',emoji:'✨',color:'#ec4899'},
+  {id:'activities',name:'Activities',emoji:'🌴',color:'#22c55e'},
+];
+function _shopItemRarity(item){
+  if(item.rarity) return shopRarityFor(item.rarity);
+  // Backward-compatible inference for items saved before rarity existed
+  const rate=getAvgDailyCoins();
+  const days=item.cost/rate;
+  let best=SHOP_RARITY_TIERS[0];
+  SHOP_RARITY_TIERS.forEach(function(t){ if(days>=t.days) best=t; });
+  return best;
+}
+if(typeof window._shopActiveCategory==='undefined') window._shopActiveCategory='character';
+function setShopCategory(catId){
+  window._shopActiveCategory=catId;
+  renderShop();
+}
+function renderShop(){
+  if(D.coins===undefined) D.coins=0;
+  if(!D.shopItems) D.shopItems=[];
+  const bal=$('shop-coin-balance'); if(bal) bal.textContent=D.coins.toLocaleString();
+  const rateEl=$('shop-daily-rate-display'); if(rateEl) rateEl.textContent=getAvgDailyCoins();
+
+  const specific=D.shopItems.filter(function(i){return i.type==='specific';});
+  const specEl=$('shop-specific-list');
+  if(specEl){
+    specEl.innerHTML=!specific.length
+      ? `<div style="text-align:center;padding:20px;color:var(--faint);font-size:12px;background:rgba(255,255,255,.02);border-radius:12px">Nothing saved up for yet — tap "Add Goal" for something big.</div>`
+      : `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">` + specific.map(function(i){
+          const rarity=_shopItemRarity(i);
+          const pct=Math.min(100,Math.round(D.coins/i.cost*100));
+          const canAfford=D.coins>=i.cost;
+          return `<div style="background:linear-gradient(160deg,${rarity.color}14,rgba(8,0,18,.5));border:1.5px solid ${i.achieved?'rgba(74,222,128,.4)':rarity.color+'55'};box-shadow:0 0 18px ${i.achieved?'rgba(74,222,128,.15)':rarity.color+'22'};border-radius:16px;padding:14px;position:relative">
+            <div style="position:absolute;top:10px;right:10px;font-family:var(--fm);font-size:7px;font-weight:700;letter-spacing:.08em;color:${rarity.color};background:${rarity.color}18;border:.5px solid ${rarity.color}50;padding:2px 7px;border-radius:99px;text-transform:uppercase">${rarity.emoji} ${rarity.label}</div>
+            <div style="width:100%;height:120px;border-radius:11px;margin-bottom:12px;background:${i.image?'transparent':rarity.color+'12'};display:flex;align-items:center;justify-content:center;overflow:hidden">
+              ${i.image?`<img src="${i.image}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='🎯'">`:'<span style="font-size:38px">🎯</span>'}
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+              <div style="font-size:14px;color:#fff;font-weight:700;${i.achieved?'text-decoration:line-through;opacity:.6':''}">${_escHtml(i.name)}</div>
+              <div onclick="deleteShopItem('${i.id}')" style="color:var(--faint);cursor:pointer;flex-shrink:0"><i class="ti ti-x"></i></div>
+            </div>
+            ${i.achieved?`<div style="font-family:var(--fm);font-size:10px;color:#4ade80">✓ ACHIEVED</div>`:`
+            <div style="height:7px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-bottom:6px">
+              <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#fbbf24,#f59e0b);border-radius:99px;transition:width .5s"></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:6px">
+              <div style="font-family:var(--fm);font-size:9px;color:var(--muted)">🪙${D.coins.toLocaleString()}/${i.cost.toLocaleString()}</div>
+              <button onclick="buyShopItem('${i.id}')" ${canAfford?'':'disabled'} style="padding:6px 12px;border-radius:8px;font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:.04em;cursor:${canAfford?'pointer':'not-allowed'};border:1px solid ${canAfford?'rgba(74,222,128,.5)':'rgba(255,255,255,.1)'};background:${canAfford?'rgba(74,222,128,.18)':'rgba(255,255,255,.03)'};color:${canAfford?'#4ade80':'var(--faint)'}">${canAfford?'CLAIM':'LOCKED'}</button>
+            </div>`}
+          </div>`;
+        }).join('') + `</div>`;
+  }
+
+  const catsEl=$('shop-categories');
+  if(catsEl){
+    const activeCat=window._shopActiveCategory;
+    const tabsHTML=SHOP_CATEGORIES.map(function(cat){
+      const active=activeCat===cat.id;
+      const count=D.shopItems.filter(function(i){return i.type==='general'&&i.category===cat.id;}).length;
+      return `<button onclick="setShopCategory('${cat.id}')" style="flex:1;min-width:100px;padding:11px 8px;border-radius:11px 11px 0 0;font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:.04em;cursor:pointer;border:1px solid ${active?cat.color+'70':'rgba(255,255,255,.1)'};border-bottom:none;background:${active?cat.color+'20':'rgba(255,255,255,.03)'};color:${active?cat.color:'var(--muted)'}">${cat.emoji} ${cat.name.toUpperCase()}${count?' ('+count+')':''}</button>`;
+    }).join('');
+    const cat=SHOP_CATEGORIES.find(function(c){return c.id===activeCat;});
+    const items=D.shopItems.filter(function(i){return i.type==='general'&&i.category===activeCat;});
+    catsEl.innerHTML=`<div style="display:flex;gap:2px">${tabsHTML}</div>
+      <div style="background:${cat.color}08;border:1px solid ${cat.color}35;border-radius:0 0 14px 14px;padding:16px;margin-bottom:24px">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:12px">
+          <button onclick="openShopItemModal('general','${cat.id}')" style="padding:8px 16px;border-radius:9px;background:${cat.color}18;border:.5px solid ${cat.color}50;color:${cat.color};font-family:var(--fm);font-size:10px;font-weight:700;cursor:pointer"><i class="ti ti-plus"></i> ADD ITEM</button>
+        </div>
+        ${!items.length?`<div style="text-align:center;padding:24px;color:var(--faint);font-size:12px">No items in this category yet.</div>`:
+        `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px">`+
+        items.map(function(i){
+          const rarity=_shopItemRarity(i);
+          const canAfford=D.coins>=i.cost;
+          return `<div style="background:linear-gradient(160deg,${rarity.color}14,rgba(8,0,18,.5));border:1.5px solid ${rarity.color}50;box-shadow:0 0 14px ${rarity.color}1c;border-radius:14px;padding:12px;position:relative">
+            <div onclick="deleteShopItem('${i.id}')" style="position:absolute;top:8px;right:8px;color:rgba(255,255,255,.35);cursor:pointer;z-index:1"><i class="ti ti-x" style="font-size:12px"></i></div>
+            <div style="width:100%;height:80px;border-radius:9px;margin-bottom:10px;background:${i.image?'transparent':rarity.color+'12'};display:flex;align-items:center;justify-content:center;overflow:hidden">
+              ${i.image?`<img src="${i.image}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='${cat.emoji}'">`:`<span style="font-size:30px">${cat.emoji}</span>`}
+            </div>
+            <div style="font-family:var(--fm);font-size:7px;font-weight:700;letter-spacing:.06em;color:${rarity.color};text-transform:uppercase;margin-bottom:4px">${rarity.emoji} ${rarity.label}</div>
+            <div style="font-size:12.5px;color:#fff;font-weight:600;margin-bottom:8px;line-height:1.3">${_escHtml(i.name)}</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
+              <div style="font-family:var(--fm);font-size:9px;color:var(--muted)">🪙${i.cost.toLocaleString()}${i.purchaseCount?' ·'+i.purchaseCount+'x':''}</div>
+            </div>
+            <button onclick="buyShopItem('${i.id}')" ${canAfford?'':'disabled'} style="width:100%;margin-top:8px;padding:7px;border-radius:8px;font-family:var(--fm);font-size:9.5px;font-weight:700;letter-spacing:.04em;cursor:${canAfford?'pointer':'not-allowed'};border:1px solid ${canAfford?rarity.color+'70':'rgba(255,255,255,.1)'};background:${canAfford?rarity.color+'20':'rgba(255,255,255,.03)'};color:${canAfford?rarity.color:'var(--faint)'}">${canAfford?'BUY':'LOCKED'}</button>
+          </div>`;
+        }).join('')+`</div>`}
+      </div>`;
+  }
+}
+function openShopItemModal(type,category){
+  window._shopModalType=type;
+  window._shopPickedRarity=null;
+  $('shop-modal-title').textContent=type==='specific'?'Add Savings Goal':'Add Reward';
+  $('shop-item-name').value='';
+  $('shop-item-cost').value='';
+  $('shop-item-image').value='';
+  $('shop-item-cat-field').style.display=type==='specific'?'none':'block';
+  if(category) $('shop-item-category').value=category;
+  $('shop-daily-rate').textContent=getAvgDailyCoins();
+  renderShopRarityPicker();
+  updateShopCostHint();
+  $('shop-item-modal').classList.add('open');
+}
+function renderShopRarityPicker(){
+  const el=$('shop-rarity-picker'); if(!el) return;
+  const rate=getAvgDailyCoins();
+  el.innerHTML=SHOP_RARITY_TIERS.map(function(t){
+    const suggested=Math.max(1,Math.round(rate*t.days));
+    const active=window._shopPickedRarity===t.id;
+    return '<button onclick="pickShopRarity(\''+t.id+'\')" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 10px;border-radius:10px;border:1px solid '+(active?t.color+'90':t.color+'35')+';background:'+(active?t.color+'22':t.color+'0c')+';color:'+t.color+';cursor:pointer;flex:1;min-width:64px">'
+      +'<span style="font-size:14px">'+t.emoji+'</span>'
+      +'<span style="font-family:var(--fm);font-size:9px;font-weight:700">'+t.label+'</span>'
+      +'<span style="font-family:var(--fm);font-size:8px;opacity:.7">~'+suggested+'🪙</span>'
+      +'</button>';
+  }).join('');
+}
+function pickShopRarity(tierId){
+  window._shopPickedRarity=tierId;
+  const tier=shopRarityFor(tierId);
+  const rate=getAvgDailyCoins();
+  $('shop-item-cost').value=Math.max(1,Math.round(rate*tier.days));
+  renderShopRarityPicker();
+  updateShopCostHint();
+}
+function updateShopCostHint(){
+  const hintEl=$('shop-cost-hint'); if(!hintEl) return;
+  const cost=parseInt($('shop-item-cost').value)||0;
+  const rate=getAvgDailyCoins();
+  if(cost<=0){
+    hintEl.innerHTML='Pick a tier above, or set your own — you earn about <b>'+rate+'</b> coins/day right now.';
+    return;
+  }
+  const days=cost/rate;
+  const daysLabel=days<1?Math.round(days*24)+' hours':Math.round(days*10)/10+' day'+(days>=1.05?'s':'');
+  hintEl.innerHTML='At your current pace, that is about <b style="color:#fbbf24">'+daysLabel+'</b> of effort to earn.';
+}
+function closeShopItemModal(){
+  $('shop-item-modal').classList.remove('open');
+}
+function saveShopItem(){
+  const name=($('shop-item-name').value||'').trim();
+  const cost=parseInt($('shop-item-cost').value)||0;
+  const image=($('shop-item-image').value||'').trim();
+  const rarity=window._shopPickedRarity||'common';
+  if(!name||cost<=0){ toast('Enter a name and a real coin cost.'); return; }
+  if(!D.shopItems) D.shopItems=[];
+  const type=window._shopModalType;
+  if(type==='specific'){
+    D.shopItems.push({id:_uniqueId('shop'),type:'specific',name:name,cost:cost,image:image||null,rarity:rarity,achieved:false});
+  } else {
+    D.shopItems.push({id:_uniqueId('shop'),type:'general',name:name,cost:cost,image:image||null,rarity:rarity,category:$('shop-item-category').value,purchaseCount:0});
+  }
+  save();
+  closeShopItemModal();
+  renderShop();
+  toast('Added ⚡');
+}
+function buyShopItem(id){
+  const item=(D.shopItems||[]).find(function(i){return i.id===id;}); if(!item) return;
+  if(D.coins<item.cost){ toast('Not enough coins yet.'); return; }
+  D.coins-=item.cost;
+  if(item.type==='specific'){
+    item.achieved=true;
+    toast('🎉 '+item.name+' — go get it!');
+  } else {
+    item.purchaseCount=(item.purchaseCount||0)+1;
+    item.lastPurchasedAt=Date.now();
+    toast('🪙 Enjoy — '+item.name);
+  }
+  save();
+  renderShop();
+}
+function deleteShopItem(id){
+  if(!confirm('Remove this from the shop?')) return;
+  D.shopItems=(D.shopItems||[]).filter(function(i){return i.id!==id;});
+  save();
+  renderShop();
+}
 function showXPFloat(xp, color){
   const badge=document.createElement('div');
   badge.className='xp-float-badge';
@@ -16810,7 +17619,7 @@ function renderDrumsOverview(s){
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
         <div style="font-size:30px;filter:drop-shadow(0 0 14px rgba(168,85,247,.7))">🥁</div>
         <div>
-          <div style="font-family:var(--fm);font-size:9px;color:#c084fc;letter-spacing:.16em;text-transform:uppercase">Level ${lvl} Drummer · ${s.totalXP} XP</div>
+          <div style="font-family:var(--fm);font-size:9px;color:#c084fc;letter-spacing:.16em;text-transform:uppercase">Level ${lvl} · ${getSkillTitle(lvl)} Drummer · ${s.totalXP} XP</div>
           <div style="font-family:var(--fd);font-size:26px;color:#fff;line-height:1;text-shadow:0 0 24px rgba(168,85,247,.5)">SIT DOWN. PLAY SOMETHING.</div>
         </div>
       </div>
